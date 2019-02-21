@@ -1,0 +1,96 @@
+<template>
+  <view class="container">
+    <image class="logo-img" src="../../images/big_logo.png"/>
+    <view class="welcome-text">
+      <view class="m-ft-32 m-ft-b tc">欢迎登陆娃哈哈学校社团俱乐部报名系统</view>
+      <view class="m-ft-28 m-ft-b tc">Welcome to </view>
+      <view class="m-ft-28 m-ft-b tc">Wahaha Schools ASA registration system.</view>
+    </view>
+    <button class="user-btn" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">进入 ASA</button>
+    <button class="user-btn unactive" wx:else>请升级微信版本后使用</button>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '娃哈哈社团（ASA）',
+    };
+    components = {};
+    data = {
+      canIUse: wx.canIUse('button.open-type.getUserInfo')
+    };
+    onLoad() {
+      // 查看是否授权
+      wx.getSetting({
+        success(res) {
+          if (res.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            wx.getUserInfo({
+              success(res) {
+                // console.log(res.userInfo)
+              }
+            })
+          }
+        }
+      })
+    };
+    methods = {
+      bindGetUserInfo(e) {
+        if(e.detail.userInfo == undefined) {
+          wx.navigateTo({ url: '/pages/login/login' })
+        }else {
+          wx.setStorageSync('user', e.detail.userInfo);
+          wx.navigateTo({ url: '/pages/login/login' })
+        }
+      }
+    };
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    width: 750rpx;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 160rpx 0 179rpx 0;
+
+    .logo-img {
+      width: 374rpx;
+      height: 374rpx;
+      margin-bottom: 66rpx;
+      /*position: absolute;*/
+      /*top: 160rpx;*/
+    }
+    .welcome-text {
+      color: @mainColor;
+      flex: 1;
+      /*position: absolute;*/
+      /*top: 640rpx;*/
+      view {
+        &:first-child {
+          margin-bottom: 30rpx;
+        }
+      }
+    }
+    .user-btn {
+      width: 586rpx;
+      height: 76rpx;
+      color: #FFFFFF;
+      line-height: 76rpx;
+      border-radius: 10rpx;
+      background-color: @mainColor;
+      /*position: absolute;*/
+      /*bottom: 180rpx;*/
+      &.unactive {
+        background-color: @greyColor;
+      }
+    }
+  }
+</style>

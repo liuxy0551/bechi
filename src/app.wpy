@@ -12,27 +12,62 @@
 <script>
 import wepy from 'wepy'
 import 'wepy-async-function'
+import api from './api/api'
+import tip from './utils/tip'
 
 
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index'
+      'pages/mall/mall',                    // 微商城
+      'pages/material/material',            // 素材库
+      'pages/dietitian/dietitian',          // 营养师
+      'pages/personal/personal',            // 我的
+
+      'pages/login/welcome',                // 欢迎页
+      'pages/login/login',                  // 登录页
+      'pages/login/forget',                 // 忘记密码
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
+      navigationBarTitleText: '贝琪商城',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#B1B1B1',
+      selectedColor: '#CBAB60',
+      backgroundColor: '#ffffff',
+      list: [{
+        pagePath: "pages/mall/mall",
+        text: "微商城",
+        iconPath: "images/tabBar/mall_unactive.png",
+        selectedIconPath: "images/tabBar/mall_active.png"
+      },{
+        pagePath: "pages/material/material",
+        text: "素材库",
+        iconPath: "images/tabBar/material_unactive.png",
+        selectedIconPath: "images/tabBar/material_active.png"
+      },{
+        pagePath: "pages/dietitian/dietitian",
+        text: "营养师",
+        iconPath: "images/tabBar/dietitian_unactive.png",
+        selectedIconPath: "images/tabBar/dietitian_active.png"
+      },{
+        pagePath: "pages/personal/personal",
+        text: "我的",
+        iconPath: "images/tabBar/personal_unactive.png",
+        selectedIconPath: "images/tabBar/personal_active.png"
+      }]
     }
-  }
+  };
 
   globalData = {
     userInfo: null
-  }
+  };
 
   constructor () {
-    super()
+    super();
     this.use('requestfix')
   }
 
@@ -49,18 +84,18 @@ export default class extends wepy.app {
   }
 
   async testAsync () {
-    const data = await this.sleep(3)
+    const data = await this.sleep(3);
     console.log(data)
   }
 
   getUserInfo(cb) {
-    const that = this
+    const that = this;
     if (this.globalData.userInfo) {
       return this.globalData.userInfo
     }
     wepy.getUserInfo({
       success (res) {
-        that.globalData.userInfo = res.userInfo
+        that.globalData.userInfo = res.userInfo;
         cb && cb(res.userInfo)
       }
     })

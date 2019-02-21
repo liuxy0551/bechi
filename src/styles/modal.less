@@ -1,0 +1,148 @@
+@import "./color";
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.3;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  overflow: hidden;
+  position: fixed;
+  top: 40%;
+  left: 3%;
+  z-index: 9999;
+  background: @bgColor;
+  margin: -180rpx 105rpx;
+  border-radius: 10rpx;
+  &.modal-canvas-box {
+    margin: -360rpx -25rpx;
+  }
+}
+
+.modal-canvas {
+  width: 800rpx;
+  height: 900rpx;
+  text-align: center;
+  opacity: 0;
+}
+
+.modal-content {
+  width: 500rpx;
+  text-align: center;
+  margin: 45rpx 0 60rpx 0;
+  .modal-img {
+    width: 100rpx;
+    height: 100rpx;
+  }
+  .modal-text-box {
+    .modal-text {
+      display: flex;
+      justify-content: center;
+      color: @greyColor;
+      font-size: 28rpx;
+      margin-bottom: 10rpx;
+      .modal-price {
+        color: @mainColor;
+        font-weight: bold;
+      }
+      &:first-child {
+        margin-top: 20rpx;
+      }
+      &:last-child {
+        margin-bottom: 20rpx;
+      }
+      &.more {
+        font-size: 26rpx;
+      }
+      &.en-more {
+        font-size: 22rpx;
+      }
+    }
+  }
+  .modal-btn {
+    width: 170rpx;
+    color: #FFFFFF;
+    font-size: 28rpx;
+    padding: 10rpx 50rpx;
+    margin: 0 115rpx;
+    border-radius: 50rpx;
+    background: linear-gradient(126deg, @smallMainColor 0%, @mainColor 100%);
+    &.orange {
+      background: linear-gradient(126deg, @smallMainColor 0%, @mainColor 100%);
+    }
+  }
+  .modal-btn-box {
+    width: 380rpx;
+    display: flex;
+    justify-content: space-between;
+    margin: 50rpx 50rpx -20rpx 70rpx;
+    .box-item {
+      .item-ch {
+        font-size: 28rpx;
+        font-weight: 400;
+        &.blue {
+          color: @mainColor;
+        }
+        &.orange {
+          color: @mainColor;
+        }
+      }
+      .item-en {
+        color: @greyColor;
+        font-size: 20rpx;
+      }
+    }
+  }
+}
+
+.search-modal-dialog {
+  overflow: hidden;
+  position: fixed;
+  top: 100rpx;
+  left: 0;
+  z-index: 9999;
+  background: @bgColor;
+  border-radius: 0 0 10rpx 10rpx;
+  .search-modal-content {
+    width: 750rpx;
+    display: flex;
+    .search-item {
+      width: 375rpx;
+      background: #FFFFFF;
+      box-sizing: border-box;
+      &:last-child {
+        border-left: 2rpx #BDC3C7 solid;
+        padding-left: 155rpx;
+      }
+      .item-title {
+        font-size: 24rpx;
+        font-weight: 600;
+        padding: 14rpx 30rpx 20rpx 30rpx;
+      }
+      .item-item {
+        white-space: nowrap;
+        display: inline-block;
+        color: @666Color;
+        font-size: 24rpx;
+        padding: 8rpx 25rpx;
+        margin: 0 30rpx 10rpx 30rpx;
+        background-color: @bgColor;
+        &.active {
+          color: #FFFFFF;
+          background-color: @mainColor;
+        }
+        &:last-child {
+          margin-bottom: 40rpx;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<template>
+  <view class="bottom-line">
+    <view class="line-name">
+      <view class="line-text">OUTFIT</view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class courseItem extends wepy.component {
+    props = {
+      scroll: { type: Boolean, default: false, twoWay: true }
+    };
+    data = {};
+    events = {};
+    methods = {
+
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../styles/index";
+
+  .bottom-line {
+    height: 0;
+    border: 2rpx dashed #BDC3C7;
+    position: relative;
+    margin: 60rpx 0 ;
+    .line-name {
+      position: absolute;
+      top: -25rpx;
+      margin: 0 auto;
+      font-size: 38rpx;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+      .line-text {
+        color: #CCCCCC;
+        font-size: 38rpx;
+        font-family: Corbel;
+        font-weight: bold;
+        font-style: oblique;
+        display: inline-block;
+        padding: 0 15rpx;
+        background-color: @bgColor;
+      }
+    }
+  }
+</style>

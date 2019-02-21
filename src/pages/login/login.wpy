@@ -1,0 +1,285 @@
+<template>
+  <view class="container">
+    <image class="logo-img" src="../../images/logo.png"/>
+    <!--用户名、密码-->
+    <view class="name-passwd-box">
+      <view class="box-row">
+        <image class="box-icon" src="../../images/icon_user_name.png"/>
+        <input class="box-input" bindinput="userName" placeholder="请输入用户名 User name" maxlength="20"/>
+      </view>
+      <view class="box-row">
+        <image class="box-icon" src="../../images/icon_passwd.png"/>
+        <input class="box-input" bindinput="password" value="{{user.password}}" password="{{unshow}}" placeholder="请输入密码 Password" maxlength="220"/>
+        <image class="passwd-icon" wx:if="{{unshow}}" src="../../images/icon_passwd_unshow.png" @tap="unshow"/>
+        <image class="passwd-icon" wx:else src="../../images/icon_passwd_show.png" @tap="unshow"/>
+      </view>
+    </view>
+    <!--按钮-->
+    <view class="login-btn" @tap="login">登录 Log in</view>
+    <!--忘记密码、账号切换-->
+    <view class="login-btn-box">
+      <view @tap="forget">
+        <view>忘记密码？</view>
+        <view>Forget password</view>
+      </view>
+      <view class="tr" @tap="goPage">
+        <view>账号切换></view>
+        <view>Switch account></view>
+      </view>
+    </view>
+    <!--自定义弹出框-->
+    <view>
+      <!--弹出框蒙版-->
+      <view class="modal-mask" @tap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+      <!--弹出框内容-->
+      <view class="modal-dialog" wx:if="{{showModal}}">
+        <view class="modal-content">
+          <image class="modal-img" src="{{modal.icon}}"/>
+          <view class="modal-text-box">
+            <view class="modal-text">{{modal.chinese}}</view>
+            <view class="modal-text">{{modal.english}}</view>
+          </view>
+          <view class="modal-btn" wx:if="{{modal.btn}}" @tap="toPay">{{modal.btn}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '娃哈哈社团（ASA）',
+    };
+    components = {};
+    data = {
+      user: {
+        userName: '',
+        password: ''
+      },
+      unshow: true,
+      modal: {
+        icon: '',
+        chinese: '',
+        english: '',
+        btn: ''
+      },
+      showModal: false
+    };
+    onLoad() {
+
+    };
+    methods = {
+      userName(e) {
+        this.user.userName = e.detail.value
+      },
+      password(e) {
+        this.user.password = e.detail.value
+      },
+      unshow() {
+        this.unshow = !this.unshow
+      },
+      // 登录按钮
+      async login() {
+        let that = this;
+        if(!this.user.userName) {
+          tip.error('请输入用户名')
+          return false
+        }
+        if(!this.user.password) {
+          tip.error('请输入密码')
+          return false
+        }
+        let params = {
+          method: 'POST',
+          header: 'application/x-www-form-urlencoded',
+          query: { loginName: this.user.userName, password: this.user.password }
+        }
+        wx.getStorage({
+          key: 'user',
+          success: res => {
+            params.query.nickName = res.data.nickName;
+            // params.query.WeChatNum = res.data.nickName;
+            params.query.avatar = res.data.avatarUrl;
+            Promise.resolve(api.login(params)).then((res)=> {
+              if(res.data.code == 200) {
+                wx.setStorageSync('login', true);
+                wx.setStorageSync('ticket', res.data.data.ticket);
+                if(res.data.data.isFirst) {
+                  wx.setStorageSync('isFirst', true);
+                }
+                wx.switchTab({ url: '/pages/course/course' })
+              }else {
+                if(res.data.msg == '密码错误') {
+                  that.modal = {
+                    icon: '../../images/icon_fail.png',
+                    chinese: '密码错误，请重新输入！',
+                    english: 'Please retry!',
+                    btn: ''
+                  };
+                  that.user.password = '';
+                  that.showModal = true;
+                  that.$apply();
+
+                  // 倒计时
+                  const TIME_COUNT = 1;
+                  let count = TIME_COUNT;
+                  let time = setInterval(() => {
+                    if (count > 0 && count <= TIME_COUNT) {
+                      count --;
+                    } else {
+                      that.showModal = false;
+                      that.$apply();
+                      clearInterval(time);
+                    }
+                  }, 1000);
+                }else {
+                  tip.error(res.data.msg)
+                }
+              }
+            })
+          },
+          fail: res => {
+            wx.showModal({
+              title: '需要授权',
+              content: '当前操作需要您授权微信昵称和微信头像，是否前往授权？',
+              confirmText: '前往',
+              confirmColor: '#E28D44',
+              success(res) {
+                if(res.confirm) {
+                  // wx.navigateBack({ delta: 1 })
+                  wx.redirectTo({ url: '/pages/login/welcome'})
+                }else if(res.cancel) {
+                  // that.user.password = '';
+                  // that.$apply();
+                }
+              }
+            })
+          }
+        });
+      },
+      // 忘记密码
+      forget() {
+        wx.navigateTo({ url: '/pages/login/forget'});
+        return false
+
+        if(!this.user.userName) {
+          tip.error('请先输入用户名')
+          return false
+        }
+        let that = this;
+        wx.showModal({
+          title: '重置密码',
+          content: '点击确定后等待管理员重置您的密码，新密码将通过短信发送给您',
+          confirmColor: '#E28D44',
+          success(res) {
+            if(res.confirm) {
+              that.modal = {
+                icon: '../../images/icon_success.png',
+                chinese: '重置密码申请已提交，等待短信通知',
+                english: 'Request submitted, please check message.',
+                btn: ''
+              };
+              console.log(that.user.userName);
+              that.showModal = true
+              that.$apply()
+
+              // 倒计时
+              const TIME_COUNT = 1;
+              let count = TIME_COUNT;
+              let time = setInterval(() => {
+                if (count > 0 && count <= TIME_COUNT) {
+                  count --;
+                } else {
+                  that.showModal = false;
+                  that.$apply();
+                  clearInterval(time);
+                }
+              }, 1000);
+            }
+          }
+        })
+      },
+      // 页面跳转
+      goPage() {
+        wx.removeStorageSync('ticket');
+        wx.switchTab({ url: '/pages/personal/personal' })
+      },
+      // 隐藏弹出框
+      hideModal() {
+        this.showModal = false
+      },
+      // 弹出框蒙层截断touchmove事件，阻断事件向下传递，避免在弹窗后还可以点击或者滑动蒙层下的界面
+      preventTouchMove: function () {
+
+      }
+    };
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    width: 750rpx;
+    /*min-height: 100vh;*/
+    .logo-img {
+      width: 241rpx;
+      height: 241rpx;
+      margin: 160rpx 0 120rpx 0;
+    }
+    .name-passwd-box {
+      .box-row {
+        position: relative;
+        margin-bottom: 30rpx;
+        .box-icon {
+          width: 50rpx;
+          height: 50rpx;
+          position: absolute;
+          top: 28rpx;
+          left: 10rpx;
+        }
+        .box-input {
+          width: 380rpx;
+          font-size: 30rpx;
+          padding: 30rpx 40rpx 30rpx 80rpx;
+          border-bottom: 2rpx #BDC3C7 solid;
+        }
+        .passwd-icon {
+          width: 50rpx;
+          height: 50rpx;
+          position: absolute;
+          top: 28rpx;
+          right: 0;
+        }
+      }
+    }
+    .login-btn {
+      width: 586rpx;
+      height: 76rpx;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 34rpx;
+      line-height: 76rpx;
+      border-radius: 10rpx;
+      background-color: @mainColor;
+      position: absolute;
+      bottom: 181rpx;
+      left: 82rpx;
+    }
+    .login-btn-box {
+      width: 586rpx;
+      display: flex;
+      justify-content: space-between;
+      color: #BDC3C7;
+      font-size: 26rpx;
+      position: absolute;
+      bottom: 80rpx;
+      left: 82rpx;
+    }
+  }
+</style>

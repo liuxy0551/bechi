@@ -1,0 +1,257 @@
+<template>
+  <view class="container">
+    <!--输入框-->
+    <view class="passwd-box">
+      <view class="passwd-input-box">
+        <view class="box-left">
+          <view class="text-ch">用户名</view>
+          <view class="text-en">User name</view>
+        </view>
+        <input class="box-right" bindinput="loginName" maxlength="20"/>
+      </view>
+      <view class="passwd-input-box">
+        <view class="box-left">
+          <view class="text-ch">手机号</view>
+          <view class="text-en">Phone Number</view>
+        </view>
+        <input class="box-right short-input" bindinput="mobile" maxlength="20"/>
+        <view class="send-btn active" wx:if="{{!hasSend}}" @tap="sendCode">发送验证码</view>
+        <view class="send-btn" wx:else>{{count}}秒后重发</view>
+      </view>
+      <view class="passwd-input-box">
+        <view class="box-left">
+          <view class="text-ch">验证码</view>
+          <view class="text-en">Verification code</view>
+        </view>
+        <input class="box-right" bindinput="code" maxlength="6"/>
+      </view>
+      <view class="passwd-input-box">
+        <view class="box-left">
+          <view class="text-ch">新密码</view>
+          <view class="text-en">New password</view>
+        </view>
+        <input class="box-right" password bindinput="pwd" maxlength="20"/>
+      </view>
+      <view class="passwd-input-box">
+        <view class="box-left">
+          <view class="text-ch">重复密码</view>
+          <view class="text-en">Repeat Password</view>
+        </view>
+        <input class="box-right" password bindinput="rePwd" maxlength="20"/>
+      </view>
+    </view>
+    <!--确认按钮-->
+    <view class="done-btn" @tap="doneBtn">确定 Confirm</view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '密码管理'
+    };
+    components = {};
+    data = {
+      passwd: {
+        loginName: '',
+        mobile: '',
+        code: '',
+        pwd: '',
+        rePwd: ''
+      },
+      hasSend: false,
+      timer: null,                  // 倒计时
+      count: "",                    // 倒计时
+    };
+    onLoad() {
+
+    };
+    methods = {
+      // 发送验证码
+      sendCode() {
+        if(!this.passwd.mobile) {
+          tip.error('请先输入手机号');
+          // return false
+        }
+        // 倒计时60秒
+        const TIME_COUNT = 60;
+        if(!this.timer) {
+          this.count = TIME_COUNT;
+          this.hasSend = true;
+          this.$apply();
+          this.timer = setInterval(() => {
+            if(this.count > 0 && this.count <= TIME_COUNT) {
+              this.count --;
+              this.$apply();
+            }else {
+              this.hasSend = false;
+              clearInterval(this.timer);
+              this.timer = null;
+              this.$apply();
+            }
+          }, 1000);
+        }
+        let params = {
+          method: 'POST',
+          header: 'application/x-www-form-urlencoded',
+          query: {
+            mobile: this.passwd.mobile,
+            type: '0'
+          }
+        }
+        Promise.resolve(api.sendSms(params)).then((res)=> {
+          if(res.data.code == 200) {
+            tip.success('发送成功');
+          }else {
+            tip.error(res.data.msg)
+          }
+        })
+      },
+      loginName(e) {
+        this.passwd.loginName = e.detail.value
+      },
+      mobile(e) {
+        this.passwd.mobile = e.detail.value
+      },
+      code(e) {
+        this.passwd.code = e.detail.value
+      },
+      pwd(e) {
+        this.passwd.pwd = e.detail.value
+      },
+      rePwd(e) {
+        this.passwd.rePwd = e.detail.value
+      },
+      // 确认按钮
+      async doneBtn() {
+        let that = this;
+        if(!this.passwd.loginName) {
+          tip.error('请输入用户名');
+          return false
+        }
+        if(!this.passwd.mobile) {
+          tip.error('请输入手机号');
+          return false
+        }
+        if(!this.passwd.code) {
+          tip.error('请输入验证码');
+          return false
+        }
+        if(!this.passwd.pwd) {
+          tip.error('请输入新密码');
+          return false
+        }
+        if(!this.passwd.rePwd) {
+          tip.error('请重复新密码');
+          return false
+        }
+        if(this.passwd.rePwd != this.passwd.pwd) {
+          tip.error('两次密码不一致');
+          return false
+        }
+        let params = {
+          method: 'POST',
+          header: 'application/x-www-form-urlencoded',
+          query: {
+            loginName: this.passwd.loginName,
+            mobile: this.passwd.mobile,
+            code: this.passwd.code,
+            pwd: this.passwd.pwd,
+            rePwd: this.passwd.rePwd
+          }
+        }
+        Promise.resolve(api.refindPwd(params)).then((res)=> {
+          if(res.data.code == 200) {
+            tip.success('修改成功');
+            // 倒计时
+            const TIME_COUNT = 1;
+            let count = TIME_COUNT;
+            let time = setInterval(() => {
+              if(count > 0 && count <= TIME_COUNT) {
+                count --;
+              }else {
+                wx.navigateBack({ delta: 1 })
+                clearInterval(time);
+              }
+            }, 800);
+          }else {
+            tip.error(res.data.msg);
+            this.passwd.code = '';
+          }
+        })
+      }
+    };
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    min-height: 100vh;
+    background-color: @bgColor;
+    .passwd-box {
+      margin: 30rpx 25rpx 0 25rpx;
+      border-radius: 10rpx;
+      background-color: #FFFFFF;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.16);
+      .passwd-input-box {
+        width: 600rpx;
+        padding: 0 60rpx 0 40rpx;
+        margin-bottom: 40rpx;
+        display: flex;
+        &:first-child {
+          margin-top: 60rpx;
+        }
+        .box-left {
+          width: 50%;
+          .text-ch {
+            color: @666Color;
+            font-size: 26rpx;
+          }
+          .text-en {
+            color: @666Color;
+            font-size: 24rpx;
+            white-space: nowrap;
+          }
+        }
+        .box-right {
+          width: 450rpx;
+          padding: 0 20rpx;
+          font-size: 26rpx;
+          border-bottom: 2rpx #BDC3C7 solid;
+        }
+        .short-input {
+          width: 270rpx;
+        }
+        .send-btn {
+          width: 200rpx;
+          height: 50rpx;
+          color: #FFFFFF;
+          line-height: 50rpx;
+          font-size: 26rpx;
+          border-radius: 10rpx;
+          text-align: center;
+          margin: 0 -20rpx 0 15rpx;
+          background-color: @greyColor;
+          &.active {
+            background: linear-gradient(126deg, @smallMainColor 0%, @mainColor 100%);
+          }
+        }
+      }
+    }
+    .done-btn {
+      width: 750rpx;
+      height: 98rpx;
+      color: #FFFFFF;
+      font-size: 32rpx;
+      text-align: center;
+      line-height: 100rpx;
+      background: linear-gradient(126deg, @smallMainColor 0%, @mainColor 100%);
+    }
+  }
+</style>
