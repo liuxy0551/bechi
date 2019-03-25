@@ -1,0 +1,29 @@
+@import "./color";
+
+//页面整体样式设置
+.container {
+  min-height: 100vh;
+  background-color: @bgColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+//搜索框
+.search-box {
+  width: 697rpx;
+  display: flex;
+  justify-content: center;
+  padding: 9rpx 0;
+  margin: 18rpx 0;
+  background: #fff;
+  border-radius: 50rpx;
+  .search-icon {
+    width: 33rpx;
+    height: 33rpx;
+    margin-right: 20rpx;
+  }
+  .search-text {
+    color: @ABColor;
+  }
+}

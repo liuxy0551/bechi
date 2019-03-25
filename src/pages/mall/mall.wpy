@@ -1,6 +1,35 @@
 <template>
   <view class="container">
-    mall bechi国际营养中心
+    <!--搜索框-->
+    <div class="search-box">
+      <image class="search-icon" src="/images/search.png"/>
+      <div class="search-text ft-24">搜索商品</div>
+    </div>
+    <!--轮播图-->
+    <swiper class="swiper-img" indicator-dots="true" autoplay="true" circular="true">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="swiper-img" src="{{item.downUrl}}" lazy-load="true" @tap="goPage({{item}}, 'detail')"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!--类别轮播-->
+    <view class="swiper-box">
+      <swiper class="swiper-row" indicator-dots="true" indicator-color="#EED59B" indicator-active-color="#CBAB60">
+        <block wx:for="{{swiperList}}" wx:key="{{i}}">
+          <swiper-item>
+            <view class="item" wx:for="{{item.images}}" wx:key="{{j}}">
+              <image class="item-img" src="{{item.img}}"/>
+              <view class="item-name cf666">{{ item.name }}</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <image class="index-img1" src="http://dummyimage.com/750x150" lazy-load="true"/>
+
+
   </view>
 </template>
 
@@ -11,20 +40,34 @@
 
   export default class  extends wepy.page {
     config = {
-      navigationBarTitleText: 'bechi国际营养中心'
-    };
-    components = {};
+      navigationBarTitleText: 'BECHI国际营养中心'
+    }
     data = {
-
-    };
-    onShow() {
-
-    };
-    onLoad() {
-
-    };
+      imgUrls: [{ downUrl: 'http://dummyimage.com/750x300' }, { downUrl: 'http://dummyimage.com/750x300' }],
+      swiperList: [
+        { images: [
+            { img: 'http://dummyimage.com/90x90', name: '类别一' },
+            { img: 'http://dummyimage.com/90x90', name: '类别二' },
+            { img: 'http://dummyimage.com/90x90', name: '类别三' },
+            { img: 'http://dummyimage.com/90x90', name: '类别四' },
+            { img: 'http://dummyimage.com/90x90', name: '类别五' }
+          ]
+        },
+        { images: [
+            { img: 'http://dummyimage.com/90x90', name: '类别6' },
+            { img: 'http://dummyimage.com/90x90', name: '类别7' },
+            { img: 'http://dummyimage.com/90x90', name: '类别8' },
+            { img: 'http://dummyimage.com/90x90', name: '类别9' }
+          ]
+        }
+      ]
+    }
     methods = {
-
+      // 页面跳转
+      goPage(item, to) {
+        console.log(item, to);
+        // wx.navigateTo({ url: 'courseList?ctId=' + item.ctId })
+      }
     }
   }
 </script>
@@ -33,7 +76,39 @@
   @import "../../styles/index";
 
   .container {
-    min-height: 100vh;
-    background-color: @bgColor;
+    .swiper-img {
+      width: 750rpx;
+      height: 300rpx;
+    }
+
+    /*类别轮播*/
+    .swiper-box {
+      width: 750rpx;
+      margin: 10px 0;
+      swiper {
+        height: 180rpx;
+      }
+      .swiper-row {
+        text-align: center;
+        swiper-item {
+          display: flex;
+          justify-content: flex-start;
+        }
+        .item {
+          width: 150rpx;
+          .item-img {
+            width: 90rpx;
+            height: 90rpx;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+
+    .index-img1 {
+      width: 700rpx;
+      height: 150rpx;
+      border-radius: 150rpx;
+    }
   }
 </style>

@@ -12,17 +12,11 @@
   export default class  extends wepy.page {
     config = {
       navigationBarTitleText: '素材库'
-    };
-    components = {};
+    }
+    components = {}
     data = {
 
-    };
-    onShow() {
-
-    };
-    onLoad() {
-
-    };
+    }
     methods = {
 
     }
