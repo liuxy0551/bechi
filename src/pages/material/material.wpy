@@ -27,7 +27,6 @@
   @import "../../styles/index";
 
   .container {
-    min-height: 100vh;
-    background-color: @bgColor;
+
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    personal 个人中心
+
   </view>
 </template>
 
@@ -13,7 +13,6 @@
     config = {
       navigationBarTitleText: '个人中心'
     }
-    components = {}
     data = {
 
     }
@@ -27,7 +26,6 @@
   @import "../../styles/index";
 
   .container {
-    min-height: 100vh;
-    background-color: @bgColor;
+
   }
 </style>
