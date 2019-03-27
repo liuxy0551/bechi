@@ -12,6 +12,14 @@
         </block>
       </view>
     </view>
+    <!--专家营养师-->
+    <view class="dietitian-box">
+      <view class="dietitian-row">
+        <view class="left-color"></view>
+        <view class="right-text">专家营养师</view>
+      </view>
+      <image class="dietitian-img" src="/images/dietitian/dietitian.png"/>
+    </view>
   </view>
 </template>
 
@@ -82,6 +90,15 @@
           background: #EED59B;
         }
       }
+    }
+
+    .dietitian-img {
+      width: 140rpx;
+      height: 159rpx;
+      padding: 34rpx 50rpx 46rpx 50rpx;
+      margin-left: 210rpx;
+      border-radius: 50%;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.16);
     }
   }
 </style>
