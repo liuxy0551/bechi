@@ -1,6 +1,17 @@
 <template>
   <view class="container">
-    dietitian 营养师
+    <!--营养师分类-->
+    <view class="dietitian-box">
+      <view class="dietitian-row">
+        <view class="left-color"></view>
+        <view class="right-text">营养师分类</view>
+      </view>
+      <view class="classify-box">
+        <block wx:for="{{classifyList}}" wx:key="{{index}}">
+          <view class="classify-item ft-24">{{item}}</view>
+        </block>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -13,9 +24,8 @@
     config = {
       navigationBarTitleText: '营养师在线'
     }
-    components = {}
     data = {
-
+      classifyList: ['分类一', '分类', '分类一一', '分类', '分类', '分类一', '分类一一', '分类一一', '分类一一', '分类一', '分类', '分类一']
     }
     methods = {
 
@@ -27,7 +37,51 @@
   @import "../../styles/index";
 
   .container {
-    min-height: 100vh;
-    background-color: @bgColor;
+    .dietitian-box {
+      margin-top: 25rpx;
+      padding: 20rpx 45rpx 45rpx 45rpx;
+      background: #FFFFFF;
+    }
+
+    .dietitian-row {
+      width: 660rpx;
+      display: flex;
+      align-items: center;
+      margin-bottom: 35rpx;
+      .left-color {
+        width: 10rpx;
+        height: 35rpx;
+        border-radius: 5rpx;
+        background: #5E1A03;
+      }
+      .right-text {
+        color: #000000;
+        font-size: 30rpx;
+        margin-left: 27rpx;
+      }
+    }
+
+    .classify-box {
+      display: flex;
+      flex-wrap: wrap;
+      .classify-item {
+        color: #333333;
+        margin: 0 30rpx 20rpx 0;
+        padding: 8rpx 24rpx;
+        border-radius: 10rpx;
+        &:nth-child(n) {
+          background: #CBAB60;
+        }
+        &:nth-child(2n) {
+          background: #EED59B;
+        }
+        &:nth-child(3n) {
+          background: #EEDFC8;
+        }
+        &:nth-child(4n) {
+          background: #EED59B;
+        }
+      }
+    }
   }
 </style>

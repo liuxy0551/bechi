@@ -19,9 +19,9 @@ import tip from './utils/tip'
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/dietitian/dietitian',          // 营养师
       'pages/mall/mall',                    // 微商城
       'pages/material/material',            // 素材库
-      'pages/dietitian/dietitian',          // 营养师
       'pages/personal/personal',            // 我的
 
       'pages/login/welcome',                // 欢迎页
