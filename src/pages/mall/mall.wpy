@@ -1,10 +1,10 @@
 <template>
   <view class="container">
     <!--搜索框-->
-    <div class="search-box">
+    <view class="search-box">
       <image class="search-icon" src="/images/search.png"/>
-      <div class="search-text ft-24">搜索商品</div>
-    </div>
+      <view class="search-text ft-24">搜索商品</view>
+    </view>
     <!--轮播图-->
     <swiper class="swiper-img" indicator-dots="true" autoplay="true" circular="true">
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
@@ -29,7 +29,44 @@
 
     <image class="index-img1" src="http://dummyimage.com/750x150" lazy-load="true"/>
 
+    <!--活动区域-->
+    <view class="activity-box">
+      <view class="left-img-box">
+        <image class="left-img" src="http://dummyimage.com/250x480" lazy-load="true"/>
+      </view>
+      <view class="right-box">
+        <view class="dietitian-box">
+          <view class="text ft-28">营养师咨询</view>
+          <image class="dietitian-img" src="/images/mall/to_dietitian.png"/>
+        </view>
+        <image class="activity-img" src="http://dummyimage.com/215x215" lazy-load="true"/>
+        <image class="activity-img" src="http://dummyimage.com/215x215" lazy-load="true"/>
+      </view>
+    </view>
 
+    <!--以下为商品展示区域-->
+    <swiper class="banner-img" indicator-dots="true" autoplay="true" circular="true">
+      <block wx:for="{{bannerList}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="banner-img" src="{{item.downUrl}}" lazy-load="true" @tap="goPage({{item}}, 'detail')"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <products :productList="productList"></products>
+
+    <!--以下为商品展示区域-->
+    <swiper class="banner-img" indicator-dots="true" autoplay="true" circular="true">
+      <block wx:for="{{bannerList}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="banner-img" src="{{item.downUrl}}" lazy-load="true" @tap="goPage({{item}}, 'detail')"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <products :productList="productList"></products>
+
+    <!--以下为商品展示区域-->
+    <view class="more-product ft-32">更多产品</view>
+    <products :productList="productList"></products>
   </view>
 </template>
 
@@ -37,6 +74,7 @@
   import wepy from 'wepy'
   import api from '../../api/api'
   import tip from '../../utils/tip'
+  import products from '../../components/products'
 
   export default class  extends wepy.page {
     config = {
@@ -60,7 +98,9 @@
             { img: 'http://dummyimage.com/90x90', name: '类别9' }
           ]
         }
-      ]
+      ],
+      bannerList: [{ downUrl: 'http://dummyimage.com/700x180' }, { downUrl: 'http://dummyimage.com/700x180' }, { downUrl: 'http://dummyimage.com/700x180' }, { downUrl: 'http://dummyimage.com/700x180' }],
+      productList: [1, 2, 3, 4]
     }
     methods = {
       // 页面跳转
@@ -69,6 +109,7 @@
         // wx.navigateTo({ url: 'courseList?ctId=' + item.ctId })
       }
     }
+    components = { products }
   }
 </script>
 
@@ -76,6 +117,7 @@
   @import "../../styles/index";
 
   .container {
+    background-color: #EEEEEE;
     .swiper-img {
       width: 750rpx;
       height: 300rpx;
@@ -109,6 +151,62 @@
       width: 700rpx;
       height: 150rpx;
       border-radius: 150rpx;
+    }
+
+    /*活动区域的样式*/
+    .activity-box {
+      display: flex;
+      margin: 20rpx 25rpx 12rpx 25rpx;
+      .left-img-box {
+        width: 250rpx;
+        height: 480rpx;
+        .left-img {
+          width: 250rpx;
+          height: 480rpx;
+        }
+      }
+      .right-box {
+        .dietitian-box {
+          width: 440rpx;
+          height: 249rpx;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: FEFDF9;
+          margin: 0 0 10rpx 10rpx;
+          border: 5rpx @mainColor solid;
+          .text {
+            color: @mainColor;
+          }
+          .dietitian-img {
+            width: 82rpx;
+            height: 93rpx;
+            padding: 29rpx 35rpx;
+            margin-left: 50rpx;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.16);
+          }
+        }
+        .activity-img {
+          width: 215rpx;
+          height: 215rpx;
+          margin-left: 10rpx;
+        }
+      }
+    }
+
+    .banner-img {
+      width: 700rpx;
+      height: 180rpx;
+      margin-bottom: 20rpx;
+    }
+    .more-product {
+      width: 750rpx;
+      color: #FFFFFF;
+      padding: 23rpx 0;
+      margin-bottom: 20rpx;
+      background: #CBAB60;
+      text-align: center;
     }
   }
 </style>

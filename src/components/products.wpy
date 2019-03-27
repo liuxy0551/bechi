@@ -1,0 +1,74 @@
+<template>
+  <view class="product-box">
+    <block wx:for="{{productList}}" wx:key="{{index}}">
+      <view class="product-item">
+        <image class="product-img" src="http://dummyimage.com/345x400"/>
+        <view class="product-text">
+          <view class="product-name ft-24 text-overflow">保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D</view>
+          <view class="price-num">
+            <view class="price ft-30">￥189.99</view>
+            <view class="num ft-20">233人已购买</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class products extends wepy.component {
+    props = {
+      productList: { type: Array, default: [], twoWay: true }
+    };
+    data = {};
+    events = {};
+    methods = {
+
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../styles/index";
+
+  .product-box {
+    margin: 0 25rpx;
+    display: flex;
+    flex-wrap: wrap;
+    .product-item {
+      margin: 0 20rpx 20rpx 0;
+      &:nth-child(2n) {
+        margin: 0 0 20rpx 0;
+      }
+      .product-img {
+        width: 340rpx;
+        height: 400rpx;
+        border-radius: 20rpx 20rpx 0 0;
+      }
+      .product-text {
+        padding: 10rpx 0;
+        margin-top: -10rpx;
+        background: #fff;
+        border-radius: 0 0 20rpx 20rpx;
+        .product-name {
+          width: 310rpx;
+          color: #333333;
+          margin: 0 15rpx;
+        }
+        .price-num {
+          display: flex;
+          justify-content: space-between;
+          margin: 15rpx 17.5rpx;
+          .price {
+            color: @priceColor;
+          }
+          .num {
+            color: @greyColor;
+          }
+        }
+      }
+    }
+  }
+</style>
