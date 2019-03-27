@@ -67,6 +67,12 @@
     <!--以下为商品展示区域-->
     <view class="more-product ft-32">更多产品</view>
     <products :productList="productList"></products>
+    
+    <!--两个右下角的悬浮按钮-->
+    <view class="fixed-img-box">
+      <image class="fixed-img" src="/images/mall/shopping_cart.png"/>
+      <image class="fixed-img" src="/images/mall/service.png"/>
+    </view>
   </view>
 </template>
 
@@ -207,6 +213,19 @@
       margin-bottom: 20rpx;
       background: #CBAB60;
       text-align: center;
+    }
+
+    .fixed-img-box {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      bottom: 70rpx;
+      right: 20rpx;
+      .fixed-img {
+        width: 64rpx;
+        height: 64rpx;
+        margin-top: 20rpx;
+      }
     }
   }
 </style>
