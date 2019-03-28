@@ -21,9 +21,8 @@
   export default class products extends wepy.component {
     props = {
       productList: { type: Array, default: [], twoWay: true }
-    };
-    data = {};
-    events = {};
+    }
+    data = {}
     methods = {
 
     }

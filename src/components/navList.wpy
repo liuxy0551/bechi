@@ -1,0 +1,103 @@
+<template>
+  <!--带选中颜色-->
+  <view class="nav-list-color" wx:if="{{which == 'color'}}">
+    <block wx:for="{{navList}}" wx:key="{{index}}">
+      <view class="nav-item-color {{item.active?'active':''}}" @tap="navTap({{index}})">{{item.name}}</view>
+    </block>
+  </view>
+  <!--固定数量不能左右滑动-->
+  <view class="nav-list-box" wx:if="{{which == 'navList'}}">
+    <block wx:for="{{navList}}" wx:key="{{index}}">
+      <view class="nav-item-box cf666 {{item.active?'active':''}}" @tap="navTap({{index}})">{{item.name}}</view>
+    </block>
+  </view>
+  <!--固定数量能左右滑动-->
+  <view class="nav-list-scroll" wx:if="{{which == 'scroll'}}">
+    <block wx:for="{{navList}}" wx:key="{{index}}">
+      <view class="nav-item-scroll cf666 {{item.active?'active':''}}" @tap="navTap({{index}})">{{item.name}}</view>
+    </block>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class navList extends wepy.component {
+    props = {
+      navList: { type: Array, default: [], twoWay: true },
+      which: { type: String, default: null, twoWay: true }
+    }
+    data = {}
+    methods = {
+      navTap (index) {
+        this.$emit('navTap', index);
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../styles/index";
+
+  /*带选中颜色*/
+  .nav-list-color {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .nav-item-color {
+      width: 100%;
+      text-align: center;
+      letter-spacing: 5rpx;
+      color: @mainColor;
+      font-size: 24rpx;
+      font-weight: 400;
+      padding: 5rpx 50rpx;
+      border: 1rpx @mainColor solid;
+      &.active {
+        color: #fff;
+        background: @mainColor;
+      }
+    }
+  }
+
+  /*固定数量不能左右滑动*/
+  .nav-list-box {
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    .nav-item-box {
+      font-weight: 400;
+      text-align: center;
+      font-size: 24rpx;
+      letter-spacing: 5rpx;
+      padding: 14rpx 8rpx 8rpx 8rpx;
+      &.active {
+        border-bottom: 5rpx @mainColor solid;
+      }
+    }
+  }
+
+  /*固定数量能左右滑动*/
+  .nav-list-scroll {
+    width: 100%;
+    background: white;
+    white-space: nowrap;
+    display: flex;
+    overflow-y: auto;
+    .nav-item-scroll {
+      font-weight: 400;
+      text-align: center;
+      font-size: 24rpx;
+      letter-spacing: 5rpx;
+      margin: 0 30rpx;
+      padding: 14rpx 8rpx 8rpx 8rpx;
+      &.active {
+        border-bottom: 5rpx @mainColor solid;
+      }
+      &:last-child {
+        padding-right: 40rpx;
+      }
+    }
+  }
+</style>

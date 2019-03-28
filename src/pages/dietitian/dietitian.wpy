@@ -78,7 +78,7 @@
         padding: 8rpx 24rpx;
         border-radius: 10rpx;
         &:nth-child(n) {
-          background: #CBAB60;
+          background: @mainColor;
         }
         &:nth-child(2n) {
           background: #EED59B;

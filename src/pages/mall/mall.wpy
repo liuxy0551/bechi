@@ -211,7 +211,7 @@
       color: #FFFFFF;
       padding: 23rpx 0;
       margin-bottom: 20rpx;
-      background: #CBAB60;
+      background: @mainColor;
       text-align: center;
     }
 

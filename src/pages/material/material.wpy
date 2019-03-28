@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    material 素材库
+    <navList :navList="navList" :which="whichNav" @navTap="navTap"></navList>
   </view>
 </template>
 
@@ -8,18 +8,32 @@
   import wepy from 'wepy'
   import api from '../../api/api'
   import tip from '../../utils/tip'
+  import navList from '../../components/navList'
 
   export default class  extends wepy.page {
     config = {
       navigationBarTitleText: '素材库'
     }
-    components = {}
     data = {
-
+      navList: [
+        // { name: '商品', active: true }, { name: '文章', active: false }
+        // { name: '全部', active: true }, { name: '待付款', active: false }, { name: '待发货', active: false }, { name: '待收货', active: false }, { name: '待评价', active: false }
+        { name: '全部', active: true }, { name: '待付款', active: false }, { name: '待发货', active: false }, { name: '待收货', active: false }, { name: '待评价', active: false }, { name: '待发货', active: false }, { name: '待收货', active: false }, { name: '待评价', active: false }
+      ],
+      whichNav: 'scroll'
     }
     methods = {
 
     }
+    events = {
+      navTap (index) {
+        for (let i of this.navList) {
+          i.active = false
+        }
+        this.navList[index].active = true
+      }
+    }
+    components = { navList }
   }
 </script>
 

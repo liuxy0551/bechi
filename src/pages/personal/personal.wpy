@@ -28,7 +28,7 @@
 
     <!--功能条-->
     <view class="order-status">
-      <view class="flex-row option-row">
+      <view class="flex-row option-row top">
         <image class="icon" src="/images/personal/my_order.png"/>
         <view class="option-title">我的订单</view>
         <view class="option-text">全部订单</view>
@@ -123,6 +123,9 @@
       margin-top: 20rpx;
       padding: 40rpx 20rpx 32rpx 24rpx;
       background: white;
+      &.top {
+        margin-top: 0;
+      }
       .icon {
         width: 26rpx;
         height: 26rpx;
@@ -179,7 +182,6 @@
     .top-box {
       width: 750rpx;
       padding: 25rpx 0;
-      /*position: relative;*/
       background: linear-gradient(270deg,rgba(238,223,200,1) 0%,rgba(203,171,96,1) 100%);
       .avatar-box {
         width: 150rpx;
@@ -196,7 +198,7 @@
       .setting-img {
         width: 36rpx;
         height: 36rpx;
-        position: fixed;
+        position: absolute;
         top: 20rpx;
         right: 20rpx;
       }
