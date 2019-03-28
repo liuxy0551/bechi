@@ -1,6 +1,87 @@
 <template>
   <view class="container">
+    <!--顶部个人信息-->
+    <view class="top-box flex-row">
+      <view class="avatar-box">
+        <image class="avatar" src="http://dummyimage.com/150x150" lazy-load="true"/>
+      </view>
+      <view class="info-box">
+        <view class="flex-row top">
+          <span class="info-name ft-30">奔波儿灞</span>
+          <span class="check-in ft-22">签到</span>
+        </view>
+        <view class="flex-row">
+          <view class="flex-row left">
+            <image class="image" src="/images/personal/coupon.png"/>
+            <span class="info-text">优惠券</span>
+            <span class="info-text ft-b">5</span>
+          </view>
+          <view class="flex-row">
+            <image class="image" src="/images/personal/score_record.png"/>
+            <span class="info-text">积分商城</span>
+            <span class="info-text ft-b">520</span>
+          </view>
+        </view>
+      </view>
+      <image class="setting-img" src="/images/personal/setting.png"/>
+    </view>
 
+    <!--功能条-->
+    <view class="order-status">
+      <view class="flex-row option-row">
+        <image class="icon" src="/images/personal/my_order.png"/>
+        <view class="option-title">我的订单</view>
+        <view class="option-text">全部订单</view>
+        <image class="icon" src="/images/view_more.png"/>
+      </view>
+      <view class="order-box">
+        <view class="order-item">
+          <image class="status-icon" src="/images/personal/to_pay.png"/>
+          <view class="status-text">待支付</view>
+          <view class="num-tip">2</view>
+        </view>
+        <view class="order-item">
+          <image class="status-icon" src="/images/personal/to_send.png"/>
+          <view class="status-text">待发货</view>
+          <view class="num-tip">2</view>
+        </view>
+        <view class="order-item">
+          <image class="status-icon" src="/images/personal/to_receive.png"/>
+          <view class="status-text">待收货</view>
+          <view class="num-tip">99</view>
+        </view>
+        <view class="order-item">
+          <image class="status-icon" src="/images/personal/to_comment.png"/>
+          <view class="status-text">待评价</view>
+          <view class="num-tip">2</view>
+        </view>
+        <view class="order-item">
+          <image class="status-icon" src="/images/personal/after_sales.png"/>
+          <view class="status-text">售后中</view>
+          <view class="num-tip">2</view>
+        </view>
+      </view>
+    </view>
+    <view class="flex-row option-row">
+      <image class="icon" src="/images/personal/my_collections.png"/>
+      <view class="option-title">我的收藏</view>
+      <image class="icon" src="/images/view_more.png"/>
+    </view>
+    <view class="flex-row option-row">
+      <image class="icon" src="/images/personal/address_management.png"/>
+      <view class="option-title">地址管理</view>
+      <image class="icon" src="/images/view_more.png"/>
+    </view>
+    <view class="flex-row option-row">
+      <image class="icon" src="/images/personal/score_record.png"/>
+      <view class="option-title">积分记录</view>
+      <image class="icon" src="/images/view_more.png"/>
+    </view>
+    <view class="flex-row option-row">
+      <image class="icon" src="/images/personal/service.png"/>
+      <view class="option-title">联系客服</view>
+      <image class="icon" src="/images/view_more.png"/>
+    </view>
   </view>
 </template>
 
@@ -26,6 +107,120 @@
   @import "../../styles/index";
 
   .container {
+    .flex-row {
+      display: flex;
+      align-items: center;
+      &.left {
+        margin-right: 60rpx;
+      }
+      &.top {
+        margin: 50rpx 0 20rpx 0;
+      }
+    }
 
+    .option-row {
+      width: 706rpx;
+      margin-top: 20rpx;
+      padding: 40rpx 20rpx 32rpx 24rpx;
+      background: white;
+      .icon {
+        width: 26rpx;
+        height: 26rpx;
+        margin-right: 23rpx;
+      }
+      .option-title {
+        flex: 1;
+        color: #333333;
+        font-size: 28rpx;
+      }
+      .option-text {
+        color: #333333;
+        font-size: 24rpx;
+        margin-right: 14rpx;
+      }
+    }
+    .order-status {
+      background: white;
+      .order-box {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 58rpx;
+        .order-item {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          .status-icon {
+            width: 72rpx;
+            height: 72rpx;
+          }
+          .status-text {
+            color: #333333;
+            font-size: 24rpx;
+            margin: 6rpx 0 11rpx 0;
+          }
+          .num-tip {
+            width: 32rpx;
+            height: 32rpx;
+            color: #C70000;
+            background: #fff;
+            font-size: 22rpx;
+            font-weight: 400;
+            text-align: center;
+            border-radius: 50%;
+            border: 5rpx #C70000 solid;
+            position: absolute;
+            top: -15rpx;
+            right: -15rpx;
+          }
+        }
+      }
+    }
+
+    .top-box {
+      width: 750rpx;
+      padding: 25rpx 0;
+      /*position: relative;*/
+      background: linear-gradient(270deg,rgba(238,223,200,1) 0%,rgba(203,171,96,1) 100%);
+      .avatar-box {
+        width: 150rpx;
+        height: 150rpx;
+        margin: 0 25rpx;
+        .avatar {
+          width: 150rpx;
+          height: 150rpx;
+          border-radius: 50%;
+          border: 3rpx #fff solid;
+          box-shadow: 0 5rpx 6rpx rgba(0,0,0,0.16);
+        }
+      }
+      .setting-img {
+        width: 36rpx;
+        height: 36rpx;
+        position: fixed;
+        top: 20rpx;
+        right: 20rpx;
+      }
+    }
+    .info-box {
+      .info-name {
+        color: #333333;
+      }
+      .check-in {
+        color: #ffffff;
+        padding: 6rpx 28rpx;
+        background: #796C52;
+        border-radius: 50rpx;
+        margin-left: 20rpx;
+      }
+      .image {
+        width: 30rpx;
+        height: 30rpx;
+      }
+      .info-text {
+        color: #333333;
+        font-size: 22rpx;
+        margin-left: 10rpx;
+      }
+    }
   }
 </style>

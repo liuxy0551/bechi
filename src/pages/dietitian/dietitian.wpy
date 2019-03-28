@@ -98,7 +98,7 @@
       padding: 34rpx 50rpx 46rpx 50rpx;
       margin-left: 210rpx;
       border-radius: 50%;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.16);
+      box-shadow: 0 5rpx 10rpx rgba(0,0,0,0.16);
     }
   }
 </style>
