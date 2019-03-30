@@ -1,0 +1,213 @@
+@borderColor: #DBDCDC;
+@moneyColor: #FF6600;
+@666: #666666;
+@999: #999999;
+
+@mainBlueColor: #409EFF;
+@successColor: #67C23A;
+@warningColor: #E6A23C;
+@dangerColor: #F56C6C;
+@infoColor: #909399;
+
+@inrefundRowBg: #fde7cb;
+
+.success-text {
+  color: @successColor;
+}
+
+.warning-text {
+  color: @warningColor;
+}
+
+.danger-text {
+  color: @dangerColor;
+}
+
+.info-text {
+  color: @infoColor;
+}
+
+.wl(@width,@height) {
+  width: @width;
+  height: @height;
+}
+
+.fz(@size) {
+  font-size: @size;
+}
+
+.sc(@size, @color) {
+  font-size: @size;
+  color: @color;
+}
+
+.fj(@type: space-between;) {
+  display: flex;
+  justify-content: @type;
+}
+
+.fjc(@type: space-between;) {
+  display: flex;
+  justify-content: @type;
+  flex-direction: column;
+}
+
+.fontc(@line-height) {
+  text-align: center;
+  line-height: @line-height;
+}
+
+.bs(@margin,@thick,@dim) {
+  margin-bottom: @margin;
+  box-shadow: 0 @thick @dim rgba(0, 0, 0, .16);
+}
+
+.bdb(@color: @borderColor) {
+  border-bottom: 1px solid @color;
+}
+
+.middle-line {
+  font-size: large;
+  text-align: center;
+  font-weight: bold;
+}
+
+.table-pic {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.upload-tip {
+  color: #909399;
+  font-size: 16px;
+}
+
+.avatar-uploader .el-upload {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-uploader-icon {
+  border: 1px dashed #d9d9d9;
+  font-size: 28px;
+  color: #8c939d;
+  width: 158px;
+  height: 158px;
+  line-height: 158px;
+  text-align: center;
+  border-radius: 6px;
+
+  &.small {
+    .wl(78px, 78px);
+    line-height: 78px;
+  }
+
+  &:hover {
+    border-color: #409EFF;
+  }
+}
+
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+  border: 1px solid black;
+
+  &.small {
+    .wl(100px, 100px);
+  }
+}
+
+.money-cell {
+  color: @moneyColor !important;
+}
+
+.separator {
+  display: inline-block;
+  .wl(3px, 100%);
+  margin: 0 20px;
+}
+
+.form-item-end-tip {
+  margin-left: 20px;
+  .sc(12px, @999);
+  cursor: pointer;
+}
+
+.tool-bar {
+  padding: 20px 20px 0 20px;
+  border: 1px dotted grey;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  &.space-between {
+    .fj();
+    align-items: flex-start;
+
+    &.center{
+      align-items: center;;
+    }
+  }
+
+  &.end {
+    align-items: flex-end;
+
+  }
+}
+
+.table-bottom {
+  margin-top: 20px;
+  .fj(center);
+}
+
+.tool-tip-wrap {
+  padding: 20px;
+  border: 1px dotted grey;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.el-table .warning-row {
+  background: @inrefundRowBg;
+}
+
+.el-table .warning-header-cell {
+  color: @warningColor;
+
+}
+
+//  像可以点的样子
+.click-cursor{
+  cursor: pointer;
+}
+
+.table-header-tip{
+  li{
+    text-align: center;
+  }
+}
+
+.hidden-ellipsis{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
