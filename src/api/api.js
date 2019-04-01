@@ -1,6 +1,6 @@
 let title = ''
 
-title = 'https://planet.daaiti.cn/api/v1/'
+title = 'https://bechi.lkfcni.cn/api/v1'
 // title = 'https://www.bigxingxing.com/api/v1/'  // 正式
 
 const api = {

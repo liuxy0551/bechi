@@ -2,7 +2,10 @@
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form"
              label-position="left">
-      <h3 class="title">大行星后台管理系统</h3>
+      <!--<h3 class="title">bechi商城后台管理系统</h3>-->
+      <section class="title">
+        <img src="/static/images/login_slogan_header.png" alt="">
+      </section>
       <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user"/>
@@ -27,11 +30,6 @@
         </el-button>
       </el-form-item>
 
-      <el-radio-group v-model="loginForm.userType">
-        <el-radio label="1" name="userType" border>管理员</el-radio>
-        <el-radio label="2" name="userType" border>供应商</el-radio>
-      </el-radio-group>
-
       <div class="tips">
       </div>
     </el-form>
@@ -42,7 +40,6 @@
   import {mapGetters} from "vuex";
   import {getStore, setStore} from "src/utils/index";
 
-
   export default {
     name: 'Login',
     data() {
@@ -50,7 +47,6 @@
         loginForm: {
           username: getStore('username'),
           password: '',
-          userType: getStore('userType') || '1',
         },
         loginRules: {
           username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
@@ -84,38 +80,23 @@
         this.$refs.loginForm.validate(valid => {
           if (valid) {
             this.loading = true
-
             setStore('username', this.loginForm.username);
-            setStore('userType', this.loginForm.userType);
 
-            this.$store.dispatch('Login', this.loginForm).then(() => {
-              this.loading = false
-              this.$router.push({path: this.redirect || '/'})
+            this.$store.dispatch('Login',this.loginForm).then(
+              () => {
+                this.loading = false
 
-              let roleZh = '';
-
-              switch (this.userInfo.level) {
-                case 'supplizer':
-                  roleZh = '供应商';
-                  break;
-                case 'admin':
-                  roleZh = '管理员';
-                  break;
-                case 'super':
-                  roleZh = '超级管理员';
-                  break;
+                location.reload();
+                this.$notify({
+                  title: '登录成功',
+                  type: 'success'
+                });
               }
-
-              this.$notify({
-                title: '登录成功',
-                message: `身份:${roleZh}`,
-                type: 'success'
-              });
-            }).catch(() => {
+            ).catch(err => {
               this.loading = false
             })
+
           } else {
-            // this.$message.warning('请填写用户名和密码');
             return false
           }
         })
@@ -197,13 +178,21 @@
       width: 30px;
       display: inline-block;
     }
-    .title {
+    /*.title {
       font-size: 26px;
       font-weight: 400;
       color: $light_gray;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
+    }*/
+    .title{
+      text-align: center;
+      margin-bottom: 50px;
+      img{
+        width: 400px;
+        max-height: 100%;
+      }
     }
     .show-pwd {
       position: absolute;

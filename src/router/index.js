@@ -71,7 +71,226 @@ export const level1 = ['supplizer', 'admin', 'super']; //  三角色都可见
 export const level2 = ['admin', 'super'];  //  管理员可见
 export const level3 = ['super']; //  超管可见
 
-export const asyncRouterMap = []
+export const asyncRouterMap = [
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/index',
+    name: 'User',
+    meta: {title: '用户', icon: 'people'},
+    children: [
+      {
+        path: 'index',
+        name: 'UserIndex',
+        component: () => import('src/views/user/index'),
+        meta: {title: '用户'},
+      }
+    ]
+  },
+  {
+    path: '/mall',
+    component: Layout,
+    redirect: '/mall/indexBanner',
+    name: 'Mall',
+    meta: {title: '商城'},
+    children: [
+      {
+        path: 'indexBanner',
+        name: 'IndexBanner',
+        component: () => import('src/views/mall/indexBanner'),
+        meta: {title: '轮播图设置'},
+      },{
+        path: 'freightTmpl',
+        name: 'freightTmpl',
+        component: () => import('src/views/mall/freightTmpl'),
+        meta: {title: '运费模板'},
+      },
+    ]
+  },
+  {
+    path: '/product',
+    component: Layout,
+    alwaysShow: true, //  当配置供应商只能看到所有商品时,所有商品会升级显示为1级菜单,加上这个还是能显示为二级
+    redirect: '/product/index',
+    name: 'Product',  //  有二级菜单的时候加下,面包屑就会显示 概览/一级菜单/二级
+    meta: {title: '商品', icon: 'shangpin'},
+    children: [
+      {
+        path: 'index',
+        name: 'ProductIndex',
+        component: () => import('src/views/product/index'),
+        meta: {title: '普通商品', icon: 'yes', noCache: false}
+      }, {
+        path: 'productEdit',
+        name: 'ProductEdit',
+        hidden: true,
+        component: () => import('src/views/product/productEdit'),
+        meta: {title: '商品编辑', icon: 'yes', noCache: false}
+      },
+
+      {
+        path: 'productCategory',
+        name: 'ProductCategory',
+        component: () => import('src/views/product/productCategory'),
+        meta: {title: '商品分类', icon: 'yes', noCache: true}
+      },
+    ]
+  },
+  {
+    path: '/point',
+    component: Layout,
+    redirect: '/point/pointIndex',
+    name: 'Point',
+    meta: {title: '积分'},
+    children: [
+      {
+        path: 'pointIndex',
+        name: 'PointIndex',
+        component: () => import('src/views/point/index'),
+        meta: {title: '积分获取'},
+      },{
+        path: 'pointProduct',
+        name: 'pointProduct',
+        component: () => import('src/views/point/product'),
+        meta: {title: '积分商品'},
+      },
+    ]
+  },
+  {
+    path: '/order',
+    component: Layout,
+    redirect: '/order/index',
+    alwaysShow: true,
+    name: 'Order',
+    meta: {title: '订单', icon: 'dingdan', roles: level1},
+    children: [
+      {
+        path: 'index',
+        name: 'OrderIndex',
+        component: () => import('src/views/order/index'),
+        meta: {title: '普通订单', noCache: false, icon: 'yes', roles: level1}
+      }, {
+        path: 'orderDetail',
+        name: 'OrderDetail',
+        hidden: true,
+        component: () => import('src/views/order/orderDetail'),
+        meta: {title: '订单详情', noCache: true, roles: level1}
+      },
+    ]
+  },
+  {
+    path: '/activity',
+    component: Layout,
+    redirect: '/activity/index',
+    alwaysShow: true,
+    name: 'Activity',
+    meta: {title: '活动'},
+    children: [
+      {
+        path: 'index',
+        name: 'ActivityIndex',
+        component: () => import('src/views/activity/index'),
+        meta: {title: '活动管理'}
+      },{
+        path: 'bargain',
+        name: 'Bargain',
+        component: () => import('src/views/activity/bargain'),
+        meta: {title: '砍价'}
+      },{
+        path: 'timeLimitedSale',
+        name: 'TimeLimitedSale',
+        component: () => import('src/views/activity/timeLimitedSale'),
+        meta: {title: '限时抢购'}
+      },{
+        path: 'groupPurchase',
+        name: 'GroupPurchase',
+        component: () => import('src/views/activity/groupPurchase'),
+        meta: {title: '拼团'}
+      },{
+        path: 'coupon',
+        name: 'Coupon',
+        component: () => import('src/views/activity/coupon'),
+        meta: {title: '优惠券'}
+      },
+    ]
+  },
+
+  {
+    path: '/material',
+    component: Layout,
+    redirect: '/material/index',
+    alwaysShow: true,
+    name: 'Material',
+    meta: {title: '素材'},
+    children: [
+      {
+        path: 'index',
+        name: 'MaterialIndex',
+        component: () => import('src/views/material/index'),
+        meta: {title: '素材', noCache: false, icon: 'yes'}
+      },
+      {
+        path: 'classify',
+        name: 'MaterialClassify',
+        component: () => import('src/views/material/classify'),
+        meta: {title: '素材分类'}
+      },{
+        path: 'commentAudit',
+        name: 'CommentAudit',
+        component: () => import('src/views/material/commentAudit'),
+        meta: {title: '评论审核'}
+      }
+    ]
+  },
+
+  {
+    path: '/nutritionist',
+    component: Layout,
+    name: 'Nutritionist',
+    redirect: '/nutritionist/index',
+    meta: {title: '营养师'},
+    children: [
+      {
+        path: 'index',
+        component: ()=> import('src/views/nutritionist/index'),
+        name: 'NutritionistIndex',
+        meta: {title: '营养师'}
+      }
+    ]
+  },
+
+  {
+    path: '/statistic',
+    component: Layout,
+    name: 'Statistic',
+    redirect: '/statistic/index',
+    meta: {title: '数据统计'},
+    children: [
+      {
+        path: 'index',
+        component: ()=> import('src/views/statistic/index'),
+        name: 'StatisticIndex',
+        meta: {title: '数据统计'}
+      }
+    ]
+  },
+{
+    path: '/setting',
+    component: Layout,
+    name: 'Setting',
+    redirect: '/setting/auth',
+    meta: {title: '数据统计'},
+    children: [
+      {
+        path: 'auth',
+        component: ()=> import('src/views/setting/auth'),
+        name: 'Auth',
+        meta: {title: '权限相关'}
+      }
+    ]
+  },
+
+];
 /*export const asyncRouterMap2 = [
   {
     path: '/product',

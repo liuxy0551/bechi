@@ -50,96 +50,19 @@ const user = {
     //  router中配置好role
     Login({commit}, userInfo) {
       return new Promise((resolve, reject) => {
-        if (userInfo.userType == 1) { //  管理员
-          login(userInfo.username, userInfo.password).then(response => {
-            if (response.data.status == 200) {
-              let resData = response.data,
-                data = resData.data;
-
-              setStore('token', data.token);
-              commit('SET_TOKEN', data.token)
-
-              let cookieUserInfo = {
-                username: data.admin.adname,
-                personName: '',
-                avatar: data.admin.adheader,
-                level: data.admin.adlevel == '超级管理员' ? 'super' : 'admin'
-              }
-              setStore('User-Info', cookieUserInfo)
-              commit('SET_USER_INFO', cookieUserInfo)
-              commit('SET_INTERVAL', setInterval(() => {
-                  authRefresh().then(
-                    res => {
-                      if (res.data.status == 200) {
-                        let resData = res.data,
-                          data = res.data.data;
-
-                        commit('SET_TOKEN', data);
-                      }
-                    }
-                  )
-                }
-                , 1000 * 60 * 5)
-              );
-              resolve()
-            } else {
-              reject();
-            }
-          }).catch(error => {
-            reject(error)
-          })
-        } else {  //  供应商
-          supplizerLogin(userInfo.username, userInfo.password).then(response => {
-            if (response.data.status == 200) {
-              let resData = response.data,
-                data = resData.data;
-
-              setStore('token', data.token);
-              commit('SET_TOKEN', data.token)
-
-              let cookieUserInfo = {
-                username: data.supplizer.sulinkphone,
-                personName: data.supplizer.suname,
-                avatar: data.supplizer.suheader,
-                level: 'supplizer'
-              }
-              setStore('User-Info', cookieUserInfo)
-              commit('SET_USER_INFO', cookieUserInfo)
-              // commit('SET_INTERVAL', setInterval(() => {
-              //     authRefresh().then(
-              //       res => {
-              //         if (res.data.status == 200) {
-              //           let resData = res.data,
-              //             data = res.data.data;
-              //
-              //           commit('SET_TOKEN', data);
-              //         }
-              //       }
-              //     )
-              //   }
-              //   , 1000 * 60 * 5)
-              // );
-              resolve()
-            } else {
-              reject();
-            }
-          }).catch(error => {
-            reject(error)
-          })
-        }
+        setStore('token', 'ASD')
+        commit('SET_TOKEN', 'ASD');
+        commit('SET_ROLES', ['admin'])
+        resolve()
       })
     },
 
     // 登出
-    LogOut({commit, state}) {
+    LogOut: function ({commit, state}) {
       return new Promise((resolve, reject) => {
-        commit('SET_TOKEN', '')
-        commit('SET_ROLES', [])
-
-        // if (state.interval) {
-        //   clearInterval(state.interval);
-        // }
-        removeStore('token')
+        commit('SET_TOKEN', '');
+        commit('SET_ROLES', []);
+        removeStore('token');
         resolve()
       })
     },
