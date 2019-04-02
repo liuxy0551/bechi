@@ -1,0 +1,42 @@
+<template>
+  <view class="container">
+    话题列表
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../../api/api'
+  import tip from '../../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '话题列表'
+    }
+    data = {
+      topicList: [
+        { img: 'http://n.sinaimg.cn/translate/500/w320h180/20190402/pwvd-hvcmeux6324877.jpg', text: '话题一' },
+        { img: 'http://n.sinaimg.cn/translate/500/w320h180/20190402/pwvd-hvcmeux6324877.jpg', text: '话题一' }
+      ]
+    }
+    methods = {
+      // 页面跳转
+      goPage(item, to) {
+        // console.log(item, to);
+        if(to == 'drop') {
+          wx.navigateTo({ url: '/pages/schedule/refundApplication?cid=' + item.cid })
+        }else if(to == 'change') {
+          wx.navigateTo({ url: '/pages/course/courseList' })
+        }
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../../styles/index";
+
+  .container {
+
+  }
+</style>

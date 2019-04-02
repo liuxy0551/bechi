@@ -24,6 +24,9 @@ export default class extends wepy.app {
       'pages/dietitian/dietitian',          // 营养师
       'pages/personal/personal',            // 我的
 
+      'pages/material/topic/list',          // 话题列表
+      'pages/material/topic/detail',        // 话题详情
+
       'pages/login/welcome',                // 欢迎页
       'pages/login/login',                  // 登录页
       'pages/login/forget',                 // 忘记密码

@@ -106,8 +106,8 @@
     <view class="more-row">
       <view class="color three"></view>
       <view class="title">热门话题</view>
-      <view class="text">查看更多</view>
-      <image class="icon" src="/images/view_more.png"/>
+      <view class="text" @tap="goPage('more', 'topic')">查看更多</view>
+      <image class="icon" src="/images/view_more.png" @tap="goPage('more', 'topic')"/>
     </view>
     <view class="hot-topic-box">
       <block wx:for="{{topicList}}" wx:key="{{index}}">
@@ -155,7 +155,20 @@
       ]
     }
     methods = {
-
+      // 页面跳转
+      goPage(item, to) {
+        if (item == 'more') {
+          console.log(to, item)
+          if (to == 'topic') {
+            wx.navigateTo({ url: '/pages/material/topic/list' })
+          }
+        }else {
+          if (to == 'topic') {
+            // wx.navigateTo({ url: '/pages/material/topic/list' })
+          }
+        }
+        // wx.navigateTo({ url: '/pages/schedule/refundApplication?cid=' + item.cid })
+      }
     }
     events = {
       navTap (index) {

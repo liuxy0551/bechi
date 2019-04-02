@@ -1,0 +1,44 @@
+<template>
+  <view class="container">
+    话题详情
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../../api/api'
+  import tip from '../../../utils/tip'
+  import navList from '../../../components/navList'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '话题详情'
+    }
+    data = {
+      navList: [
+        { name: '推荐', active: true }, { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false },
+        { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false }
+      ]
+    }
+    methods = {
+
+    }
+    events = {
+      navTap (index) {
+        for (let i of this.navList) {
+          i.active = false
+        }
+        this.navList[index].active = true
+      }
+    }
+    components = { navList }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../../styles/index";
+
+  .container {
+
+  }
+</style>
