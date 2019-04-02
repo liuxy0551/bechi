@@ -14,7 +14,9 @@
   <!--固定数量能左右滑动-->
   <view class="nav-list-scroll" wx:if="{{which == 'scroll'}}">
     <block wx:for="{{navList}}" wx:key="{{index}}">
-      <view class="nav-item-scroll cf666 {{item.active?'active':''}}" @tap="navTap({{index}})">{{item.name}}</view>
+      <view class="scroll-box">
+        <view class="nav-item-scroll cf666 {{item.active?'active':''}}" @tap="navTap({{index}})">{{item.name}}</view>
+      </view>
     </block>
   </view>
 </template>
@@ -85,6 +87,10 @@
     white-space: nowrap;
     display: flex;
     overflow-y: auto;
+    text-align: center;
+    .scroll-box {
+
+    }
     .nav-item-scroll {
       font-weight: 400;
       text-align: center;
@@ -94,9 +100,6 @@
       padding: 14rpx 8rpx 8rpx 8rpx;
       &.active {
         border-bottom: 5rpx @mainColor solid;
-      }
-      &:last-child {
-        padding-right: 40rpx;
       }
     }
   }
