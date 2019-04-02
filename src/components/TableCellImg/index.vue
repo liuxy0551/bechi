@@ -62,6 +62,7 @@
         height: 50px;
         border: 1px solid black;
         margin-right: 10px;
+        cursor: zoom-in;
 
         &:last-child{
           /*margin-right: 0;*/
