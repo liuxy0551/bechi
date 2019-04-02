@@ -1,6 +1,122 @@
 <template>
   <view class="container">
-    <navList :navList="navList" :which="whichNav" @navTap="navTap"></navList>
+    <!--案例社区-->
+    <div class="more-row">
+      <div class="color one"></div>
+      <div class="title">案例社区</div>
+      <div class="text">查看更多</div>
+      <image class="icon" src="/images/view_more.png"/>
+    </div>
+    <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
+    <!--案例轮播-->
+    <div class="case-box">
+      <block wx:for="{{caseList}}" wx:key="{{index}}">
+        <div class="case-item-box">
+          <div class="case-item">
+            <image class="case-img" src="{{item.img}}" lazy-load="true"/>
+            <image class="case-video" src="/images/video_icon.png" wx:if="{{item.video}}"/>
+            <div class="case-name ft-24 text-overflow">{{item.name}}</div>
+          </div>
+        </div>
+      </block>
+    </div>
+
+    <!--知识课堂-->
+    <div class="more-row">
+      <div class="color two"></div>
+      <div class="title">知识课堂</div>
+      <div class="text">查看更多</div>
+      <image class="icon" src="/images/view_more.png"/>
+    </div>
+    <!--疾病治疗-->
+    <div class="more-row small">
+      <div class="color two small"></div>
+      <div class="title small">疾病治疗</div>
+      <div class="text">查看更多</div>
+      <image class="icon small" src="/images/view_more.png"/>
+    </div>
+    <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
+    <!--文章列表-->
+    <div class="article-box">
+      <block wx:for="{{articleList}}" wx:key="{{index}}">
+        <div class="article-item">
+          <div class="article-left">
+            <image class="article-img" src="{{item.img}}" lazy-load="true"/>
+            <image class="article-video" src="/images/video_icon.png" wx:if="{{item.video}}"/>
+          </div>
+          <div class="article-right">
+            <div class="article-title text-overflow">{{item.title}}</div>
+            <div class="article-text text-overflow">{{item.text}}</div>
+            <div class="article-row">
+              <div class="article-time">{{item.time}}</div>
+              <div class="icon-row">
+                <image class="icon" src="/images/material/click_like.png" wx:if="{{item.like}}"/>
+                <image class="icon" src="/images/material/unclick_like.png" wx:else/>
+                <div class="num active" wx:if="{{item.like}}">{{item.likeNum}}</div>
+                <div class="num" wx:else>{{item.likeNum}}</div>
+              </div>
+              <div class="icon-row">
+                <image class="icon" src="/images/material/view_num.png"/>
+                <div class="num">{{item.num}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </block>
+    </div>
+
+    <!--健康百科-->
+    <div class="more-row small">
+      <div class="color two small"></div>
+      <div class="title small">健康百科</div>
+      <div class="text">查看更多</div>
+      <image class="icon small" src="/images/view_more.png"/>
+    </div>
+    <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
+    <!--文章列表-->
+    <div class="article-box">
+      <block wx:for="{{articleList}}" wx:key="{{index}}">
+        <div class="article-item">
+          <div class="article-left">
+            <image class="article-img" src="{{item.img}}" lazy-load="true"/>
+            <image class="article-video" src="/images/video_icon.png" wx:if="{{item.video}}"/>
+          </div>
+          <div class="article-right">
+            <div class="article-title text-overflow">{{item.title}}</div>
+            <div class="article-text text-overflow">{{item.text}}</div>
+            <div class="article-row">
+              <div class="article-time">{{item.time}}</div>
+              <div class="icon-row">
+                <image class="icon" src="/images/material/click_like.png" wx:if="{{item.like}}"/>
+                <image class="icon" src="/images/material/unclick_like.png" wx:else/>
+                <div class="num active" wx:if="{{item.like}}">{{item.likeNum}}</div>
+                <div class="num" wx:else>{{item.likeNum}}</div>
+              </div>
+              <div class="icon-row">
+                <image class="icon" src="/images/material/view_num.png"/>
+                <div class="num">{{item.num}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </block>
+    </div>
+
+    <!--热门话题-->
+    <div class="more-row">
+      <div class="color three"></div>
+      <div class="title">热门话题</div>
+      <div class="text">查看更多</div>
+      <image class="icon" src="/images/view_more.png"/>
+    </div>
+    <div class="hot-topic-box">
+      <block wx:for="{{topicList}}" wx:key="{{index}}">
+        <div class="hot-topic-item">
+          <image class="hot-topic-img" src="{{item.img}}" lazy-load="true"/>
+          <div class="hot-topic-text ft-30">#{{item.text}}#</div>
+        </div>
+      </block>
+    </div>
   </view>
 </template>
 
@@ -16,11 +132,27 @@
     }
     data = {
       navList: [
-        // { name: '商品', active: true }, { name: '文章', active: false }
-        // { name: '全部', active: true }, { name: '待付款', active: false }, { name: '待发货', active: false }, { name: '待收货', active: false }, { name: '待评价', active: false }
-        { name: '全部', active: true }, { name: '待付款', active: false }, { name: '待发货', active: false }, { name: '待收货', active: false }, { name: '待评价', active: false }, { name: '待发货', active: false }, { name: '待收货', active: false }, { name: '待评价', active: false }
+        { name: '推荐', active: true }, { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false },
+        { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false }
       ],
-      whichNav: 'scroll'
+      caseList: [
+        { img: 'http://dummyimage.com/320x160', video: true, name: '案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题' },
+        { img: 'http://dummyimage.com/320x160', video: false, name: '案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题' },
+        { img: 'http://dummyimage.com/320x160', video: true, name: '案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题' },
+        { img: 'http://dummyimage.com/320x160', video: false, name: '案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题案例标题' }
+      ],
+      articleList: [
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要', time: '2018-02-09 12:23',
+          like: true, likeNum: 123, num: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要文章摘要', time: '2018-02-09 12:23',
+          like: true, likeNum: 123, num: 1233 }
+      ],
+      topicList: [
+        { img: 'http://n.sinaimg.cn/translate/500/w320h180/20190402/pwvd-hvcmeux6324877.jpg', text: '话题一' },
+        { img: 'http://n.sinaimg.cn/translate/500/w320h180/20190402/pwvd-hvcmeux6324877.jpg', text: '话题一' }
+      ]
     }
     methods = {
 
@@ -41,6 +173,183 @@
   @import "../../styles/index";
 
   .container {
+    .more-row {
+      width: 680rpx;
+      display: flex;
+      align-items: center;
+      padding: 25rpx 25rpx 25rpx 35rpx;
+      background: #fff;
+      &.small {
+        margin-top: -6rpx;
+      }
+      .color {
+        width: 10rpx;
+        height: 35rpx;
+        border-radius: 15rpx;
+        margin-right: 25rpx;
+        &.one {
+          background: #5E1A03;
+        }
+        &.two {
+          background: @mainColor;
+        }
+        &.three {
+          background: #EED59B;
+        }
+        &.small {
+          width: 10rpx;
+          height: 10rpx;
+          border-radius: 50%;
+        }
+      }
+      .title {
+        flex: 1;
+        color: #000;
+        font-size: 30rpx;
+        font-weight: 600;
+        &.small {
+          font-size: 28rpx;
+          font-weight: 400;
+          margin-right: -5rpx;
+        }
+      }
+      .text {
+        color: #919191;
+        font-size: 21rpx;
+        margin-right: 5rpx;
+      }
+      .icon {
+        width: 24rpx;
+        height: 24rpx;
+        &.small {
+          margin-right: 10rpx;
+        }
+      }
+    }
 
+    .case-box {
+      width: 100%;
+      display: flex;
+      overflow-y: auto;
+      padding: 25rpx 0 28rpx 35rpx;
+      .case-item-box {
+        position: relative;
+        margin-right: 20rpx;
+        &:first-child {
+          margin-left: 20rpx;
+        }
+        &:last-child {
+          padding-right: 40rpx;
+        }
+      }
+      .case-item {
+        .case-img {
+          width: 320rpx;
+          height: 160rpx;
+          border-radius: 20rpx;
+        }
+        .case-video {
+          width: 50rpx;
+          height: 50rpx;
+          position: absolute;
+          top: 55rpx;
+          left: 135rpx;
+        }
+        .case-name {
+          color: #000;
+          width: 320rpx;
+        }
+      }
+    }
+
+    .article-box {
+      margin: 20rpx;
+      .article-item {
+        display: flex;
+        margin-top: 10rpx;
+        &:first-child {
+          border-bottom: 1rpx #BCBCBC solid;
+        }
+        .article-left {
+          margin: 0 45rpx 0 23rpx;
+          position: relative;
+          .article-img {
+            width: 160rpx;
+            height: 160rpx;
+          }
+          .article-video {
+            width: 50rpx;
+            height: 50rpx;
+            position: absolute;
+            top: 55rpx;
+            left: 55rpx;
+          }
+        }
+        .article-right {
+          width: 460rpx;
+          margin-right: 20rpx;
+          .article-title {
+            color: #333333;
+            font-size: 24rpx;
+          }
+          .article-text {
+            color: @ABColor;
+            font-size: 18rpx;
+            margin: 10rpx 0 15rpx 0;
+          }
+          .article-row {
+            display: flex;
+            .article-time {
+              flex: 1;
+              color: @666Color;
+              font-size: 18rpx;
+            }
+            .icon-row {
+              display: flex;
+              align-items: center;
+              margin-right: 17rpx;
+              .icon {
+                width: 24rpx;
+                height: 24rpx;
+                margin-right: 9rpx;
+              }
+              .num {
+                color: @greyColor;
+                font-size: 18rpx;
+                &.active {
+                  color: @mainColor;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .hot-topic-box {
+      width: 660rpx;
+      margin: 20rpx 45rpx;
+      display: flex;
+      .hot-topic-item {
+        margin-right: 20rpx;
+        position: relative;
+        .hot-topic-img {
+          width: 320rpx;
+          height: 180rpx;
+        }
+        .hot-topic-text {
+          width: 320rpx;
+          height: 180rpx;
+          background: #000;
+          opacity: 0.4;
+          color: #fff;
+          text-align: center;
+          line-height: 180rpx;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
   }
 </style>
