@@ -96,10 +96,13 @@
       text-align: center;
       font-size: 24rpx;
       letter-spacing: 5rpx;
-      margin: 0 30rpx;
+      margin-left: 30rpx;
       padding: 14rpx 8rpx 8rpx 8rpx;
       &.active {
         border-bottom: 5rpx @mainColor solid;
+      }
+      &:last-child {
+        margin-right: 45rpx;
       }
     }
   }
