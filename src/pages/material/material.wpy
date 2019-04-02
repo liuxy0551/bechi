@@ -1,122 +1,122 @@
 <template>
   <view class="container">
     <!--案例社区-->
-    <div class="more-row">
-      <div class="color one"></div>
-      <div class="title">案例社区</div>
-      <div class="text">查看更多</div>
+    <view class="more-row">
+      <view class="color one"></view>
+      <view class="title">案例社区</view>
+      <view class="text">查看更多</view>
       <image class="icon" src="/images/view_more.png"/>
-    </div>
+    </view>
     <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
     <!--案例轮播-->
-    <div class="case-box">
+    <view class="case-box">
       <block wx:for="{{caseList}}" wx:key="{{index}}">
-        <div class="case-item-box">
-          <div class="case-item">
+        <view class="case-item-box">
+          <view class="case-item">
             <image class="case-img" src="{{item.img}}" lazy-load="true"/>
             <image class="case-video" src="/images/video_icon.png" wx:if="{{item.video}}"/>
-            <div class="case-name ft-24 text-overflow">{{item.name}}</div>
-          </div>
-        </div>
+            <view class="case-name ft-24 text-overflow">{{item.name}}</view>
+          </view>
+        </view>
       </block>
-    </div>
+    </view>
 
     <!--知识课堂-->
-    <div class="more-row">
-      <div class="color two"></div>
-      <div class="title">知识课堂</div>
-      <div class="text">查看更多</div>
+    <view class="more-row">
+      <view class="color two"></view>
+      <view class="title">知识课堂</view>
+      <view class="text">查看更多</view>
       <image class="icon" src="/images/view_more.png"/>
-    </div>
+    </view>
     <!--疾病治疗-->
-    <div class="more-row small">
-      <div class="color two small"></div>
-      <div class="title small">疾病治疗</div>
-      <div class="text">查看更多</div>
+    <view class="more-row small">
+      <view class="color two small"></view>
+      <view class="title small">疾病治疗</view>
+      <view class="text">查看更多</view>
       <image class="icon small" src="/images/view_more.png"/>
-    </div>
+    </view>
     <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
     <!--文章列表-->
-    <div class="article-box">
+    <view class="article-box">
       <block wx:for="{{articleList}}" wx:key="{{index}}">
-        <div class="article-item">
-          <div class="article-left">
+        <view class="article-item">
+          <view class="article-left">
             <image class="article-img" src="{{item.img}}" lazy-load="true"/>
             <image class="article-video" src="/images/video_icon.png" wx:if="{{item.video}}"/>
-          </div>
-          <div class="article-right">
-            <div class="article-title text-overflow">{{item.title}}</div>
-            <div class="article-text text-overflow">{{item.text}}</div>
-            <div class="article-row">
-              <div class="article-time">{{item.time}}</div>
-              <div class="icon-row">
+          </view>
+          <view class="article-right">
+            <view class="article-title text-overflow">{{item.title}}</view>
+            <view class="article-text text-overflow">{{item.text}}</view>
+            <view class="article-row">
+              <view class="article-time">{{item.time}}</view>
+              <view class="icon-row">
                 <image class="icon" src="/images/material/click_like.png" wx:if="{{item.like}}"/>
                 <image class="icon" src="/images/material/unclick_like.png" wx:else/>
-                <div class="num active" wx:if="{{item.like}}">{{item.likeNum}}</div>
-                <div class="num" wx:else>{{item.likeNum}}</div>
-              </div>
-              <div class="icon-row">
+                <view class="num active" wx:if="{{item.like}}">{{item.likeNum}}</view>
+                <view class="num" wx:else>{{item.likeNum}}</view>
+              </view>
+              <view class="icon-row">
                 <image class="icon" src="/images/material/view_num.png"/>
-                <div class="num">{{item.num}}</div>
-              </div>
-            </div>
-          </div>
-        </div>
+                <view class="num">{{item.num}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
       </block>
-    </div>
+    </view>
 
     <!--健康百科-->
-    <div class="more-row small">
-      <div class="color two small"></div>
-      <div class="title small">健康百科</div>
-      <div class="text">查看更多</div>
+    <view class="more-row small">
+      <view class="color two small"></view>
+      <view class="title small">健康百科</view>
+      <view class="text">查看更多</view>
       <image class="icon small" src="/images/view_more.png"/>
-    </div>
+    </view>
     <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
     <!--文章列表-->
-    <div class="article-box">
+    <view class="article-box">
       <block wx:for="{{articleList}}" wx:key="{{index}}">
-        <div class="article-item">
-          <div class="article-left">
+        <view class="article-item">
+          <view class="article-left">
             <image class="article-img" src="{{item.img}}" lazy-load="true"/>
             <image class="article-video" src="/images/video_icon.png" wx:if="{{item.video}}"/>
-          </div>
-          <div class="article-right">
-            <div class="article-title text-overflow">{{item.title}}</div>
-            <div class="article-text text-overflow">{{item.text}}</div>
-            <div class="article-row">
-              <div class="article-time">{{item.time}}</div>
-              <div class="icon-row">
+          </view>
+          <view class="article-right">
+            <view class="article-title text-overflow">{{item.title}}</view>
+            <view class="article-text text-overflow">{{item.text}}</view>
+            <view class="article-row">
+              <view class="article-time">{{item.time}}</view>
+              <view class="icon-row">
                 <image class="icon" src="/images/material/click_like.png" wx:if="{{item.like}}"/>
                 <image class="icon" src="/images/material/unclick_like.png" wx:else/>
-                <div class="num active" wx:if="{{item.like}}">{{item.likeNum}}</div>
-                <div class="num" wx:else>{{item.likeNum}}</div>
-              </div>
-              <div class="icon-row">
+                <view class="num active" wx:if="{{item.like}}">{{item.likeNum}}</view>
+                <view class="num" wx:else>{{item.likeNum}}</view>
+              </view>
+              <view class="icon-row">
                 <image class="icon" src="/images/material/view_num.png"/>
-                <div class="num">{{item.num}}</div>
-              </div>
-            </div>
-          </div>
-        </div>
+                <view class="num">{{item.num}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
       </block>
-    </div>
+    </view>
 
     <!--热门话题-->
-    <div class="more-row">
-      <div class="color three"></div>
-      <div class="title">热门话题</div>
-      <div class="text">查看更多</div>
+    <view class="more-row">
+      <view class="color three"></view>
+      <view class="title">热门话题</view>
+      <view class="text">查看更多</view>
       <image class="icon" src="/images/view_more.png"/>
-    </div>
-    <div class="hot-topic-box">
+    </view>
+    <view class="hot-topic-box">
       <block wx:for="{{topicList}}" wx:key="{{index}}">
-        <div class="hot-topic-item">
+        <view class="hot-topic-item">
           <image class="hot-topic-img" src="{{item.img}}" lazy-load="true"/>
-          <div class="hot-topic-text ft-30">#{{item.text}}#</div>
-        </div>
+          <view class="hot-topic-text ft-30">#{{item.text}}#</view>
+        </view>
       </block>
-    </div>
+    </view>
   </view>
 </template>
 
