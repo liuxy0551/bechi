@@ -113,6 +113,7 @@
       <block wx:for="{{topicList}}" wx:key="{{index}}">
         <view class="hot-topic-item">
           <image class="hot-topic-img" src="{{item.img}}" lazy-load="true"/>
+          <view class="bg"></view>
           <view class="hot-topic-text ft-30">#{{item.text}}#</view>
         </view>
       </block>
@@ -350,11 +351,18 @@
           width: 320rpx;
           height: 180rpx;
         }
-        .hot-topic-text {
+        .bg {
           width: 320rpx;
           height: 180rpx;
           background: #000;
           opacity: 0.4;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .hot-topic-text {
+          width: 320rpx;
+          height: 180rpx;
           color: #fff;
           text-align: center;
           line-height: 180rpx;
