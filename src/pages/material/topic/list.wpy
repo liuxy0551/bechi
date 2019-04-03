@@ -1,6 +1,20 @@
 <template>
   <view class="container">
-    话题列表
+    <block wx:for="{{topicList}}" wx:key="{{index}}">
+      <view class="topic-box" @tap="goPage({{item}})">
+        <view class="topic-left">
+          <image class="topic-img" src="{{item.img}}" lazy-load="true"/>
+        </view>
+        <view class="topic-right">
+          <view class="topic-title ft-28">#{{item.title}}#</view>
+          <view class="topic-text ft-24 text-overflow">{{item.text}}</view>
+          <view class="topic-row">
+            <view class="num">{{item.postNum}}个帖子</view>
+            <view class="num">{{item.peopleNum}}人参与</view>
+          </view>
+        </view>
+      </view>
+    </block>
   </view>
 </template>
 
@@ -15,19 +29,30 @@
     }
     data = {
       topicList: [
-        { img: 'http://n.sinaimg.cn/translate/500/w320h180/20190402/pwvd-hvcmeux6324877.jpg', text: '话题一' },
-        { img: 'http://n.sinaimg.cn/translate/500/w320h180/20190402/pwvd-hvcmeux6324877.jpg', text: '话题一' }
+        { img: 'http://dummyimage.com/160x160', title: '话题一', text: '概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概',
+          postNum: 231, peopleNum: 13133 },
+        { img: 'http://dummyimage.com/160x160', title: '话题一', text: '概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概',
+          postNum: 231, peopleNum: 13133 },
+        { img: 'http://dummyimage.com/160x160', title: '话题一', text: '概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概',
+          postNum: 231, peopleNum: 13133 },
+        { img: 'http://dummyimage.com/160x160', title: '话题一', text: '概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概',
+          postNum: 231, peopleNum: 13133 },
+        { img: 'http://dummyimage.com/160x160', title: '话题一', text: '概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概',
+          postNum: 231, peopleNum: 13133 },
+        { img: 'http://dummyimage.com/160x160', title: '话题一', text: '概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概',
+          postNum: 231, peopleNum: 13133 },
+        { img: 'http://dummyimage.com/160x160', title: '话题一', text: '概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概',
+          postNum: 231, peopleNum: 13133 },
+        { img: 'http://dummyimage.com/160x160', title: '话题一', text: '概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概概要概要概要概要概要概要概要概要概要概',
+          postNum: 231, peopleNum: 13133 }
       ]
     }
     methods = {
       // 页面跳转
-      goPage(item, to) {
-        // console.log(item, to);
-        if(to == 'drop') {
-          wx.navigateTo({ url: '/pages/schedule/refundApplication?cid=' + item.cid })
-        }else if(to == 'change') {
-          wx.navigateTo({ url: '/pages/course/courseList' })
-        }
+      goPage(item) {
+        // console.log(item)
+        wx.navigateTo({ url: '/pages/material/topic/detail' })
+        // wx.navigateTo({ url: '/pages/material/topic/detail?cid=' + item.cid })
       }
     }
   }
@@ -37,6 +62,43 @@
   @import "../../../styles/index";
 
   .container {
-
+    background: #FFFEFE;
+    .topic-box {
+      display: flex;
+      margin: 0 20rpx 10rpx 20rpx;
+      border-bottom: 1rpx #A5A3A3 solid;
+      &:first-child {
+        margin-top: 20rpx;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      .topic-left {
+        .topic-img {
+          width: 160rpx;
+          height: 160rpx;
+          margin: 0 45rpx 0 23rpx;
+        }
+      }
+      .topic-right {
+        .topic-title {
+          color: #333333;
+        }
+        .topic-text {
+          color: @ABColor;
+          font-weight: 400;
+        }
+        .topic-row {
+          margin: 20rpx 0 5rpx 0;
+          display: flex;
+          justify-content: flex-end;
+          .num {
+            color: @greyColor;
+            font-size: 20rpx;
+            margin-left: 20rpx;
+          }
+        }
+      }
+    }
   }
 </style>
