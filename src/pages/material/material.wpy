@@ -7,7 +7,7 @@
       <view class="text">查看更多</view>
       <image class="icon" src="/images/view_more.png"/>
     </view>
-    <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
+    <navScrollList :navScrollList="navScrollList" @navTap="navTap"></navScrollList>
     <!--案例轮播-->
     <view class="case-box">
       <block wx:for="{{caseList}}" wx:key="{{index}}">
@@ -35,7 +35,7 @@
       <view class="text">查看更多</view>
       <image class="icon small" src="/images/view_more.png"/>
     </view>
-    <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
+    <navScrollList :navScrollList="navScrollList" @navTap="navTap"></navScrollList>
     <!--文章列表-->
     <view class="article-box">
       <block wx:for="{{articleList}}" wx:key="{{index}}">
@@ -72,7 +72,7 @@
       <view class="text">查看更多</view>
       <image class="icon small" src="/images/view_more.png"/>
     </view>
-    <navList :navList="navList" which="scroll" @navTap="navTap"></navList>
+    <navScrollList :navScrollList="navScrollList" @navTap="navTap"></navScrollList>
     <!--文章列表-->
     <view class="article-box">
       <block wx:for="{{articleList}}" wx:key="{{index}}">
@@ -125,14 +125,14 @@
   import wepy from 'wepy'
   import api from '../../api/api'
   import tip from '../../utils/tip'
-  import navList from '../../components/navList'
+  import navScrollList from '../../components/navScrollList'
 
   export default class  extends wepy.page {
     config = {
       navigationBarTitleText: '素材库'
     }
     data = {
-      navList: [
+      navScrollList: [
         { name: '推荐', active: true }, { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false },
         { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false }
       ],
@@ -173,13 +173,13 @@
     }
     events = {
       navTap (index) {
-        for (let i of this.navList) {
+        for (let i of this.navScrollList) {
           i.active = false
         }
-        this.navList[index].active = true
+        this.navScrollList[index].active = true
       }
     }
-    components = { navList }
+    components = { navScrollList }
   }
 </script>
 

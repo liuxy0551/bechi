@@ -20,12 +20,14 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/mall/mall',                    // 微商城
-      'pages/material/material',            // 素材库
       'pages/dietitian/dietitian',          // 营养师
       'pages/personal/personal',            // 我的
 
-      'pages/material/topic/list',          // 话题列表
-      'pages/material/topic/detail',        // 话题详情
+      'pages/material/material',            // 素材库
+      'pages/material/classroom/list',      // 知识课堂 - 列表
+      'pages/material/classroom/detail',    // 知识课堂 - 详情
+      'pages/material/topic/list',          // 热门话题 - 列表
+      'pages/material/topic/detail',        // 热门话题 - 详情
 
       'pages/login/welcome',                // 欢迎页
       'pages/login/login',                  // 登录页

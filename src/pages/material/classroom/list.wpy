@@ -1,0 +1,184 @@
+<template>
+  <view class="container">
+    <navList :navList="navList" which="color" @navTap="navTap"></navList>
+    <navScrollList :navScrollList="navScrollList" @navTap="navTap"></navScrollList>
+
+    <view class="article-box-box">
+      <block wx:for="{{articleList}}" wx:key="{{index}}">
+        <view class="article-box" @tap="goPage({{item}})">
+          <view class="article-left">
+            <image class="article-img" src="{{item.img}}" lazy-load="true"/>
+            <image class="video-icon" src="/images/video_icon.png" wx:if="{{item.video}}"/>
+          </view>
+          <view class="article-right">
+            <view class="article-title ft-28 text-overflow">{{item.title}}</view>
+            <view class="article-text ft-24 text-overflow">{{item.text}}</view>
+            <view class="article-row">
+              <view class="time ft-20">{{item.time}}</view>
+              <view class="icon-num">
+                <image class="icon" src="/images/material/view_num.png"/>
+                <view class="num">{{item.viewNum}}</view>
+              </view>
+              <view class="icon-num">
+                <image class="icon" src="/images/material/click_like.png" wx:if="{{item.like}}"/>
+                <image class="icon" src="/images/material/unclick_like.png" wx:else/>
+                <view class="num {{item.like?'active':''}}">{{item.likeNum}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../../api/api'
+  import tip from '../../../utils/tip'
+  import navList from '../../../components/navList'
+  import navScrollList from '../../../components/navScrollList'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '知识课堂'
+    }
+    data = {
+      navList: [
+        { name: '疾病治疗', active: true }, { name: '健康百科', active: false }
+      ],
+      navScrollList: [
+        { name: '推荐', active: true }, { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false },
+        { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false }, { name: '二级类目', active: false }
+      ],
+      articleList: [
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 }
+      ]
+    }
+    methods = {
+      // 页面跳转
+      goPage(item) {
+        // console.log(item)
+        wx.navigateTo({ url: '/pages/material/topic/detail' })
+        // wx.navigateTo({ url: '/pages/material/article/detail?cid=' + item.cid })
+      }
+    }
+    events = {
+      navTap (index) {
+        for (let i of this.navList) {
+          i.active = false
+        }
+        this.navList[index].active = true
+      }
+    }
+    components = { navList, navScrollList }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../../styles/index";
+
+  .container {
+    background: #FFFEFE;
+    .article-box-box {
+
+    }
+    .article-box {
+      display: flex;
+      margin: 0 20rpx 10rpx 20rpx;
+      border-bottom: 1rpx #A5A3A3 solid;
+      &:first-child {
+        margin-top: 20rpx;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      .article-left {
+        position: relative;
+        .article-img {
+          width: 160rpx;
+          height: 160rpx;
+          margin: 0 45rpx 0 23rpx;
+        }
+        .video-icon {
+          width: 50rpx;
+          height: 50rpx;
+          position: absolute;
+          top: 55rpx;
+          left: 78rpx;
+        }
+      }
+      .article-right {
+        .article-title {
+          color: #333333;
+          line-height: 33rpx;
+        }
+        .article-text {
+          color: @ABColor;
+          font-weight: 400;
+        }
+        .article-row {
+          display: flex;
+          margin-top: 5rpx;
+          .time {
+            flex: 1;
+            text-align: left;
+            color: #B1B1B1;
+          }
+          .icon-num {
+            display: flex;
+            align-items: center;
+            margin-left: 30rpx;
+            .icon {
+              width: 24rpx;
+              height: 24rpx;
+              margin-right: 8rpx;
+            }
+            .num {
+              color: @greyColor;
+              font-size: 20rpx;
+              &.active {
+                color: @mainColor;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

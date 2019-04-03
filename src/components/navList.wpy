@@ -5,14 +5,6 @@
       <view class="nav-item-color {{item.active?'active':''}}" @tap="navTap({{index}})">{{item.name}}</view>
     </block>
   </view>
-  <!--固定数量能左右滑动-->
-  <view class="nav-list-scroll" wx:if="{{which == 'scroll'}}">
-    <block wx:for="{{navList}}" wx:key="{{index}}">
-      <view class="scroll-box">
-        <view class="nav-item-scroll cf666 {{item.active?'active':''}}" @tap="navTap({{index}})">{{item.name}}</view>
-      </view>
-    </block>
-  </view>
   <!--固定数量不能左右滑动-->
   <view class="nav-list-box" wx:else>
     <block wx:for="{{navList}}" wx:key="{{index}}">
@@ -58,33 +50,6 @@
       &.active {
         color: #fff;
         background: @mainColor;
-      }
-    }
-  }
-
-  /*固定数量能左右滑动*/
-  .nav-list-scroll {
-    width: 100%;
-    background: white;
-    white-space: nowrap;
-    display: flex;
-    overflow-y: auto;
-    text-align: center;
-    .scroll-box {
-
-    }
-    .nav-item-scroll {
-      font-weight: 400;
-      text-align: center;
-      font-size: 24rpx;
-      letter-spacing: 5rpx;
-      margin-left: 30rpx;
-      padding: 14rpx 8rpx 8rpx 8rpx;
-      &.active {
-        border-bottom: 5rpx @mainColor solid;
-      }
-      &:last-child {
-        margin-right: 45rpx;
       }
     }
   }
