@@ -1,6 +1,6 @@
 @import "./color";
 
-//页面整体样式设置
+// 页面整体样式设置
 .container {
   min-height: 100vh;
   background-color: @bgColor;
@@ -9,7 +9,7 @@
   justify-content: flex-start;
 }
 
-//搜索框
+// 搜索框
 .search-box {
   background: #FFFFFF;
   padding: 10rpx 50rpx;
@@ -37,6 +37,30 @@
     }
     .search-text {
       color: @ABColor;
+    }
+  }
+}
+
+// 头部筛选条件
+.list-row {
+  background: #FFFFFF;
+  padding:  20rpx 30rpx 20rpx 30rpx;
+  margin-bottom: 20rpx;
+  width: 690rpx;
+  display: flex;
+  justify-content: space-between;
+  .row-item {
+    display: flex;
+    align-items: center;
+    .text {
+      color: #666666;
+      font-size: 24rpx;
+      font-weight: 400;
+    }
+    .icon {
+      width: 20rpx;
+      height: 20rpx;
+      margin-left: 10rpx;
     }
   }
 }

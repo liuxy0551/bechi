@@ -35,15 +35,15 @@
     <!--活动区域-->
     <view class="activity-box">
       <view class="left-img-box">
-        <image class="left-img" src="http://dummyimage.com/250x480" lazy-load="true"/>
+        <image class="left-img" src="http://dummyimage.com/250x480" lazy-load="true" @tap="goPage('1', 'activity')"/>
       </view>
       <view class="right-box">
-        <view class="dietitian-box">
+        <view class="dietitian-box" @tap="goPage('2', 'activity')">
           <view class="text ft-28">营养师咨询</view>
           <image class="dietitian-img" src="/images/mall/to_dietitian.png"/>
         </view>
-        <image class="activity-img" src="http://dummyimage.com/215x215" lazy-load="true"/>
-        <image class="activity-img" src="http://dummyimage.com/215x215" lazy-load="true"/>
+        <image class="activity-img" src="http://dummyimage.com/215x215" lazy-load="true" @tap="goPage('3', 'activity')"/>
+        <image class="activity-img" src="http://dummyimage.com/215x215" lazy-load="true" @tap="goPage('4', 'activity')"/>
       </view>
     </view>
 
@@ -118,9 +118,11 @@
         // wx.navigateTo({ url: 'courseList?ctId=' + item.ctId })
         if (to == 'list') {
           wx.navigateTo({ url: 'product/list' })
+        } else if (to == 'activity') {
+          wx.navigateTo({ url: 'activity/list' })
         }
       },
-      // 记录评论内容
+      // 记录输入框内容
       commentInput (e) {
         console.log(e.detail.value)
         // this.cardNum = e.detail.value

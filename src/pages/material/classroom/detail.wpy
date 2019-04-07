@@ -82,7 +82,7 @@
       ]
     }
     methods = {
-      // 记录评论内容
+      // 记录输入框内容
       commentInput (e) {
         console.log(e.detail.value)
         // this.cardNum = e.detail.value

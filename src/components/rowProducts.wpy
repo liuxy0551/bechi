@@ -1,0 +1,116 @@
+<template>
+  <view class="product-box">
+    <block wx:for="{{productList}}" wx:key="{{index}}">
+      <view class="product-item">
+        <view class="product-left">
+          <image class="product-img" src="http://dummyimage.com/200x200" lazy-load="true"/>
+        </view>
+        <view class="product-right">
+          <view class="product-name ft-28 text-overflow">保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D</view>
+          <view class="text-time">
+            <view class="text ft-20">距离结束</view>
+            <view class="time-box">
+              <view class="num">23</view>
+              <view class="symbol">:</view>
+              <view class="num">44</view>
+              <view class="symbol">:</view>
+              <view class="num">18</view>
+            </view>
+          </view>
+          <view class="price-box">
+            <view class="price ft-32">￥189.99</view>
+            <view class="text ft-20">拼团价</view>
+          </view>
+          <view class="price-num">
+            <view class="price ft-20">￥189.99</view>
+            <view class="text ft-20">233人购买</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class products extends wepy.component {
+    props = {
+      productList: { type: Array, default: [], twoWay: true }
+    }
+    data = {}
+    methods = {
+
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../styles/index";
+
+  .product-box {
+    .product-item {
+      width: 705rpx;
+      display: flex;
+      background: #FFFFFF;
+      margin-bottom: 20rpx;
+      padding: 25rpx 15rpx 25rpx 30rpx;
+      .product-left {
+        margin-right: 20rpx;
+        .product-img {
+          width: 200rpx;
+          height: 200rpx;
+        }
+      }
+      .product-right {
+        display: flex;
+        flex-direction: column;
+        .product-name {
+          color: #333333;
+        }
+        .text-time {
+          .text {
+            color: #D50000;
+            margin-right: 20rpx;
+          }
+          .time-box {
+            .num {
+              width: 28rpx;
+              height: 30rpx;
+              border-radius: 5rpx;
+              color: #FFFFFF;
+              font-size: 24rpx;
+              background: #D50000;
+            }
+            .symbol {
+              color: #D50000;
+            }
+          }
+        }
+        .price-box {
+          margin-top: -10rpx;
+          .price {
+            color: @priceColor;
+            margin-right: 20rpx;
+          }
+          .text {
+            color: #333333;
+          }
+        }
+        .price-num {
+          display: flex;
+          .price {
+            color: #B1B1B1;
+            text-decoration: line-through;
+          }
+          .text {
+            flex: 1;
+            color: #B1B1B1;
+            text-align: right;
+            margin-right: 20rpx;
+          }
+        }
+      }
+    }
+  }
+</style>
