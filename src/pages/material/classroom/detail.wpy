@@ -41,14 +41,14 @@
       </block>
     </view>
 
-    <div class="comment-area">
+    <view class="comment-area">
       <image class="icon" src="/images/material/collect.png" wx:if="{{article.collect}}"/>
       <image class="icon" src="/images/material/uncollect.png" wx:else/>
       <image class="icon" src="/images/material/click_like.png" wx:if="{{article.like}}"/>
       <image class="icon" src="/images/material/unclick_like.png" wx:else/>
       <input class="comment-input ft-26" maxlength="50" bindinput="commentInput" auto-focus/>
       <view class="btn ft-28">发布</view>
-    </div>
+    </view>
   </view>
 </template>
 
