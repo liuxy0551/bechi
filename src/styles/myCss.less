@@ -11,20 +11,33 @@
 
 //搜索框
 .search-box {
-  width: 697rpx;
-  display: flex;
-  justify-content: center;
-  padding: 9rpx 0;
-  margin: 18rpx 0;
-  background: #fff;
-  border-radius: 50rpx;
-  .search-icon {
-    width: 33rpx;
-    height: 33rpx;
-    margin-right: 20rpx;
+  background: #FFFFFF;
+  padding: 10rpx 50rpx;
+  position: relative;
+  .comment-input {
+    width: 650rpx;
+    padding: 0 20rpx;
+    background: @bgColor;
+    border-radius: 50rpx;
   }
-  .search-text {
-    color: @ABColor;
+  .search-content {
+    width: 180rpx;
+    display: flex;
+    justify-content: center;
+    margin: 18rpx 25rpx;
+    border-radius: 50rpx;
+    position: absolute;
+    top: -5rpx;
+    left: 235rpx;
+    z-index: 1000;
+    .search-icon {
+      width: 33rpx;
+      height: 33rpx;
+      margin-right: 20rpx;
+    }
+    .search-text {
+      color: @ABColor;
+    }
   }
 }
 

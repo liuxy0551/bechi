@@ -2,8 +2,11 @@
   <view class="container">
     <!--搜索框-->
     <view class="search-box">
-      <image class="search-icon" src="/images/search.png"/>
-      <view class="search-text ft-24">搜索商品</view>
+      <input class="comment-input ft-26" maxlength="50" bindinput="commentInput"/>
+      <view class="search-content">
+        <image class="search-icon" src="/images/search.png"/>
+        <view class="search-text ft-24">搜索商品</view>
+      </view>
     </view>
     <!--轮播图-->
     <swiper class="swiper-img" indicator-dots="true" autoplay="true" circular="true">
@@ -18,7 +21,7 @@
       <swiper class="swiper-row" indicator-dots="true" indicator-color="#EED59B" indicator-active-color="#CBAB60">
         <block wx:for="{{swiperList}}" wx:key="{{i}}">
           <swiper-item>
-            <view class="item" wx:for="{{item.images}}" wx:key="{{j}}">
+            <view class="item" wx:for="{{item.images}}" wx:key="{{j}}" @tap="goPage({{item}}, 'list')">
               <image class="item-img" src="{{item.img}}"/>
               <view class="item-name cf666">{{ item.name }}</view>
             </view>
@@ -113,6 +116,14 @@
       goPage(item, to) {
         console.log(item, to);
         // wx.navigateTo({ url: 'courseList?ctId=' + item.ctId })
+        if (to == 'list') {
+          wx.navigateTo({ url: 'product/list' })
+        }
+      },
+      // 记录评论内容
+      commentInput (e) {
+        console.log(e.detail.value)
+        // this.cardNum = e.detail.value
       }
     }
     components = { products }
@@ -123,7 +134,6 @@
   @import "../../styles/index";
 
   .container {
-    background-color: #EEEEEE;
     .swiper-img {
       width: 750rpx;
       height: 300rpx;
