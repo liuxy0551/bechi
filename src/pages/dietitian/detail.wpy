@@ -1,0 +1,94 @@
+<template>
+  <view class="container">
+    <!--顶部信息展示-->
+    <view class="top-box">
+      <image class="dietitian-img" src="{{dietitian.img}}" lazy-load="true"/>
+      <view class="dietitian-name ft-30">专家营养师 {{dietitian.name}}</view>
+    </view>
+    <!--营养师简介-->
+    <view class="info-box">
+      <view class="title">营养师简介</view>
+      <view class="introduction ft-24">{{dietitian.introduction}}</view>
+    </view>
+    <!--在线咨询-->
+    <view class="info-box">
+      <view class="title">在线咨询</view>
+      <view class="qrcode-text">
+        <image class="qrcode" src="{{dietitian.qrCode}}" lazy-load="true"/>
+        <view class="text ft-24">保存二维码加营养师微信在线咨询</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '营养师在线'
+    }
+    data = {
+      dietitian: {
+        img: 'http://dummyimage.com/150x150', name: '某某某', introduction: '营养师简介营养师简介营养师简介营养师简介营养师简介营养师简介营养师简介营养师简介营养师简介营养师简介营养师简介营养师简介营养师简介',
+        qrCode: 'http://dummyimage.com/120x120'
+      }
+    }
+    methods = {
+
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    .top-box {
+      width: 750rpx;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(270deg,rgba(238,223,200,1) 0%,rgba(203,171,96,1) 100%);
+      .dietitian-img {
+        width: 150rpx;
+        height: 150rpx;
+        border-radius: 50%;
+        margin: 25rpx;
+      }
+      .dietitian-name {
+        color: #333333;
+        font-weight: 400;
+      }
+    }
+
+    .info-box {
+      width: 700rpx;
+      background: #FFFFFF;
+      padding: 25rpx;
+      margin-top: 20rpx;
+      .title {
+        color: #333333;
+        font-size: 30rpx;
+        font-weight: 500;
+      }
+      .introduction {
+        color: #989898;
+        padding: 11rpx 20rpx;
+        text-indent: 2em;
+      }
+      .qrcode-text {
+        text-align: right;
+        margin-top: -30rpx;
+        .qrcode {
+          width: 120rpx;
+          height: 120rpx;
+        }
+        .text {
+          color: #989898;
+        }
+      }
+    }
+  }
+</style>
