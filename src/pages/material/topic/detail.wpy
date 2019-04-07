@@ -121,7 +121,7 @@
         console.log(index)
       },
       // 记录评论内容
-      commentInput(e) {
+      commentInput (e) {
         console.log(e.detail.value)
         // this.cardNum = e.detail.value
       }
