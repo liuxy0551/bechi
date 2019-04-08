@@ -2,7 +2,7 @@
   <view class="container">
     <!--顶部图片及文字-->
     <view class="top-box">
-      <image class="top-img" src="{{top.img}}" lazy-load="true"/>
+      <image class="top-img" src="{{top.img}}"/>
       <view class="bg"></view>
       <view class="top-text">
         <view class="title ft-48">#{{top.title}}#</view>
@@ -22,7 +22,7 @@
           <view class="article-img-box">
             <block wx:for="{{item.imgList}}" wx:for-index="i" wx:for-item="img" wx:key="{{i}}">
               <view class="article-imgs {{item.imgList.length==2?'two':''}} {{item.imgList.length>2 && item.imgList.length<5?'three':''}} {{item.imgList.length>4?'five':''}}">
-                <image class="article-img" src="{{img.img}}" lazy-load="true"/>
+                <image class="article-img" src="{{img.img}}"/>
                 <image class="video-icon" src="/images/video_icon.png" wx:if="{{img.video}}"/>
               </view>
             </block>

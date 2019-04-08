@@ -3,7 +3,7 @@
     <block wx:for="{{productList}}" wx:key="{{index}}">
       <view class="product-item">
         <view class="product-left">
-          <image class="product-img" src="http://dummyimage.com/200x200" lazy-load="true"/>
+          <image class="product-img" src="http://dummyimage.com/200x200"/>
         </view>
         <view class="product-right">
           <view class="product-name ft-28 text-overflow">保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D</view>

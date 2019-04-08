@@ -3,7 +3,7 @@
     <block wx:for="{{topicList}}" wx:key="{{index}}">
       <view class="topic-box" @tap="goPage({{item}})">
         <view class="topic-left">
-          <image class="topic-img" src="{{item.img}}" lazy-load="true"/>
+          <image class="topic-img" src="{{item.img}}"/>
         </view>
         <view class="topic-right">
           <view class="topic-title ft-28">#{{item.title}}#</view>

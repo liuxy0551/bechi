@@ -12,7 +12,7 @@
     <swiper class="swiper-img" indicator-dots="true" autoplay="true" circular="true">
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
         <swiper-item>
-          <image class="swiper-img" src="{{item.downUrl}}" lazy-load="true" @tap="goPage({{item}}, 'detail')"/>
+          <image class="swiper-img" src="{{item.downUrl}}" @tap="goPage({{item}}, 'detail')"/>
         </swiper-item>
       </block>
     </swiper>
@@ -30,20 +30,20 @@
       </swiper>
     </view>
 
-    <image class="index-img1" src="http://dummyimage.com/750x150" lazy-load="true"/>
+    <image class="index-img1" src="http://dummyimage.com/750x150"/>
 
     <!--活动区域-->
     <view class="activity-box">
       <view class="left-img-box">
-        <image class="left-img" src="http://dummyimage.com/250x480" lazy-load="true" @tap="goPage('1', 'activity')"/>
+        <image class="left-img" src="http://dummyimage.com/250x480" @tap="goPage('1', 'activity')"/>
       </view>
       <view class="right-box">
         <view class="dietitian-box" @tap="goPage('2', 'dietitian')">
           <view class="text ft-28">营养师咨询</view>
           <image class="dietitian-img" src="/images/mall/to_dietitian.png"/>
         </view>
-        <image class="activity-img" src="http://dummyimage.com/215x215" lazy-load="true" @tap="goPage('3', 'activity')"/>
-        <image class="activity-img" src="http://dummyimage.com/215x215" lazy-load="true" @tap="goPage('4', 'activity')"/>
+        <image class="activity-img" src="http://dummyimage.com/215x215" @tap="goPage('3', 'activity')"/>
+        <image class="activity-img" src="http://dummyimage.com/215x215" @tap="goPage('4', 'activity')"/>
       </view>
     </view>
 
@@ -51,7 +51,7 @@
     <swiper class="banner-img" indicator-dots="true" autoplay="true" circular="true">
       <block wx:for="{{bannerList}}" wx:key="{{index}}">
         <swiper-item>
-          <image class="banner-img" src="{{item.downUrl}}" lazy-load="true" @tap="goPage({{item}}, 'detail')"/>
+          <image class="banner-img" src="{{item.downUrl}}" @tap="goPage({{item}}, 'detail')"/>
         </swiper-item>
       </block>
     </swiper>
@@ -61,7 +61,7 @@
     <swiper class="banner-img" indicator-dots="true" autoplay="true" circular="true">
       <block wx:for="{{bannerList}}" wx:key="{{index}}">
         <swiper-item>
-          <image class="banner-img" src="{{item.downUrl}}" lazy-load="true" @tap="goPage({{item}}, 'detail')"/>
+          <image class="banner-img" src="{{item.downUrl}}" @tap="goPage({{item}}, 'detail')"/>
         </swiper-item>
       </block>
     </swiper>

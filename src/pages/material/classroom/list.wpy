@@ -7,7 +7,7 @@
       <block wx:for="{{articleList}}" wx:key="{{index}}">
         <view class="article-box" @tap="goPage({{item}})">
           <view class="article-left">
-            <image class="article-img" src="{{item.img}}" lazy-load="true"/>
+            <image class="article-img" src="{{item.img}}"/>
             <image class="video-icon" src="/images/video_icon.png" wx:if="{{item.video}}"/>
           </view>
           <view class="article-right">

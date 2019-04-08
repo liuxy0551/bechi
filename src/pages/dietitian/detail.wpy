@@ -2,7 +2,7 @@
   <view class="container">
     <!--顶部信息展示-->
     <view class="top-box">
-      <image class="dietitian-img" src="{{dietitian.img}}" lazy-load="true"/>
+      <image class="dietitian-img" src="{{dietitian.img}}"/>
       <view class="dietitian-name ft-30">专家营养师 {{dietitian.name}}</view>
     </view>
     <!--营养师简介-->
@@ -14,7 +14,7 @@
     <view class="info-box">
       <view class="title">在线咨询</view>
       <view class="qrcode-text">
-        <image class="qrcode" src="{{dietitian.qrCode}}" lazy-load="true"/>
+        <image class="qrcode" src="{{dietitian.qrCode}}"/>
         <view class="text ft-24">保存二维码加营养师微信在线咨询</view>
       </view>
     </view>

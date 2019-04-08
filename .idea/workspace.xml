@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95b44956-1ab6-40e6-97e9-6403dc94bc86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/mall/product/detail.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.wepycache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/products.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/wxRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/wxRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/mall/product/detail.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/mall/product/detail.wpy" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -62,7 +57,7 @@
           <entry key="less" value="486" />
           <entry key="txt" value="55" />
           <entry key="wepycache" value="5" />
-          <entry key="wpy" value="13776" />
+          <entry key="wpy" value="14041" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -70,7 +65,7 @@
           <entry key="JavaScript" value="130" />
           <entry key="Less" value="486" />
           <entry key="PLAIN_TEXT" value="60" />
-          <entry key="Vue.js" value="13776" />
+          <entry key="Vue.js" value="14041" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -112,8 +107,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/mall/product/detail.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="112" column="39" selection-start-line="112" selection-start-column="39" selection-end-line="112" selection-end-column="39" />
+            <state relative-caret-position="219">
+              <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
               <folding>
                 <element signature="e#1282#1305#0" expanded="true" />
               </folding>
@@ -143,7 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sho</find>
       <find>top-box</find>
       <find>search-box</find>
       <find>input</find>
@@ -173,6 +167,7 @@
       <find>num-share</find>
       <find>name-price</find>
       <find>price-box</find>
+      <find>more</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -381,7 +376,7 @@
       <workItem from="1554204788070" duration="8274000" />
       <workItem from="1554291121255" duration="11046000" />
       <workItem from="1554598164600" duration="11564000" />
-      <workItem from="1554723125862" duration="9596000" />
+      <workItem from="1554723125862" duration="11070000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1550657228367</created>
@@ -569,7 +564,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67580000" />
+    <option name="totallyTimeSpent" value="69054000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -930,8 +925,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/mall/product/detail.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="112" column="39" selection-start-line="112" selection-start-column="39" selection-end-line="112" selection-end-column="39" />
+        <state relative-caret-position="219">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
           <folding>
             <element signature="e#1282#1305#0" expanded="true" />
           </folding>

@@ -4,7 +4,7 @@
     <swiper class="swiper-img" indicator-dots="true" autoplay="true" circular="true">
       <block wx:for="{{product.images}}" wx:key="{{index}}">
         <swiper-item>
-          <image class="swiper-img" src="{{item.pipic}}" lazy-load="true" @tap="previewImage({{index}})"/>
+          <image class="swiper-img" src="{{item.pipic}}" @tap="previewImage({{index}})"/>
         </swiper-item>
       </block>
     </swiper>

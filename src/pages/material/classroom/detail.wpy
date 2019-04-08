@@ -18,7 +18,7 @@
       <!--文章内容-->
       <view class="article-content">
         <view class="text ft-28 text-overflow">{{article.text}}</view>
-        <image class="img" src="{{article.img}}" lazy-load="true"/>
+        <image class="img" src="{{article.img}}"/>
       </view>
     </view>
 
@@ -29,7 +29,7 @@
         <view class="comment-box">
           <view class="comment-item">
             <view class="comment-left">
-              <image class="img" src="{{item.img}}" lazy-load="true"/>
+              <image class="img" src="{{item.img}}"/>
             </view>
             <view class="comment-right">
               <view class="comment-name ft-24">{{item.name}}</view>

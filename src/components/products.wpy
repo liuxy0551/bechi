@@ -2,7 +2,7 @@
   <view class="product-box">
     <block wx:for="{{productList}}" wx:key="{{index}}">
       <view class="product-item" @tap="goPage({{item}})">
-        <image class="product-img" src="http://dummyimage.com/345x400" lazy-load="true"/>
+        <image class="product-img" src="http://dummyimage.com/345x400"/>
         <view class="product-text">
           <view class="product-name ft-24 text-overflow">保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D</view>
           <view class="price-num">

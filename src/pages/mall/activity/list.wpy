@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <image class="banner-img" src="http://dummyimage.com/750x300" lazy-load="true"/>
+    <image class="banner-img" src="http://dummyimage.com/750x300"/>
     <!--条件选择-->
     <view class="list-row">
       <view class="row-item">

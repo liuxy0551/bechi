@@ -3,7 +3,7 @@
     <!--顶部个人信息-->
     <view class="top-box flex-row">
       <view class="avatar-box">
-        <image class="avatar" src="http://dummyimage.com/150x150" lazy-load="true"/>
+        <image class="avatar" src="http://dummyimage.com/150x150"/>
       </view>
       <view class="info-box">
         <view class="flex-row top">
