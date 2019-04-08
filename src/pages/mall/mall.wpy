@@ -38,7 +38,7 @@
         <image class="left-img" src="http://dummyimage.com/250x480" lazy-load="true" @tap="goPage('1', 'activity')"/>
       </view>
       <view class="right-box">
-        <view class="dietitian-box" @tap="goPage('2', 'activity')">
+        <view class="dietitian-box" @tap="goPage('2', 'dietitian')">
           <view class="text ft-28">营养师咨询</view>
           <image class="dietitian-img" src="/images/mall/to_dietitian.png"/>
         </view>
@@ -120,6 +120,8 @@
           wx.navigateTo({ url: 'product/list' })
         } else if (to == 'activity') {
           wx.navigateTo({ url: 'activity/list' })
+        } else if (to == 'dietitian') {
+          wx.switchTab({ url: '/pages/dietitian/dietitian' })
         }
       },
       // 记录输入框内容
