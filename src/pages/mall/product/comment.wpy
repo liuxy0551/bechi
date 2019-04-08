@@ -1,0 +1,170 @@
+<template>
+  <view class="container">
+    <view class="comment-box">
+      <block wx:for="{{commentList}}" wx:key="{{index}}">
+        <view class="comment-item">
+          <view class="comment-left">
+            <image class="people-img" src="{{item.img}}"/>
+          </view>
+          <view class="comment-right cf666">
+            <view class="name">{{item.name}}</view>
+            <view class="comment-row line">
+              <view class="label">评价</view>
+              <view class="star-box">
+                <image class="star" src="/images/mall/score_active.png"/>
+                <image class="star" src="/images/mall/score_active.png"/>
+                <image class="star" src="/images/mall/score_active.png"/>
+                <image class="star" src="/images/mall/score_unactive.png"/>
+                <image class="star" src="/images/mall/score_unactive.png"/>
+              </view>
+              <view class="star-text">{{item.starText}}</view>
+            </view>
+            <view class="comment-row text">
+              <view class="label">评价详情</view>
+              <view class="text">{{item.text}}</view>
+            </view>
+            <view class="comment-img-box">
+              <view class="comment-img-item" wx:for="{{item.images}}" wx:for-index="i" wx:for-item="img" wx:key="{{i}}" @tap="previewImage({{item.images}}, {{i}})">
+                <image class="comment-img" src="{{img}}"/>
+                <image class="video-icon" src="/images/video_icon.png" wx:if="{{i == (item.images.length - 1)}}"/>
+              </view>
+            </view>
+            <view class="sku-text">{{item.sku}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../../api/api'
+  import tip from '../../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '评价详情'
+    }
+    data = {
+      commentList: [
+        { img: 'http://dummyimage.com/90x90', name: '买家1', star: 3, starText: '好', text: '评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容',
+          images: ['http://dummyimage.com/170x170', 'http://dummyimage.com/170x170', 'http://dummyimage.com/170x170'], sku: '加强；500g' },
+        { img: 'http://dummyimage.com/90x90', name: '买家1', star: 4, starText: '很好', text: '评论内容评论内容评论内容评论内容评论内容评论内容',
+          images: ['http://dummyimage.com/170x170', 'http://dummyimage.com/170x170', 'http://dummyimage.com/170x170'], sku: '加强；500g' },
+        { img: 'http://dummyimage.com/90x90', name: '买家1', star: 1, starText: '极差', text: '评论内容评论内容评论内容评论内容评论内容评论内容',
+          images: ['http://dummyimage.com/170x170', 'http://dummyimage.com/170x170', 'http://dummyimage.com/170x170'], sku: '加强；500g' },
+        { img: 'http://dummyimage.com/90x90', name: '买家1', star: 5, starText: '非常好', text: '评论内容评论内容评论内容评论内容评论内容评论内容',
+          images: ['http://dummyimage.com/170x170', 'http://dummyimage.com/170x170', 'http://dummyimage.com/170x170', 'http://dummyimage.com/170x170', 'http://dummyimage.com/170x170', 'http://dummyimage.com/170x170'], sku: '加强；500g' }
+      ]
+    }
+    methods = {
+      // 预览图片
+      previewImage(images, i) {
+        wx.previewImage({
+          current: images[i],      // 当前显示图片的http链接
+          urls: images        // 需要预览的图片http链接列表
+        })
+      }
+    }
+    // 获取评论列表
+    async getComment() {
+      let params = {
+        query: { prid: '20462d4a-4ba0-11e9-8c41-00163e08d30f' }
+      }
+      let res = await api.getProduct(params)
+      if(res.data.status == 200) {
+        this.product = res.data.data
+        this.product.imageList = []
+        for (let i of this.product.images) { 
+          this.product.imageList.push(i.pipic)
+        }
+        this.$apply()
+      }
+    }
+    onLoad(option) {
+      // this.cid = option.cid
+      // this.getComment()
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../../styles/index";
+
+  .container {
+    .comment-box {
+      .comment-item {
+        display: flex;
+        background: #FFFFFF;
+        padding: 20rpx 20rpx 20rpx 30rpx;
+        .comment-left {
+          margin-right: 30rpx;
+          .people-img {
+            width: 90rpx;
+            height: 90rpx;
+            border-radius: 10rpx;
+          }
+        }
+        .comment-right {
+          .name {
+
+          }
+          .comment-row {
+            display: flex;
+            align-items: center;
+            padding: 10rpx 0;
+            &.text {
+              align-items: flex-start;
+              margin: 15rpx 0;
+            }
+            &.line {
+              border-bottom: 1rpx #C7C7C7 solid;
+            }
+            .label {
+              color: #B1B1B1;
+              margin-right: 24rpx;
+              white-space: nowrap;
+            }
+            .star-box {
+              flex: 1;
+              .star {
+                width: 39rpx;
+                height: 37rpx;
+                margin-right: 15rpx;
+              }
+            }
+            .star-text {
+
+            }
+            .text {
+
+            }
+          }
+          .comment-img-box {
+            display: flex;
+            flex-wrap: wrap;
+            .comment-img-item {
+              margin: 0 20rpx 10rpx 0;
+              position: relative;
+              .comment-img {
+                width: 170rpx;
+                height: 170rpx;
+              }
+              .video-icon {
+                width: 60rpx;
+                height: 60rpx;
+                position: absolute;
+                left: 55rpx;
+                top: 55rpx;
+              }
+            }
+          }
+          .sku-text {
+            color: #B1B1B1;
+          }
+        }
+      }
+    }
+  }
+</style>

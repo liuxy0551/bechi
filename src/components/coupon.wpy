@@ -1,7 +1,7 @@
 <template>
   <view>
-    <block wx:for="{{couponList}}" wx:key="{{index}}">
-      <view class="coupon-box">
+    <view class="coupon-box">
+      <block wx:for="{{couponList}}" wx:key="{{index}}">
         <view class="coupon-item">
           <image class="coupon-bg" src="/images/mall/coupon_got.png" wx:if="{{item.got}}"/>
           <image class="coupon-bg" src="/images/mall/coupon.png" wx:else/>
@@ -18,8 +18,8 @@
             <view class="coupon-right ft-32" wx:else @tap="getClick({{item}}, {{index}})">点击领取</view>
           </view>
         </view>
-      </view>
-    </block>
+      </block>
+    </view>
   </view>
 </template>
 

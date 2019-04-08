@@ -21,18 +21,18 @@
       <view class="num">{{product.prsalesvaluefake}}人购买</view>
       <image class="share" src="/images/share.png"/>
     </view>
-    <div class="comment-box row">
-      <div class="label ft-24">评价</div>
-      <div class="star-box">
+    <view class="comment-box row" @tap="goPage()">
+      <view class="label ft-24">评价</view>
+      <view class="star-box">
         <image class="star" src="/images/mall/detail_star_active.png"/>
         <image class="star" src="/images/mall/detail_star_active.png"/>
         <image class="star" src="/images/mall/detail_star_half.png"/>
         <image class="star" src="/images/mall/detail_star_unactive.png"/>
         <image class="star" src="/images/mall/detail_star_unactive.png"/>
-      </div>
-      <div class="tip ft-20">查看详情</div>
+      </view>
+      <view class="tip ft-20">查看详情</view>
       <image class="more" src="/images/view_more.png"/>
-    </div>
+    </view>
 
     <image class="desc-img" mode="widthFix" wx:for="{{product.prdesc}}" wx:key="{{index}}" src="{{item}}" lazy-load="true"/>
   </view>
@@ -42,7 +42,6 @@
   import wepy from 'wepy'
   import api from '../../../api/api'
   import tip from '../../../utils/tip'
-  import products from '../../../components/products'
 
   export default class  extends wepy.page {
     config = {
@@ -53,9 +52,9 @@
     }
     methods = {
       // 页面跳转
-      goPage(item, to) {
-        console.log(item, to);
-        // wx.navigateTo({ url: 'courseList?ctId=' + item.ctId })
+      goPage() {
+        // wx.navigateTo({ url: 'pages/mall/product/comment' + item.ctId })
+        wx.navigateTo({ url: 'comment' })
       },
       // 预览图片
       previewImage(index) {
@@ -84,7 +83,6 @@
       // this.cid = option.cid
       this.getProduct()
     }
-    components = { products }
   }
 </script>
 
