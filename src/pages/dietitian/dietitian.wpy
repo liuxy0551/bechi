@@ -8,7 +8,7 @@
       </view>
       <view class="classify-box">
         <block wx:for="{{classifyList}}" wx:key="{{index}}">
-          <view class="classify-item ft-24">{{item}}</view>
+          <view class="classify-item ft-24" @tap="goPage({{item}})">{{item}}</view>
         </block>
       </view>
     </view>
@@ -18,7 +18,7 @@
         <view class="left-color"></view>
         <view class="right-text">专家营养师</view>
       </view>
-      <image class="dietitian-img" src="/images/dietitian/dietitian.png"/>
+      <image class="dietitian-img" src="/images/dietitian/dietitian.png" @tap="goPage()"/>
     </view>
   </view>
 </template>
@@ -36,7 +36,11 @@
       classifyList: ['分类一', '分类', '分类一一', '分类', '分类', '分类一', '分类一一', '分类一一', '分类一一', '分类一', '分类', '分类一']
     }
     methods = {
-
+      // 页面跳转
+      goPage(item) {
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
+        wx.navigateTo({ url: 'detail' })
+      }
     }
   }
 </script>
