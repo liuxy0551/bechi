@@ -22,6 +22,7 @@ export default class extends wepy.app {
       'pages/mall/mall',                    // 微商城
       'pages/mall/product/list',            // 微商城 - 商品列表
       'pages/mall/activity/list',           // 微商城 - 活动 - 商品列表
+      'pages/mall/activity/coupon',           // 微商城 - 活动 - 优惠券列表
 
       'pages/material/material',            // 素材库
       'pages/material/classroom/list',      // 知识课堂 - 列表

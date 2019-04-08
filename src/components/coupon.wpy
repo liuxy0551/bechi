@@ -1,0 +1,89 @@
+<template>
+  <view>
+    <block wx:for="{{couponList}}" wx:key="{{index}}">
+      <view class="coupon-box">
+        <view class="coupon-item">
+          <image class="coupon-bg" src="/images/mall/coupon_got.png" wx:if="{{item.got}}"/>
+          <image class="coupon-bg" src="/images/mall/coupon.png" wx:else/>
+          <view class="coupon-text">
+            <view class="coupon-left">
+              <view class="coupon-row">
+                <view class="price ft-36">￥<span class="num ft-60">{{item.price}}</span></view>
+                <view class="from ft-24">平台优惠券</view>
+              </view>
+              <view class="condition ft-20">{{item.condition}}</view>
+              <view class="time ft-20">{{item.time}}</view>
+            </view>
+            <view class="coupon-right ft-32" wx:if="{{item.got}}" @tap="getClick({{item}}, {{index}})">已领取</view>
+            <view class="coupon-right ft-32" wx:else @tap="getClick({{item}}, {{index}})">点击领取</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class couponList extends wepy.component {
+    props = {
+      couponList: { type: Array, default: [], twoWay: true }
+    }
+    data = {}
+    methods = {
+      getClick (item, index) {
+        this.$emit('getClick', item, index);
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../styles/index";
+
+  .coupon-box {
+    .coupon-item {
+      position: relative;
+      .coupon-bg {
+        width: 718rpx;
+        height: 171rpx;
+      }
+      .coupon-text {
+        color: #FFFFFF;
+        width: 718rpx;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        top: 10rpx;
+        left: 25rpx;
+        .coupon-left {
+          width: 460rpx;
+          .coupon-row {
+            display: flex;
+            align-items: flex-end;
+            .price {
+              .num {
+
+              }
+            }
+            .from {
+              margin: 0 0 15rpx 10rpx;
+            }
+          }
+          .condition {
+
+          }
+          .time {
+
+          }
+        }
+        .coupon-right {
+          width: 281rpx;
+          text-align: center;
+        }
+      }
+    }
+  }
+</style>
