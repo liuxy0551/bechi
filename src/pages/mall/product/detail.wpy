@@ -1,0 +1,126 @@
+<template>
+  <view class="container">
+    <!--轮播图-->
+    <swiper class="swiper-img" indicator-dots="true" autoplay="true" circular="true">
+      <block wx:for="{{product.images}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="swiper-img" src="{{item.pipic}}" lazy-load="true" @tap="previewImage({{index}})"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="name-price row">
+      <view class="name ft-30">{{product.prtitle}}</view>
+      <view class="price-box">
+        <view class="price ft-30">￥{{product.price_range}}</view>
+        <view class="line-price ft-24">￥{{product.prlineprice}}</view>
+      </view>
+    </view>
+    <view class="num-share row ft-24">
+      <view class="freight" wx:if="{{product.prfreight == 0}}">运费：包邮</view>
+      <view class="freight" wx:else>运费：￥{{product.prfreight}}</view>
+      <view class="num">{{product.prsalesvaluefake}}人购买</view>
+      <image class="share" src="/images/share.png"/>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../../api/api'
+  import tip from '../../../utils/tip'
+  import products from '../../../components/products'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '商品详情'
+    }
+    data = {
+      product: {}
+    }
+    methods = {
+      // 页面跳转
+      goPage(item, to) {
+        console.log(item, to);
+        // wx.navigateTo({ url: 'courseList?ctId=' + item.ctId })
+      },
+      // 预览图片
+      previewImage(index) {
+        wx.previewImage({
+          current: this.product.images[index].pipic,      // 当前显示图片的http链接
+          urls: this.product.imageList        // 需要预览的图片http链接列表
+        })
+      }
+    }
+    // 获取商品详情
+    async getProduct() {
+      let params = {
+        query: { prid: '20462d4a-4ba0-11e9-8c41-00163e08d30f' }
+      }
+      let res = await api.getProduct(params)
+      if(res.data.status == 200) {
+        this.product = res.data.data
+        this.product.imageList = []
+        for (let i of this.product.images) { 
+          this.product.imageList.push(i.pipic)
+        }
+        this.$apply()
+      }
+    }
+    onLoad(option) {
+      // this.cid = option.cid
+      this.getProduct()
+    }
+    components = { products }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../../styles/index";
+
+  .container {
+    .swiper-img {
+      width: 750rpx;
+      height: 750rpx;
+    }
+
+    .row {
+      width: 695rpx;
+      display: flex;
+      justify-content: space-between;
+      background: #FFFFFF;
+      padding: 25rpx 25rpx 25rpx 30rpx;
+    }
+    .name-price {
+      margin-top: 20rpx;
+      .name {
+        color: #666666;
+        font-weight: 600;
+      }
+      .price-box {
+        text-align: right;
+        .price {
+          color: @priceColor;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+        .line-price {
+          color: #989898;
+          text-decoration: line-through;
+        }
+      }
+    }
+    .num-share {
+      border-bottom: 1rpx #D5D5D5 solid;
+      .freight {
+        color: #B1B1B1;
+      }
+      .num {
+        color: #B1B1B1;
+      }
+      .share {
+        width: 32rpx;
+        height: 32rpx;
+      }
+    }
+  }
+</style>

@@ -19,10 +19,12 @@ import tip from './utils/tip'
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/mall/product/detail',          // 微商城 - 商品详情
       'pages/mall/mall',                    // 微商城
       'pages/mall/product/list',            // 微商城 - 商品列表
+      // 'pages/mall/product/detail',          // 微商城 - 商品详情
       'pages/mall/activity/list',           // 微商城 - 活动 - 商品列表
-      'pages/mall/activity/coupon',           // 微商城 - 活动 - 优惠券列表
+      'pages/mall/activity/coupon',         // 微商城 - 活动 - 优惠券列表
 
       'pages/material/material',            // 素材库
       'pages/material/classroom/list',      // 知识课堂 - 列表
@@ -71,18 +73,76 @@ export default class extends wepy.app {
         selectedIconPath: "images/tabBar/personal_active.png"
       }]
     }
-  };
+  }
 
   globalData = {
     userInfo: null
-  };
-
-  constructor () {
-    super();
-    this.use('requestfix')
   }
 
-  onLaunch() {
+  constructor() {
+    super()
+    this.use('requestfix')
+    this.use('promisify')
+
+    // 拦截request请求
+    this.intercept('request', {
+      // 发出请求时的回调函数
+      config (p) {
+        // 加载中的loading
+        if(p.loading) {
+          tip.loading()
+          return p
+        }else {
+          return p
+        }
+      },
+
+      success (p) {
+        // 对收到的响应数据对象进行加工处理
+        tip.loaded()
+        if(p.statusCode === 502) {
+          tip.error('服务器开小差了')
+        }
+        if(p.data.status === 200) {
+
+        }else {
+          tip.error(p.data.message)
+          return false
+          if(p.data.status === 201) {
+            wx.showModal({
+              title: '登录过期',
+              content: '您登录的身份已过期，请点击确定后重新登录',
+              confirmColor: '#E28D44',
+              success(res) {
+                if(res.confirm) {
+                  wx.navigateTo({ url: '/pages/login/login' })
+                }else {
+                  wx.removeStorage({
+                    key: 'ticket',
+                    success: res => {
+                      wx.switchTab({ url: '/pages/course/course' })
+                    }
+                  })
+                }
+              }
+            })
+          }else {
+            // tip.error(p.data.message)
+          }
+        }
+        return p
+      },
+      fail (p) {
+        // console.log('request fail: ', p)
+        return p
+      },
+      complete (p) {
+        // console.log('request complete: ', p)
+      }
+    })
+  }
+
+  /*onLaunch() {
     this.testAsync()
   }
 
@@ -95,18 +155,18 @@ export default class extends wepy.app {
   }
 
   async testAsync () {
-    const data = await this.sleep(3);
+    const data = await this.sleep(3)
     console.log(data)
-  }
+  }*/
 
   getUserInfo(cb) {
-    const that = this;
+    const that = this
     if (this.globalData.userInfo) {
       return this.globalData.userInfo
     }
     wepy.getUserInfo({
       success (res) {
-        that.globalData.userInfo = res.userInfo;
+        that.globalData.userInfo = res.userInfo
         cb && cb(res.userInfo)
       }
     })

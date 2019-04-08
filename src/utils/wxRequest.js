@@ -6,7 +6,7 @@ const wxRequest = async(params = {}, url) => {
     method: params.method || 'GET',
     data: params.query || {},
     header: { 'Content-Type': params.header || 'application/json' },
-    noLoading: params.noLoading || false
+    loading: params.loading || false
   });
   return res;
 };

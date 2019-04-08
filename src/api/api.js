@@ -1,58 +1,35 @@
 import { wxRequest } from '@/utils/wxRequest';
 
-const api = 'https://wahahaweb.lkfcni.cn:8100/traninsys/';
-// const api = 'http://yuan.vaiwan.com/';
+const api = 'https://bechi.lkfcni.cn/api/v1/';
 
-const getOpenid = params => wxRequest(params, api + 'portal/getOpenid');
-const unifiedOrder = params => wxRequest(params, api + 'portal/unifiedOrder');
+const upload = params => wxRequest(params, api + 'file/upload');
 
-const login = params => wxRequest(params, api + 'portal/login');
-const eidtPwd = params => wxRequest(params, api + 'portal/eidtPwd');
-const getUser = params => wxRequest(params, api + 'portal/getUser');
-const getCarouselList = params => wxRequest(params, api + 'portal/getCarouselList');
+const getCategory = params => wxRequest(params, api + 'category/get');
+const getArea = params => wxRequest(params, api + 'area/get');
+const getProducts = params => wxRequest(params, api + 'product/list');
+const getProduct = params => wxRequest(params, api + 'product/get');
 
-const getCourseList = params => wxRequest(params, api + 'portal/getCourseList');
-const getCourseDetail = params => wxRequest(params, api + 'portal/getCourseDetail');
-const getTitle = params => wxRequest(params, api + 'portal/getTitle');
-const getMyCourseList = params => wxRequest(params, api + 'portal/getMyCourseList');
-const getReportList = params => wxRequest(params, api + 'portal/getReportList');
-const getElectiveCourseList = params => wxRequest(params, api + 'portal/getElectiveCourseList');
-const delReport = params => wxRequest(params, api + 'portal/delReport');
-const dropCourse = params => wxRequest(params, api + 'portal/dropCourse');
-const addReport = params => wxRequest(params, api + 'portal/addReport');
-const registerCourse = params => wxRequest(params, api + 'portal/registerCourse');
-const cancelCourse = params => wxRequest(params, api + 'portal/cancelCourse');
-const turnCourse = params => wxRequest(params, api + 'portal/turnCourse');
-const turnCourseResult = params => wxRequest(params, api + 'portal/turnCourseResult');
-const getCustomer = params => wxRequest(params, api + 'portal/getCustomer');
-const decodeUserInfo = params => wxRequest(params, api + 'portal/decodeUserInfo');
-const sendSms = params => wxRequest(params, api + 'sms/sendSms');
-const refindPwd = params => wxRequest(params, api + 'portal/refindPwd');
+const createGroupbuying = params => wxRequest(params, api + 'groupbuying/create');
+const getGroupbuyings = params => wxRequest(params, api + 'groupbuying/list');
+const startGroupbuyings = params => wxRequest(params, api + 'groupbuying/start');
+const joinGroupbuyings = params => wxRequest(params, api + 'groupbuying/join');
+const getGroupbuyingsByProduct = params => wxRequest(params, api + 'groupbuying/list_groupbuyingitems');
+
+const getMaterials = params => wxRequest(params, api + 'material/list_category');
 
 export default {
-  getOpenid,              // 获取openId
-  unifiedOrder,           // 支付下单
+  upload,                    // 上传图片/视频
 
-  login,                  // 登录
-  eidtPwd,                // 修改密码
-  getUser,                // 获取登录用户信息
-  getCarouselList,        // 获取轮播图
+  getCategory,               // 获取商品分类
+  getArea,                   // 获取商品专区
+  getProducts,               // 获取商品列表
+  getProduct,                // 获取商品详情
 
-  getCourseList,          // 获取上架课程信息列表
-  getCourseDetail,        // 获取课程详情
-  getTitle,               // 获取一级主题列表
-  getMyCourseList,        // 获取我的课程表
-  getReportList,          // 获取补报记录
-  getElectiveCourseList,  // 获取选课记录
-  delReport,              // 取消补课申请
-  dropCourse,             // 退课申请
-  addReport,              // 补报课程
-  registerCourse,         // 报名课程
-  cancelCourse,           // 取消支付课程占位
-  turnCourse,             // 转课
-  turnCourseResult,       // 转课情况选择处理
-  getCustomer,            // 获取客服列表
-  decodeUserInfo,         // 解密微信用户信息
-  sendSms,                // 发送短信
-  refindPwd,              // 找回密码
+  createGroupbuying,         // 商品参与拼团
+  getGroupbuyings,           // 获取拼团商品列表
+  startGroupbuyings,         // 发起拼团
+  joinGroupbuyings,          // 加入拼团
+  getGroupbuyingsByProduct,  // 获取商品下所有拼团队伍
+
+  getMaterials,              // 获取素材（营养师）分类
 }
