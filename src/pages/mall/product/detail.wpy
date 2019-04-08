@@ -21,6 +21,20 @@
       <view class="num">{{product.prsalesvaluefake}}人购买</view>
       <image class="share" src="/images/share.png"/>
     </view>
+    <div class="comment-box row">
+      <div class="label ft-24">评价</div>
+      <div class="star-box">
+        <image class="star" src="/images/mall/detail_star_active.png"/>
+        <image class="star" src="/images/mall/detail_star_active.png"/>
+        <image class="star" src="/images/mall/detail_star_half.png"/>
+        <image class="star" src="/images/mall/detail_star_unactive.png"/>
+        <image class="star" src="/images/mall/detail_star_unactive.png"/>
+      </div>
+      <div class="tip ft-20">查看详情</div>
+      <image class="more" src="/images/view_more.png"/>
+    </div>
+
+    <image class="desc-img" mode="widthFix" wx:for="{{product.prdesc}}" wx:key="{{index}}" src="{{item}}" lazy-load="true"/>
   </view>
 </template>
 
@@ -86,6 +100,7 @@
     .row {
       width: 695rpx;
       display: flex;
+      align-items: center;
       justify-content: space-between;
       background: #FFFFFF;
       padding: 25rpx 25rpx 25rpx 30rpx;
@@ -121,6 +136,36 @@
         width: 32rpx;
         height: 32rpx;
       }
+    }
+    .comment-box {
+      margin-bottom: 20rpx;
+      .label {
+        color: #B1B1B1;
+        margin-right: 38rpx;
+      }
+      .star-box {
+        margin-bottom: 10rpx;
+        .star {
+          width: 20rpx;
+          height: 20rpx;
+          margin-right: 13rpx;
+        }
+      }
+      .tip {
+        flex: 1;
+        text-align: right;
+        color: #B1B1B1;
+        margin-right: 12rpx;
+      }
+      .more {
+        width: 20rpx;
+        height: 20rpx;
+      }
+    }
+
+    .desc-img {
+      width: 750rpx;
+      min-height: 100%;
     }
   }
 </style>
