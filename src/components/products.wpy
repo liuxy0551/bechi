@@ -1,4 +1,5 @@
 <template>
+  <wxs module="money" src="../utils/money.wxs"></wxs>
   <view class="product-box">
     <block wx:for="{{productList}}" wx:key="{{index}}">
       <view class="product-item" @tap="goPage({{item}})">
@@ -6,7 +7,7 @@
         <view class="product-text">
           <view class="product-name ft-24 text-overflow">保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D</view>
           <view class="price-num">
-            <view class="price ft-30">￥189.99</view>
+            <view class="price ft-30">￥{{money.getMoney('1234')}}</view>
             <view class="num ft-20">233人已购买</view>
           </view>
         </view>

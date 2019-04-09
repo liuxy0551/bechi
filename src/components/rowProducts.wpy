@@ -1,4 +1,5 @@
 <template>
+  <wxs module="money" src="../utils/money.wxs"></wxs>
   <view class="product-box">
     <block wx:for="{{productList}}" wx:key="{{index}}">
       <view class="product-item">
@@ -18,11 +19,11 @@
             </view>
           </view>
           <view class="price-box">
-            <view class="price ft-32">￥189.99</view>
+            <view class="price ft-32">￥{{money.getMoney('1234')}}</view>
             <view class="text ft-20">拼团价</view>
           </view>
           <view class="price-num">
-            <view class="price ft-20">￥189.99</view>
+            <view class="price ft-20">￥{{money.getMoney('1234')}}</view>
             <view class="text ft-20">233人购买</view>
           </view>
         </view>
