@@ -1,4 +1,5 @@
 <template>
+  <wxs module="money" src="../../../utils/money.wxs"></wxs>
   <view class="container">
     <!--轮播图-->
     <swiper class="swiper-img" indicator-dots="true" autoplay="true" circular="true">
@@ -12,12 +13,12 @@
       <view class="name ft-30">{{product.prtitle}}</view>
       <view class="price-box">
         <view class="price ft-30">￥{{product.price_range}}</view>
-        <view class="line-price ft-24">￥{{product.prlineprice}}</view>
+        <view class="line-price ft-24">￥{{money.getMoney(product.prlineprice)}}</view>
       </view>
     </view>
     <view class="num-share row ft-24">
       <view class="freight" wx:if="{{product.prfreight == 0}}">运费：包邮</view>
-      <view class="freight" wx:else>运费：￥{{product.prfreight}}</view>
+      <view class="freight" wx:else>运费：￥{{money.getMoney(product.prfreight)}}</view>
       <view class="num">{{product.prsalesvaluefake}}人购买</view>
       <image class="share" src="/images/share.png"/>
     </view>
