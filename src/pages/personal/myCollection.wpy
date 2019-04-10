@@ -1,7 +1,35 @@
 <template>
   <view class="container">
     <navList class="nav-list" :navList="navList" which="color" @navTap="navTap"></navList>
-    <products class="product" :productList="productList"></products>
+    <!--商品-->
+    <products class="product" :productList="productList" wx:if="{{productSelected}}"></products>
+    <!--文章-->
+    <view class="article-box-box" wx:else>
+      <block wx:for="{{articleList}}" wx:key="{{index}}">
+        <view class="article-box" @tap="goPage({{item}})">
+          <view class="article-left">
+            <image class="article-img" src="{{item.img}}"/>
+            <image class="video-icon" src="/images/video_icon.png" wx:if="{{item.video}}"/>
+          </view>
+          <view class="article-right">
+            <view class="article-title ft-28 text-overflow">{{item.title}}</view>
+            <view class="article-text ft-24 text-overflow">{{item.text}}</view>
+            <view class="article-row">
+              <view class="time ft-20">{{item.time}}</view>
+              <view class="icon-num">
+                <image class="icon" src="/images/material/view_num.png"/>
+                <view class="num">{{item.viewNum}}</view>
+              </view>
+              <view class="icon-num">
+                <image class="icon" src="/images/material/click_like.png" wx:if="{{item.like}}"/>
+                <image class="icon" src="/images/material/unclick_like.png" wx:else/>
+                <view class="num {{item.like?'active':''}}">{{item.likeNum}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
   </view>
 </template>
 
@@ -18,15 +46,55 @@
     }
     data = {
       navList: [
-        { name: '疾病治疗', active: true }, { name: '健康百科', active: false }
+        { name: '商品', active: true }, { name: '文章', active: false }
       ],
-      productList: [1, 2, 3, 4, 5]
+      productSelected: true,
+      productList: [1, 2, 3, 4, 5],
+      articleList: [
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: true, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: true, likeNum: 1233 },
+        { img: 'http://dummyimage.com/160x160', video: false, title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
+          text: '概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要',
+          time: '2018-04-09 18:23', viewNum: 123, like: false, likeNum: 1233 }
+      ]
     }
     methods = {
       // 页面跳转
-      goPage(item, to) {
-        console.log(item, to);
-        // wx.navigateTo({ url: 'courseList?ctId=' + item.ctId })
+      goPage(item) {
+        // console.log(item)
+        wx.navigateTo({ url: '/pages/material/topic/detail' })
+        // wx.navigateTo({ url: '/pages/material/article/detail?cid=' + item.cid })
       },
       // 记录输入框内容
       commentInput (e) {
@@ -38,6 +106,11 @@
       navTap (index) {
         for (let i of this.navList) {
           i.active = false
+        }
+        if (index) {
+          this.productSelected = false
+        } else {
+          this.productSelected = true
         }
         this.navList[index].active = true
       }
@@ -55,6 +128,10 @@
     }
     .product {
       margin-top: 65rpx;
+    }
+
+    .article-box-box {
+      margin-top: 40rpx;
     }
   }
 </style>

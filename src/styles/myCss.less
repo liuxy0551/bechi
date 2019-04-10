@@ -74,3 +74,69 @@
   -webkit-box-orient: vertical; // 从上到下垂直排列子元素（设置伸缩盒子的子元素排列方式）
   -webkit-line-clamp: 2; // 这个属性不是css的规范属性，需要组合上面两个属性，表示显示的行数。
 }
+
+// 文章列表的样式
+.article-box-box {
+  .article-box {
+    display: flex;
+    margin: 0 20rpx 10rpx 20rpx;
+    border-bottom: 1rpx #A5A3A3 solid;
+    &:first-child {
+      margin-top: 20rpx;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+    .article-left {
+      position: relative;
+      .article-img {
+        width: 160rpx;
+        height: 160rpx;
+        margin: 0 45rpx 0 23rpx;
+      }
+      .video-icon {
+        width: 50rpx;
+        height: 50rpx;
+        position: absolute;
+        top: 55rpx;
+        left: 78rpx;
+      }
+    }
+    .article-right {
+      .article-title {
+        color: #333333;
+        line-height: 33rpx;
+      }
+      .article-text {
+        color: @ABColor;
+        font-weight: 400;
+      }
+      .article-row {
+        display: flex;
+        margin-top: 5rpx;
+        .time {
+          flex: 1;
+          text-align: left;
+          color: #B1B1B1;
+        }
+        .icon-num {
+          display: flex;
+          align-items: center;
+          margin-left: 30rpx;
+          .icon {
+            width: 24rpx;
+            height: 24rpx;
+            margin-right: 8rpx;
+          }
+          .num {
+            color: @greyColor;
+            font-size: 20rpx;
+            &.active {
+              color: @mainColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
