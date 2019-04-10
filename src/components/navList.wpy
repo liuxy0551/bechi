@@ -46,6 +46,7 @@
       font-size: 24rpx;
       font-weight: 400;
       padding: 5rpx 50rpx;
+      background: #FFFFFF;
       border: 1rpx @mainColor solid;
       &.active {
         color: #fff;
