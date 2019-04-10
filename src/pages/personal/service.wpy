@@ -1,0 +1,78 @@
+<template>
+  <view class="container">
+    <div class="tip ft-24">保存二维码加客服微信在线咨询</div>
+    <div class="service-box">
+      <block wx:for="{{serviceList}}" wx:key="{{index}}">
+        <div class="service-item">
+          <image class="service-img" src="{{item.img}}" @tap="previewImage({{index}})"/>
+          <div class="service-name ft-24">{{item.name}}</div>
+        </div>
+      </block>
+    </div>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '联系客服'
+    }
+    data = {
+      serviceList: [
+        { img: 'https://dummyimage.com/160x160', name: '客服A' },
+        { img: 'https://dummyimage.com/160x160', name: '客服B' },
+        { img: 'https://dummyimage.com/160x160', name: '客服C' },
+        { img: 'https://dummyimage.com/160x160', name: '客服D' }
+      ]
+    }
+    methods = {
+      // 预览图片
+      previewImage(index) {
+        wx.previewImage({
+          current: this.serviceList[index].img,      // 当前显示图片的http链接
+          urls: [this.serviceList[index].img]        // 需要预览的图片http链接列表
+        })
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .tip {
+    color: #B1B1B1;
+    padding: 10rpx;
+  }
+
+  .service-box {
+    background: #fff;
+    .service-item {
+      width: 664rpx;
+      display: flex;
+      align-items: center;
+      padding: 15rpx 23rpx;
+      margin: 0 20rpx;
+      border-bottom: 1rpx #A5A3A3 solid;
+      &:first-child {
+        margin-top: 10rpx;
+      }
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 25rpx;
+      }
+      .service-img {
+        width: 160rpx;
+        height: 160rpx;
+        margin-right: 45rpx;
+      }
+      .service-name {
+        color: #333333;
+      }
+    }
+  }
+</style>
