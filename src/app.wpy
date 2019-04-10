@@ -37,6 +37,7 @@ export default class extends wepy.app {
 
       'pages/personal/personal',            // 我的
       'pages/personal/myCollection',        // 我的收藏
+      'pages/personal/service',             // 联系客服
 
       'pages/login/welcome',                // 欢迎页
       'pages/login/login',                  // 登录页
