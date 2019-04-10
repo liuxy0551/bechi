@@ -36,6 +36,7 @@ export default class extends wepy.app {
       'pages/dietitian/detail',             // 营养师 - 详情
 
       'pages/personal/personal',            // 我的
+      'pages/personal/myCollection',        // 我的收藏
 
       'pages/login/welcome',                // 欢迎页
       'pages/login/login',                  // 登录页

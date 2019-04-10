@@ -62,7 +62,7 @@
         </view>
       </view>
     </view>
-    <view class="flex-row option-row">
+    <view class="flex-row option-row" @tap="goPage('myCollection')">
       <image class="icon" src="/images/personal/my_collections.png"/>
       <view class="option-title">我的收藏</view>
       <image class="icon" src="/images/view_more.png"/>
@@ -98,7 +98,18 @@
 
     }
     methods = {
-
+      // 页面跳转
+      goPage(v) {
+        switch (v){
+          case 'myCollection':
+            wx.navigateTo({ url: 'pages/personal/myCollection' })
+            break
+          case '/orderDetail':
+            this.$router.push({ path: v, query: { pbid: item.pbid, pbname: item.pbname }})
+            break
+        }
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
+      }
     }
   }
 </script>
