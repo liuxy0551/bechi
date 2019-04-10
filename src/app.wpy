@@ -20,11 +20,11 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/mall/mall',                    // 微商城
-      'pages/mall/product/list',            // 微商城 - 商品列表
-      'pages/mall/product/detail',          // 微商城 - 商品详情
-      'pages/mall/product/comment',         // 微商城 - 商品详情 - 评论列表
-      'pages/mall/activity/list',           // 微商城 - 活动 - 商品列表
-      'pages/mall/activity/coupon',         // 微商城 - 活动 - 优惠券列表
+      'pages/mall/product/list',            // 商品列表
+      'pages/mall/product/detail',          // 商品详情
+      'pages/mall/product/comment',         // 商品详情 - 评论列表
+      'pages/mall/activity/list',           // 活动 - 商品列表
+      'pages/mall/activity/coupon',         // 活动 - 优惠券列表
 
       'pages/material/material',            // 素材库
       'pages/material/classroom/list',      // 知识课堂 - 列表
@@ -38,6 +38,7 @@ export default class extends wepy.app {
       'pages/personal/personal',            // 我的
       'pages/personal/myCollection',        // 我的收藏
       'pages/personal/service',             // 联系客服
+      'pages/personal/myCoupon',            // 优惠券
 
       'pages/login/welcome',                // 欢迎页
       'pages/login/login',                  // 登录页

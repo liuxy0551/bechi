@@ -11,7 +11,7 @@
           <span class="check-in ft-22">签到</span>
         </view>
         <view class="flex-row">
-          <view class="flex-row left">
+          <view class="flex-row left" @tap="goPage('myCoupon')">
             <image class="image" src="/images/personal/coupon.png"/>
             <span class="info-text">优惠券</span>
             <span class="info-text ft-b">5</span>
@@ -105,6 +105,9 @@
             wx.navigateTo({ url: v })
             break
           case 'service':
+            wx.navigateTo({ url: v })
+            break
+          case 'myCoupon':
             wx.navigateTo({ url: v })
             break
         }

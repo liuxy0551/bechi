@@ -1,0 +1,76 @@
+<template>
+  <view class="container">
+    <navList class="nav-list" :navList="navList" @navTap="navTap"></navList>
+
+    <coupon class="coupon" :couponList="couponList" @getClick="getClick"></coupon>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+  import navList from '../../components/navList'
+  import coupon from '../../components/coupon'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '优惠券'
+    }
+    data = {
+      navList: [
+        { name: '可使用', active: true }, { name: '已使用', active: false }, { name: '已过期', active: false }
+      ],
+      couponList: [
+        { price: 10000, condition: '满10000元可用', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 100, condition: '无门槛优惠券', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: false },
+        { price: 10000, condition: '满10000元可用', time: '2018-08-08 00:00:00 - 2019-08-07 23:59:59', got: true }
+      ]
+    }
+    methods = {
+      // 页面跳转
+      goPage(item, to) {
+        console.log(item, to);
+        // wx.navigateTo({ url: 'courseList?ctId=' + item.ctId })
+      }
+    }
+    events = {
+      navTap (index) {
+        for (let i of this.navList) {
+          i.active = false
+        }
+        this.navList[index].active = true
+      },
+      getClick (item, index) {
+        console.log(item, index)
+      }
+    }
+    components = { navList, coupon }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    .coupon {
+      margin-top: 80rpx;
+    }
+  }
+</style>

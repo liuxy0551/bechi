@@ -123,13 +123,9 @@
   @import "../../styles/index";
 
   .container {
-    .nav-list {
-      position: fixed;
-    }
     .product {
       margin-top: 65rpx;
     }
-
     .article-box-box {
       margin-top: 40rpx;
     }

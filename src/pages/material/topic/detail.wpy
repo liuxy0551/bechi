@@ -12,7 +12,7 @@
         </view>
       </view>
     </view>
-    <navList :navList="navList" which="navList" @navTap="navTap"></navList>
+    <navList :navList="navList" @navTap="navTap"></navList>
 
     <!--话题内容列表-->
     <view class="article-box">
