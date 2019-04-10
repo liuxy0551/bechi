@@ -1,14 +1,14 @@
 <template>
   <view class="container">
-    <div class="tip ft-24">保存二维码加客服微信在线咨询</div>
-    <div class="service-box">
+    <view class="tip ft-24">保存二维码加客服微信在线咨询</view>
+    <view class="service-box">
       <block wx:for="{{serviceList}}" wx:key="{{index}}">
-        <div class="service-item">
+        <view class="service-item">
           <image class="service-img" src="{{item.img}}" @tap="previewImage({{index}})"/>
-          <div class="service-name ft-24">{{item.name}}</div>
-        </div>
+          <view class="service-name ft-24">{{item.name}}</view>
+        </view>
       </block>
-    </div>
+    </view>
   </view>
 </template>
 
