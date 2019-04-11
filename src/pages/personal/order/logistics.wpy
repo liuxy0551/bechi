@@ -1,0 +1,128 @@
+<template>
+  <wxs module="money" src="../../../utils/money.wxs"></wxs>
+  <view class="container">
+    <!--商品信息-->
+    <view class="product-box">
+      <view class="product-left">
+        <image class="product-img" src="{{product.img}}"/>
+      </view>
+      <view class="product-right">
+        <view class="name text ft-28">{{product.name}}</view>
+        <view class="row" @tap="copy">
+          <image class="copy-img" src="/images/personal/copy.png"/>
+          <view class="text">订单号：{{product.orderNo}}</view>
+        </view>
+        <view class="text">规格：{{product.sku}}</view>
+        <view class="text">付款金额：<span class="price">￥{{money.getMoney(product.price)}}</span></view>
+      </view>
+    </view>
+
+    <!--收货信息-->
+    <view class="text-box">
+      <view class="row">
+        <view class="label text">收 货 人：</view>
+        <view class="text">{{buyer.name}}</view>
+      </view>
+      <view class="row">
+        <view class="label text">联系电话：</view>
+        <view class="text">{{buyer.phone}}</view>
+      </view>
+      <view class="row">
+        <view class="label text">收货地址：</view>
+        <view class="text">{{buyer.address}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../../api/api'
+  import tip from '../../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '收货信息'
+    }
+    data = {
+      product: {
+        img: 'https://dummyimage.com/100x100', name: '商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称',
+        orderNo: '234412341241412', sku: '加强型;300g', price: '234'
+      },
+      buyer: {
+        name: '居居女孩', phone: '13355557777', address: '杭州市-西湖区-浙江工业大学（屏峰校区）家和西苑14幢112'
+      }
+    }
+    methods = {
+      // 复制订单号
+      copy () {
+        let that = this;
+        wx.setClipboardData({
+          //准备复制的数据
+          data: this.product.orderNo,
+          success: function (res) {
+            wx.showToast({
+              title: '订单号复制成功',
+            });
+          }
+        })
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../../styles/index";
+
+  .container {
+    .product-box {
+      background: #FFFFFF;
+      padding: 20rpx 30rpx 20rpx 50rpx;
+      margin-top: 20rpx;
+      display: flex;
+      .product-left {
+        .product-img {
+          width: 100rpx;
+          height: 100rpx;
+          margin-right: 30rpx;
+        }
+      }
+      .product-right {
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-weight: 500;
+          line-height: 32rpx;
+        }
+      }
+    }
+
+    .row {
+      display: flex;
+      align-items: flex-start;
+      .copy-img {
+        width: 30rpx;
+        height: 30rpx;
+        margin: 0 10rpx 15rpx 0;
+      }
+    }
+    .text-box {
+      background: #FFFFFF;
+      padding: 20rpx 30rpx 20rpx 50rpx;
+      margin-top: 20rpx;
+    }
+
+    .text {
+      color: @666Color;
+      font-size: 24rpx;
+      font-weight: 400;
+      margin-bottom: 15rpx;
+    }
+    .label {
+      white-space: nowrap;
+    }
+    .price {
+      color: @priceColor;
+    }
+  }
+</style>

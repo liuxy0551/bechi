@@ -41,6 +41,7 @@ export default class extends wepy.app {
       'pages/personal/myCoupon',            // 优惠券
       'pages/personal/order/orderList',     // 订单列表
       'pages/personal/order/afterSale',     // 售后中心
+      'pages/personal/order/logistics',     // 收货信息
 
       'pages/login/welcome',                // 欢迎页
       'pages/login/login',                  // 登录页
