@@ -31,26 +31,26 @@
       <view class="flex-row option-row top">
         <image class="icon" src="/images/personal/my_order.png"/>
         <view class="option-title">我的订单</view>
-        <view class="option-text">全部订单</view>
-        <image class="icon" src="/images/view_more.png"/>
+        <view class="option-text" @tap="goPage('orderList')">全部订单</view>
+        <image class="icon" src="/images/view_more.png" @tap="goPage('orderList')"/>
       </view>
       <view class="order-box">
-        <view class="order-item">
+        <view class="order-item" @tap="goPage('orderList')">
           <image class="status-icon" src="/images/personal/to_pay.png"/>
           <view class="status-text">待支付</view>
           <view class="num-tip">2</view>
         </view>
-        <view class="order-item">
+        <view class="order-item" @tap="goPage('orderList')">
           <image class="status-icon" src="/images/personal/to_send.png"/>
           <view class="status-text">待发货</view>
           <view class="num-tip">2</view>
         </view>
-        <view class="order-item">
+        <view class="order-item" @tap="goPage('orderList')">
           <image class="status-icon" src="/images/personal/to_receive.png"/>
           <view class="status-text">待收货</view>
           <view class="num-tip">99</view>
         </view>
-        <view class="order-item">
+        <view class="order-item" @tap="goPage('orderList')">
           <image class="status-icon" src="/images/personal/to_comment.png"/>
           <view class="status-text">待评价</view>
           <view class="num-tip">2</view>
@@ -109,6 +109,9 @@
             break
           case 'myCoupon':
             wx.navigateTo({ url: v })
+            break
+          case 'orderList':
+            wx.navigateTo({ url: 'order/orderList' })
             break
         }
         // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })

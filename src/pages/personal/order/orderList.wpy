@@ -1,0 +1,180 @@
+<template>
+  <wxs module="money" src="../../../utils/money.wxs"></wxs>
+  <view class="container">
+    <navList class="nav-list" :navList="navList" @navTap="navTap"></navList>
+    <!--订单部分-->
+    <view class="order-box">
+      <block wx:for="{{orderList}}" wx:key="{{index}}">
+        <view class="order-item">
+          <view class="order-info">
+            <view class="info-left">
+              <image class="product-img" src="{{item.img}}" lazy-load="true"/>
+            </view>
+            <view class="info-right">
+              <view class="info-row">
+                <view class="name w400 ft-28 ft-b text-overflow">{{item.name}}</view>
+                <view class="status w140 ft-24 ft-b">{{item.status}}</view>
+              </view>
+              <view class="info-row middle">
+                <view class="sku w400 ft-24">{{item.sku}}</view>
+                <view class="price w140 ft-28 ft-b">￥{{money.getMoney(item.price)}}</view>
+              </view>
+              <view class="info-row">
+                <view class="activity ft-20 ft-b" wx:if="{{item.activity}}">{{item.activity}}</view>
+                <view class="num w140 ft-24 ft-b">x {{item.num}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="btn-box">
+            <view class="btn border-btn">查看物流</view>
+            <view class="btn border-btn">取消订单</view>
+            <!--<view class="btn border-btn">退 货</view>
+            <view class="btn border-btn">删除订单</view>
+            <view class="btn color-btn">确认收货</view>
+            <view class="btn color-btn">立即支付</view>-->
+            <view class="btn color-btn">评 价</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../../api/api'
+  import tip from '../../../utils/tip'
+  import navList from '../../../components/navList'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '全部订单'
+    }
+    data = {
+      navList: [
+        { name: '全部', active: true }, { name: '待付款', active: false },
+        { name: '待发货', active: false }, { name: '待收货', active: false }, { name: '待评价', active: false }
+      ],
+      orderList: [
+        { img: 'https://dummyimage.com/153x153', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',
+          sku: '加强型;100ml', activity: '砍价活动', status: '待收货', price: '299', num: 2 },
+        { img: 'https://dummyimage.com/153x153', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',
+          sku: '加强型;100ml', activity: '积分兑换', status: '待付款', price: '299', num: 2 },
+        { img: 'https://dummyimage.com/153x153', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',
+          sku: '加强型;100ml', activity: '拼团活动', status: '待发货', price: '299', num: 2 },
+        { img: 'https://dummyimage.com/153x153', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',
+          sku: '加强型;100ml', activity: '多件促销', status: '待评价', price: '299', num: 2 },
+        { img: 'https://dummyimage.com/153x153', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',
+          sku: '加强型;100ml', status: '已完成', price: '299', num: 2 }
+      ]
+    }
+    methods = {
+      // 页面跳转
+      goPage(item) {
+        // console.log(item)
+        wx.navigateTo({ url: '/pages/material/topic/detail' })
+        // wx.navigateTo({ url: '/pages/material/article/detail?cid=' + item.cid })
+      }
+    }
+    events = {
+      navTap (index) {
+        for (let i of this.navList) {
+          i.active = false
+        }
+        this.navList[index].active = true
+      }
+    }
+    components = { navList }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../../styles/index";
+
+  .container {
+    .order-box {
+      .order-item {
+        width: 710rpx;
+        padding: 20rpx 20rpx 30rpx 20rpx;
+        background: #FFFFFF;
+        margin-top: 20rpx;
+        &:last-child {
+          margin-bottom: 20rpx;
+        }
+        .order-info {
+          display: flex;
+          .info-left {
+            .product-img {
+              width: 153rpx;
+              height: 153rpx;
+              margin: 5rpx 20rpx 25rpx 5rpx;
+            }
+          }
+          .info-right {
+            .info-row {
+              display: flex;
+              justify-content: space-between;
+              &.middle {
+                margin: 7rpx 0;
+              }
+              .w400 {
+                width: 400rpx;
+              }
+              .w140 {
+                width: 140rpx;
+                text-align: right;
+              }
+              .name {
+                color: #333333;
+              }
+              .sku {
+                color: #999999;
+              }
+              .activity {
+                width: 110rpx;
+                line-height: 28rpx;
+                text-align: center;
+                border-radius: 30rpx;
+                color: #9A0000;
+                border: 1rpx #9A0000 solid;
+              }
+              .status {
+                width: 132rpx;
+                color: @mainColor;
+              }
+              .price {
+                color: @priceColor;
+              }
+              .num {
+                color: #333333;
+              }
+            }
+          }
+        }
+
+        .btn-box {
+          display: flex;
+          justify-content: flex-end;
+          border-top: 3rpx #A5A3A3 solid;
+          padding-top: 25rpx;
+          .btn {
+            width: 129rpx;
+            line-height: 40rpx;
+            font-size: 24rpx;
+            text-align: center;
+            border-radius: 30rpx;
+            margin-right: 30rpx;
+          }
+          .border-btn {
+            color: #999999;
+            border: 1rpx #999999 solid;
+          }
+          .color-btn {
+            color: #FFFFFF;
+            background: @mainColor;
+          }
+        }
+      }
+    }
+  }
+</style>
