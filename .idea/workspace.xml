@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95b44956-1ab6-40e6-97e9-6403dc94bc86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/personal/order/logistics.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/personal/order/orderList.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/personal/order/orderList.wpy" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -62,7 +61,7 @@
           <entry key="less" value="549" />
           <entry key="txt" value="122" />
           <entry key="wepycache" value="5" />
-          <entry key="wpy" value="19331" />
+          <entry key="wpy" value="19354" />
           <entry key="wxml" value="7" />
           <entry key="wxs" value="4" />
         </counts>
@@ -73,7 +72,7 @@
           <entry key="JavaScript" value="134" />
           <entry key="Less" value="549" />
           <entry key="PLAIN_TEXT" value="133" />
-          <entry key="Vue.js" value="19331" />
+          <entry key="Vue.js" value="19354" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -85,11 +84,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="43" column="51" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
+            <state relative-caret-position="257">
+              <caret line="43" column="37" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="37" />
               <folding>
                 <element signature="e#212#235#0" expanded="true" />
               </folding>
@@ -127,11 +126,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/personal/order/orderList.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="83" />
+            <state relative-caret-position="373">
+              <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -140,7 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>components/navList</find>
       <find>articleList</find>
       <find>goPage</find>
       <find>productSelected</find>
@@ -170,6 +168,7 @@
       <find>image</find>
       <find>price</find>
       <find>div</find>
+      <find>sw</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -259,11 +258,11 @@
         <option value="$PROJECT_DIR$/src/pages/personal/myCoupon.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/myCollection.wpy" />
         <option value="$PROJECT_DIR$/src/styles/myCss.less" />
-        <option value="$PROJECT_DIR$/src/pages/personal/order/orderList.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/personal.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/order/afterSale.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/order/logistics.wpy" />
         <option value="$PROJECT_DIR$/src/app.wpy" />
+        <option value="$PROJECT_DIR$/src/pages/personal/order/orderList.wpy" />
       </list>
     </option>
   </component>
@@ -400,7 +399,7 @@
       <workItem from="1554812951937" duration="5986000" />
       <workItem from="1554896829834" duration="5471000" />
       <workItem from="1554907542034" duration="210000" />
-      <workItem from="1554984743242" duration="7082000" />
+      <workItem from="1554984743242" duration="7176000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1550657228367</created>
@@ -700,7 +699,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91120000" />
+    <option name="totallyTimeSpent" value="91214000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -720,7 +719,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="1" weight="0.329235" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="2" visible="true" weight="0.27322406" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.27322406" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.38797814" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" weight="0.32970297" />
       <window_info anchor="bottom" id="Message" order="5" />
@@ -1095,13 +1094,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/personal/order/orderList.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/personal/order/logistics.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1114,11 +1106,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="43" column="51" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
+        <state relative-caret-position="257">
+          <caret line="43" column="37" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="37" />
           <folding>
             <element signature="e#212#235#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/order/orderList.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
         </state>
       </provider>
     </entry>

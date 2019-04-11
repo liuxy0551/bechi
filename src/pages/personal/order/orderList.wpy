@@ -26,7 +26,7 @@
             </view>
           </view>
           <view class="btn-box">
-            <view class="btn border-btn">查看物流</view>
+            <view class="btn border-btn" @tap="goPage('logistics')">查看物流</view>
             <view class="btn border-btn">取消订单</view>
             <!--<view class="btn border-btn">退 货</view>
             <view class="btn border-btn">删除订单</view>
@@ -70,10 +70,13 @@
     }
     methods = {
       // 页面跳转
-      goPage(item) {
-        // console.log(item)
-        wx.navigateTo({ url: '/pages/material/topic/detail' })
-        // wx.navigateTo({ url: '/pages/material/article/detail?cid=' + item.cid })
+      goPage(v) {
+        switch (v){
+          case 'logistics':
+            wx.navigateTo({ url: v })
+            break
+        }
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
       }
     }
     events = {
