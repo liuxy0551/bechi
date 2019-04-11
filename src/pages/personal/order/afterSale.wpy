@@ -1,6 +1,26 @@
 <template>
   <view class="container">
-
+    <view class="order-box">
+      <block wx:for="{{orderList}}" wx:key="{{index}}">
+        <view class="order-item">
+          <view class="order-info">
+            <view class="info-left">
+              <image class="product-img" src="{{item.img}}" lazy-load="true"/>
+            </view>
+            <view class="info-right">
+              <div class="name ft-24 text-overflow">{{item.name}}</div>
+              <div class="sku ft-20">规格：{{item.sku}}</div>
+            </view>
+          </view>
+          <view class="btn-box">
+            <image class="status-img" src="/images/personal/after_sales_status.png"/>
+            <div class="status ft-24">{{item.status}}</div>
+            <div class="btn">查看详情</div>
+            <div class="btn">联系客服</div>
+          </view>
+        </view>
+      </block>
+    </view>
   </view>
 </template>
 
@@ -14,7 +34,16 @@
       navigationBarTitleText: '售后中心'
     }
     data = {
-
+      orderList: [
+        { img: 'https://dummyimage.com/140x140', name: '退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称',
+          sku: '加强型;300g', status: '仅退款 退款成功' },
+        { img: 'https://dummyimage.com/140x140', name: '退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称',
+          sku: '加强型;300g', status: '仅退款 退款失败' },
+        { img: 'https://dummyimage.com/140x140', name: '退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称',
+          sku: '加强型;300g', status: '退货退款 退款成功' },
+        { img: 'https://dummyimage.com/140x140', name: '退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称退货商品的名称',
+          sku: '加强型;300g', status: '退货退款 退款失败' }
+      ]
     }
     methods = {
       // 页面跳转
@@ -31,6 +60,61 @@
   @import "../../../styles/index";
 
   .container {
+    .order-box {
+      .order-item {
+        width: 690rpx;
+        background: #FFFFFF;
+        padding: 47rpx 30rpx 39rpx 30rpx;
+        margin-top: 20rpx;
+        &:last-child {
+          margin-bottom: 20rpx;
+        }
+        .order-info {
+          display: flex;
+          .info-left {
+            .product-img {
+              width: 140rpx;
+              height: 140rpx;
+              margin: 0 42rpx 15rpx 0;
+            }
+          }
+          .info-right {
+            color: @666Color;
+            .name {
 
+            }
+            .sku {
+
+            }
+          }
+        }
+
+        .btn-box {
+          display: flex;
+          align-items: center;
+          border-top: 3rpx #A5A3A3 solid;
+          padding-top: 23rpx;
+          .status-img {
+            width: 22rpx;
+            height: 18rpx;
+            margin-right: 15rpx;
+          }
+          .status {
+            flex: 1;
+            color: #333333;
+          }
+          .btn {
+            width: 130rpx;
+            text-align: center;
+            line-height: 40rpx;
+            border: 1rpx #999999 solid;
+            color: #999999;
+            font-size: 24rpx;
+            border-radius: 30rpx;
+            margin-left: 20rpx;
+          }
+        }
+      }
+    }
   }
 </style>

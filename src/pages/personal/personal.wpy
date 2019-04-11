@@ -55,7 +55,7 @@
           <view class="status-text">待评价</view>
           <view class="num-tip">2</view>
         </view>
-        <view class="order-item">
+        <view class="order-item" @tap="goPage('afterSale')">
           <image class="status-icon" src="/images/personal/after_sales.png"/>
           <view class="status-text">售后中</view>
           <view class="num-tip">2</view>
@@ -112,6 +112,9 @@
             break
           case 'orderList':
             wx.navigateTo({ url: 'order/orderList' })
+            break
+          case 'afterSale':
+            wx.navigateTo({ url: 'order/afterSale' })
             break
         }
         // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
