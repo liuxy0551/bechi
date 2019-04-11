@@ -8,15 +8,15 @@
               <image class="product-img" src="{{item.img}}" lazy-load="true"/>
             </view>
             <view class="info-right">
-              <div class="name ft-24 text-overflow">{{item.name}}</div>
-              <div class="sku ft-20">规格：{{item.sku}}</div>
+              <view class="name ft-24 text-overflow">{{item.name}}</view>
+              <view class="sku ft-20">规格：{{item.sku}}</view>
             </view>
           </view>
           <view class="btn-box">
             <image class="status-img" src="/images/personal/after_sales_status.png"/>
-            <div class="status ft-24">{{item.status}}</div>
-            <div class="btn">查看详情</div>
-            <div class="btn">联系客服</div>
+            <view class="status ft-24">{{item.status}}</view>
+            <view class="btn">查看详情</view>
+            <view class="btn">联系客服</view>
           </view>
         </view>
       </block>
