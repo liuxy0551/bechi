@@ -6,7 +6,7 @@
     <view class="order-box">
       <block wx:for="{{orderList}}" wx:key="{{index}}">
         <view class="order-item">
-          <view class="order-info">
+          <view class="order-info" @tap="goPage('orderDetail')">
             <view class="info-left">
               <image class="product-img" src="{{item.img}}" lazy-load="true"/>
             </view>
@@ -26,7 +26,7 @@
             </view>
           </view>
           <view class="btn-box">
-            <view class="btn border-btn" @tap="goPage('logistics')">查看物流</view>
+            <view class="btn border-btn" @tap="goPage('logistics')">收货信息</view>
             <view class="btn border-btn">取消订单</view>
             <!--<view class="btn border-btn">退 货</view>
             <view class="btn border-btn">删除订单</view>
@@ -71,8 +71,11 @@
     methods = {
       // 页面跳转
       goPage(v) {
-        switch (v){
+        switch (v) {
           case 'logistics':
+            wx.navigateTo({ url: v })
+            break
+          case 'orderDetail':
             wx.navigateTo({ url: v })
             break
         }

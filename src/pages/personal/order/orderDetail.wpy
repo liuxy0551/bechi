@@ -1,0 +1,317 @@
+<template>
+  <wxs module="money" src="../../../utils/money.wxs"></wxs>
+  <view class="container">
+    <!--订单状态文字-->
+    <view class="order-status">买家已付款</view>
+    <!--<view class="order-status">卖家已发货</view>-->
+    <!--地址区域-->
+    <view class="address-box">
+      <view class="address-left">
+        <image class="img" src="/images/personal/order_address.png"/>
+      </view>
+      <view class="address-right">
+        <view class="address-row">
+          <view class="text">居居女孩</view>
+          <view class="text">13355557777</view>
+        </view>
+        <view class="address-row address">
+          <view class="text" style="white-space: nowrap">收货地址：</view>
+          <view class="text">杭州市-西湖区-浙江工业大学（屏峰校区）家和西苑14幢112</view>
+        </view>
+      </view>
+    </view>
+
+    <!--商品区域-->
+    <view class="product-box">
+      <view class="product-info">
+        <view class="info-left">
+          <image class="product-img" src="https://dummyimage.com/153x153"/>
+        </view>
+        <view class="info-right">
+          <view class="info-row">
+            <view class="name ft-28 ft-b text-overflow">商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+            <view class="num ft-24 blue">x1</view>
+          </view>
+          <view class="info-row">
+            <view class="sku ft-24">规格：加强型;300g</view>
+            <view class="price ft-28 ft-b">￥{{money.getMoney(299)}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="product-info">
+        <view class="info-left">
+          <image class="product-img" src="https://dummyimage.com/153x153"/>
+        </view>
+        <view class="info-right">
+          <view class="info-row">
+            <view class="name ft-28 ft-b text-overflow">商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+            <view class="num ft-24 blue">x1</view>
+          </view>
+          <view class="info-row">
+            <view class="sku ft-24">规格：加强型;300g</view>
+            <view class="price ft-28 ft-b">￥{{money.getMoney(299)}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="price-box">
+        <view class="price-row">
+          <view class="cf666 ft-b">运费</view>
+          <view class="cf666 ft-b">￥{{money.getMoney(0)}}</view>
+        </view>
+        <view class="price-row">
+          <view class="cf666 ft-b">实付款（含运费）</view>
+          <view class="cf666 ft-b price">￥{{money.getMoney(299)}}</view>
+        </view>
+      </view>
+      <view class="btn-box">
+        <view class="btn ft-24 ft-b">退款</view>
+      </view>
+    </view>
+
+    <!--订单时间区域-->
+    <view class="time-box">
+      <view class="title-row">
+        <view class="color"></view>
+        <view class="cf666 ft-b">订单信息</view>
+      </view>
+      <view class="title-row" style="margin-top: 25rpx" @tap="copy">
+        <image class="copy-img" src="/images/personal/copy.png"/>
+        <view class="time">订单编号：{{orderNo}}</view>
+      </view>
+      <view class="time">创建时间：2018-11-05 11:26:00</view>
+      <view class="time">付款时间：2018-11-05 11:27:30</view>
+      <view class="time">发货时间：2018-11-05 11:55:09</view>
+    </view>
+
+    <!--fixed区域-->
+    <view class="fixed-box">
+      <view class="text ft-28 ft-b" @tap="goPage('service')">联系客服</view>
+      <!--<view class="btn-box">
+        <view class="btn" @tap="goPage('logistics')">收货信息</view>
+        <view class="btn color">确认收货</view>
+      </view>-->
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../../api/api'
+  import tip from '../../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '订单详情'
+    }
+    data = {
+      orderNo: '12325412453452'
+    }
+    methods = {
+      // 页面跳转
+      goPage(v) {
+        switch (v) {
+          case 'detail':
+            wx.navigateTo({ url: v })
+            break
+          case 'logistics':
+            wx.navigateTo({ url: v })
+            break
+          case 'service':
+            wx.navigateTo({ url: '../service' })
+            break
+        }
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
+      },
+      // 复制订单号
+      copy () {
+        let that = this;
+        wx.setClipboardData({
+          //准备复制的数据
+          data: this.orderNo,
+          success: function (res) {
+            wx.showToast({
+              title: '订单号复制成功',
+            });
+          }
+        })
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../../styles/index";
+
+  .container {
+    .order-status {
+      font-size: 28rpx;
+      font-weight: bold;
+      width: 750rpx;
+      line-height: 90rpx;
+      text-align: center;
+      color: #FFFFFF;
+      background: @mainColor;
+    }
+
+    .address-box {
+      display: flex;
+      background: #FFFFFF;
+      padding: 22rpx 23rpx 53rpx 50rpx;
+      margin: 20rpx 0;
+      .address-left {
+        .img {
+          width: 60rpx;
+          height: 60rpx;
+          margin: 23rpx 36rpx 0 0;
+        }
+      }
+      .address-right {
+        .address-row {
+          display: flex;
+          justify-content: space-between;
+          .text {
+            color: @666Color;
+            font-size: 24rpx;
+            font-weight: bold;
+          }
+          .address {
+            justify-content: flex-start;
+          }
+        }
+      }
+    }
+
+    .product-box {
+      padding: 35rpx 25rpx 35rpx 50rpx;
+      background: #FFFFFF;
+      margin-bottom: 20rpx;
+      .product-info {
+        display: flex;
+        margin-bottom: 10rpx;
+        .info-left {
+          .product-img {
+            width: 153rpx;
+            height: 153rpx;
+            margin: 4rpx 20rpx 0 0;
+          }
+        }
+        .info-right {
+          width: 507rpx;
+          .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20rpx;
+            .name {
+              width: 400rpx;
+              color: #333333;
+            }
+            .num {
+              color: #333333;
+            }
+            .sku {
+              color: #999999;
+            }
+            .price {
+              color: @priceColor;
+            }
+          }
+        }
+      }
+
+      .price-box {
+        .price-row {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 5rpx;
+          &:first-child {
+            margin-top: 50rpx;
+          }
+          &:last-child {
+            margin-bottom: 20rpx;
+          }
+          .price {
+            color: @priceColor;
+          }
+        }
+      }
+      .btn-box {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 22rpx;
+        border-top: 1rpx #CCCCCC solid;
+        .btn {
+          color: #999999;
+          width: 129rpx;
+          line-height: 41rpx;
+          border: 1rpx #999999 solid;
+          border-radius: 30rpx;
+          text-align: center;
+        }
+      }
+    }
+
+    .time-box {
+      width: 670rpx;
+      padding: 21rpx 30rpx 30rpx 50rpx;
+      background: #FFFFFF;
+      margin-bottom: 120rpx;
+      .title-row {
+        display: flex;
+        align-items: center;
+        .color {
+          width: 10rpx;
+          height: 35rpx;
+          border-radius: 15rpx;
+          background: #5E1A03;
+          margin-right: 15rpx;
+        }
+      }
+      .copy-img {
+        width: 30rpx;
+        height: 30rpx;
+        margin: 0 10rpx 10rpx 0;
+      }
+      .time {
+        color: #989898;
+        font-size: 24rpx;
+        display: block;
+        margin-bottom: 10rpx;
+      }
+    }
+
+    .fixed-box {
+      width: 750rpx;
+      height: 100rpx;
+      background: #FFFFFF;
+      text-align: center;
+      box-shadow: 5px 0 6px rgba(0,0,0,0.16);
+      position: fixed;
+      bottom: 0;
+      .text {
+        color: @mainColor;
+        line-height: 100rpx;
+      }
+      .btn-box {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 30rpx;
+        .btn {
+          color: #999999;
+          font-size: 24rpx;
+          width: 129rpx;
+          line-height: 41rpx;
+          text-align: center;
+          border: 1rpx #999999 solid;
+          border-radius: 30rpx;
+        }
+        .color {
+          color: #FFFFFF;
+          background: @mainColor;
+          border: none;
+          margin: 0 30rpx 0 40rpx;
+        }
+      }
+    }
+  }
+</style>
