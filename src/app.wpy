@@ -19,6 +19,7 @@ import tip from './utils/tip'
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/personal/order/backOne',       // 选择服务类型
       'pages/mall/mall',                    // 微商城
       'pages/mall/product/list',            // 商品列表
       'pages/mall/product/detail',          // 商品详情
@@ -44,6 +45,8 @@ export default class extends wepy.app {
       'pages/personal/order/logistics',     // 收货信息
       'pages/personal/order/orderDetail',   // 订单详情
       'pages/personal/order/comment',       // 发表评价
+      // 'pages/personal/order/backOne',       // 选择服务类型
+      // 'pages/personal/order/backTwo',       // 申请退款
 
       'pages/login/welcome',                // 欢迎页
       'pages/login/login',                  // 登录页

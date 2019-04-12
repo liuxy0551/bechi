@@ -17,19 +17,23 @@
       </view>
     </view>
 
-    <!--收货信息-->
-    <view class="text-box">
-      <view class="row">
-        <view class="label text">收 货 人：</view>
-        <view class="text">{{buyer.name}}</view>
+    <!--仅退款、退货退款-->
+    <view class="type-box">
+      <view class="type-row">
+        <view class="type-left"></view>
+        <view class="type-middle">
+          <view class="label cf666 ft-b">仅退款</view>
+          <view class="text ft-18 ft-b">未收到货（包含未签收），或卖家协商同意前提下</view>
+        </view>
+        <image class="more-icon" src="/images/view_more.png"/>
       </view>
-      <view class="row">
-        <view class="label text">联系电话：</view>
-        <view class="text">{{buyer.phone}}</view>
-      </view>
-      <view class="row">
-        <view class="label text">收货地址：</view>
-        <view class="text">{{buyer.address}}</view>
+      <view class="type-row">
+        <view class="type-left"></view>
+        <view class="type-middle">
+          <view class="label cf666 ft-b">退货退款</view>
+          <view class="text ft-18 ft-b">已收到货，需要退换已收到货物</view>
+        </view>
+        <image class="more-icon" src="/images/view_more.png"/>
       </view>
     </view>
   </view>
@@ -48,15 +52,11 @@
       product: {
         img: 'https://dummyimage.com/100x100', name: '商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称',
         orderNo: '234412341241412', sku: '加强型;300g', price: '234'
-      },
-      buyer: {
-        name: '居居女孩', phone: '13355557777', address: '杭州市-西湖区-浙江工业大学（屏峰校区）家和西苑14幢112'
       }
     }
     methods = {
       // 复制订单号
       copy () {
-        let that = this;
         wx.setClipboardData({
           //准备复制的数据
           data: this.product.orderNo,
@@ -75,8 +75,43 @@
   @import "../../../styles/index";
 
   .container {
-    .label {
-      white-space: nowrap;
+    .type-box {
+      width: 665rpx;
+      padding: 15rpx 40rpx 15rpx 45rpx;
+      background: #FFFFFF;
+      .type-row {
+        display: flex;
+        align-items: center;
+        padding: 23rpx 0;
+        border-bottom: 1rpx #CCCCCC solid;
+        &:last-child {
+          border-bottom: none;
+        }
+        .type-left {
+          width: 10rpx;
+          height: 35rpx;
+          border-radius: 5rpx;
+          background: #5E1A03;
+          margin-bottom: 16rpx;
+        }
+        .type-middle {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-left: 15rpx;
+          .label {
+
+          }
+          .text {
+            color: #999999;
+          }
+        }
+        .more-icon {
+          width: 24rpx;
+          height: 24rpx;
+        }
+      }
     }
   }
 </style>

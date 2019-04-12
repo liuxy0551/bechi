@@ -146,3 +146,48 @@
   position: fixed;
   z-index: 10000;
 }
+
+//退款、收货地址等页面的头部商品信息
+.product-box {
+  background: #FFFFFF;
+  padding: 20rpx 30rpx 20rpx 50rpx;
+  margin: 20rpx 0;
+  display: flex;
+  .product-left {
+    .product-img {
+      width: 100rpx;
+      height: 100rpx;
+      margin-right: 30rpx;
+    }
+  }
+  .product-right {
+    display: flex;
+    flex-direction: column;
+    .name {
+      font-weight: 500;
+      line-height: 32rpx;
+    }
+  }
+}
+.row {
+  display: flex;
+  align-items: flex-start;
+  .copy-img {
+    width: 30rpx;
+    height: 30rpx;
+    margin: 0 10rpx 15rpx 0;
+  }
+}
+.text-box {
+  background: #FFFFFF;
+  padding: 20rpx 30rpx 20rpx 50rpx;
+}
+.text {
+  color: @666Color;
+  font-size: 24rpx;
+  font-weight: 400;
+  margin-bottom: 15rpx;
+}
+.price {
+  color: @priceColor;
+}
