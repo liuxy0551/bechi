@@ -65,7 +65,7 @@
         </view>
       </view>
       <view class="btn-box">
-        <view class="btn ft-24 ft-b">退款</view>
+        <view class="btn ft-24 ft-b" @tap="goPage('backOne')">退款</view>
       </view>
     </view>
 
@@ -115,6 +115,9 @@
             wx.navigateTo({ url: v })
             break
           case 'logistics':
+            wx.navigateTo({ url: v })
+            break
+          case 'backOne':
             wx.navigateTo({ url: v })
             break
           case 'service':

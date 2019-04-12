@@ -2,7 +2,7 @@
   <wxs module="money" src="../../../utils/money.wxs"></wxs>
   <view class="container">
     <!--商品信息-->
-    <view class="product-box">
+    <view class="top-product-box">
       <view class="product-left">
         <image class="product-img" src="{{product.img}}"/>
       </view>

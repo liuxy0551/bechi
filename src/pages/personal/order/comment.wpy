@@ -59,9 +59,10 @@
       },
       // 当键盘输入时，触发 input 事件 - textarea
       bindText (e) {
-        this.feedback = e.detail.value;
-        this.cursor = e.detail.cursor;
-      },
+        console.log(e.detail.value)
+        // this.feedback = e.detail.value;
+        // this.cursor = e.detail.cursor;
+      }
     }
   }
 </script>
@@ -103,39 +104,7 @@
             color: #333333;
           }
         }
-        .text-media {
-          width: 670rpx;
-          padding: 31rpx 40rpx 34rpx 40rpx;
-          background: #FFFFFF;
-          margin: 20rpx 0 60rpx 0;
-          .text-input {
-            width: 590rpx;
-            height: 200rpx !important;
-            line-height: 35rpx;
-            padding: 30rpx;
-            border: 2rpx #BDC3C7 solid;
-            border-radius: 6rpx;
-          }
-          .media-box {
-            .add-icon {
-              width: 220rpx;
-              height: 220rpx;
-              margin: 20rpx 20rpx 0 0;
-            }
-          }
-        }
       }
-    }
-
-    .submit {
-      color: @mainColor;
-      width: 750rpx;
-      line-height: 100rpx;
-      text-align: center;
-      box-shadow: 0 -1rpx 6rpx rgba(0,0,0,0.16);
-      background: #FFFFFF;
-      position: fixed;
-      bottom: 0;
     }
   }
 </style>

@@ -2,7 +2,7 @@
   <wxs module="money" src="../../../utils/money.wxs"></wxs>
   <view class="container">
     <!--商品信息-->
-    <view class="product-box">
+    <view class="top-product-box">
       <view class="product-left">
         <image class="product-img" src="{{product.img}}"/>
       </view>
@@ -19,7 +19,7 @@
 
     <!--仅退款、退货退款-->
     <view class="type-box">
-      <view class="type-row">
+      <view class="type-row" @tap="goPage('backTwo')">
         <view class="type-left"></view>
         <view class="type-middle">
           <view class="label cf666 ft-b">仅退款</view>
@@ -27,11 +27,11 @@
         </view>
         <image class="more-icon" src="/images/view_more.png"/>
       </view>
-      <view class="type-row">
+      <view class="type-row" @tap="goPage('backTwo')">
         <view class="type-left"></view>
         <view class="type-middle">
           <view class="label cf666 ft-b">退货退款</view>
-          <view class="text ft-18 ft-b">已收到货，需要退换已收到货物</view>
+          <view class="text ft-18 ft-b">已收到货，需要退换已收到的货物</view>
         </view>
         <image class="more-icon" src="/images/view_more.png"/>
       </view>
@@ -46,7 +46,7 @@
 
   export default class  extends wepy.page {
     config = {
-      navigationBarTitleText: '收货信息'
+      navigationBarTitleText: '选择服务类型'
     }
     data = {
       product: {
@@ -55,6 +55,11 @@
       }
     }
     methods = {
+      // 页面跳转
+      goPage(v) {
+        wx.redirectTo({ url: v })
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
+      },
       // 复制订单号
       copy () {
         wx.setClipboardData({
