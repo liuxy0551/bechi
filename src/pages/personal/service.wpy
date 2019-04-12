@@ -26,7 +26,7 @@
         { img: 'https://dummyimage.com/160x160', name: '客服A' },
         { img: 'https://dummyimage.com/160x160', name: '客服B' },
         { img: 'https://dummyimage.com/160x160', name: '客服C' },
-        { img: 'https://dummyimage.com/160x160', name: '客服D' }
+        { img: 'http://img1.doubanio.com/img/biz/poster-1416277929.jpg', name: '客服D' }
       ]
     }
     methods = {
