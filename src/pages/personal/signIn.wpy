@@ -1,0 +1,153 @@
+<template>
+  <view class="container">
+    <view class="top-box">
+      <view class="sign-in-btn ft-38 ft-b">签到</view>
+      <view class="tip ft-24">本月已连续签到7天，再连续签到x天即可领取积分</view>
+    </view>
+
+    <picker class="month-right ft-28" mode="multiSelector" bindchange="bindMultiPickerChange" value="{{dayIndex}}"
+            range="{{dateArray}}">{{dateArray[0][dayIndex[0]]}}年 {{dateArray[1][dayIndex[1]]}}月</picker>
+
+    <!--日历区域-->
+    <view class="day-box">
+      <block wx:for="{{dayList}}" wx:key="{{index}}">
+        <view class="day {{item.active?'active':''}}">{{item.day}}</view>
+      </block>
+    </view>
+
+    <!--规则-->
+    <view class="rule-box">
+      <view class="rule-text">规则：</view>
+      <view class="rule-text">规则1：规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则</view>
+      <view class="rule-text">规则2：规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则</view>
+      <view class="rule-text">规则3：规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则</view>
+      <view class="rule-text">规则4：规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则</view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '签到'
+    }
+    data = {
+      dayIndex: [0, 0],
+      dateArray: [[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+      dayList: [
+        { day: '日', active: true }, { day: '一', active: true }, { day: '二', active: true }, { day: '三', active: true },
+        { day: '四', active: true }, { day: '五', active: true }, { day: '六', active: true }
+      ]
+    }
+    methods = {
+      bindMultiPickerChange (e) {
+        this.dayList.splice(7, this.dayList.length - 7)
+        this.dayIndex = e.detail.value
+        this.monthDays(this.dateArray[0][this.dayIndex[0]], this.dateArray[1][this.dayIndex[1]])
+      }
+    }
+    // 用于计算某个月份有多少天、第一天周几
+    monthDays (year, month) {
+      let temp = new Date(year + '-' + month + '-' + 1)
+      let day = temp.getDay()     // 周几
+      let days = 0
+      if (month == 2) {    // 当月份为二月时，根据闰年还是非闰年判断天数
+        days = year % 4 == 0 ? 29 : 28
+      } else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+        days = 31          // 月份为：1、3、5、7、8、10、12时，天数为31
+      } else {
+        days = 30          // 其他月份天数为31
+      }
+      for (let i = 0; i < day; i ++) {
+        this.dayList.push({ day: '', active: true })
+      }
+      for (let i = 0; i < days; i ++) {
+        this.dayList.push({ day: i + 1, active: true })
+      }
+    }
+    onShow () {
+      let date = new Date()
+      this.monthDays(date.getFullYear(), date.getMonth() + 1)
+      for (let i in this.dateArray[0]) {
+        if (date.getFullYear() == this.dateArray[0][i]) {
+          this.dayIndex[0] = i
+        }
+      }
+      for (let i in this.dateArray[1]) {
+        if (date.getMonth() == this.dateArray[1][i]) {
+          this.dayIndex[1] = Number(i) + 1
+        }
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .top-box {
+    width: 750rpx;
+    height: 300rpx;
+    background: linear-gradient(270deg,rgba(238,223,200,1) 0%,rgba(203,171,96,1) 100%);
+    .sign-in-btn {
+      width: 150rpx;
+      height: 150rpx;
+      border-radius: 50%;
+      color: @mainColor;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 5rpx solid @mainColor;
+      box-shadow: 0 3rpx 20rpx rgba(0,0,0,0.16);
+      margin: 50rpx auto 35rpx auto;
+    }
+    .tip {
+      color: #FFFFFF;
+      text-align: center;
+    }
+  }
+
+  .month-right {
+    width: 750rpx;
+    color: @mainColor;
+    background: #FFFFFF;
+    line-height: 100rpx;
+    text-align: center;
+  }
+
+  .day-box {
+    width: 630rpx;
+    padding: 38rpx 55rpx 0 65rpx;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .day {
+      width: 90rpx;
+      line-height: 40rpx;
+      color: #999999;
+      font-size: 28rpx;
+      margin-bottom: 60rpx;
+      &.active {
+        color: @mainColor;
+      }
+    }
+  }
+
+  .rule-box {
+    width: 630rpx;
+    padding: 38rpx 55rpx 0 65rpx;
+    display: flex;
+    flex-direction: column;
+    .rule-text {
+      color: #999999;
+      font-size: 24rpx;
+      margin-bottom: 34rpx;
+    }
+  }
+</style>

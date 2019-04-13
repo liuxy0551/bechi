@@ -1,0 +1,42 @@
+<template>
+  <view class="container">
+    <!--搜索框-->
+    <view class="search-box">
+      <input class="comment-input ft-26" maxlength="50" bindinput="commentInput"/>
+      <view class="search-content">
+        <image class="search-icon" src="/images/search.png"/>
+        <view class="search-text ft-24">搜索商品</view>
+      </view>
+    </view>
+
+    <products :productList="productList"></products>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+  import products from '../../components/products'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '积分商城'
+    }
+    data = {
+      productList: [1, 2, 3, 4, 5]
+    }
+    methods = {
+
+    }
+    components = { products }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+
+  }
+</style>

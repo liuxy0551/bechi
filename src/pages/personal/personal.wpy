@@ -8,7 +8,7 @@
       <view class="info-box">
         <view class="flex-row top">
           <span class="info-name ft-30">奔波儿灞</span>
-          <span class="check-in ft-22">签到</span>
+          <span class="check-in ft-22" @tap="goPage('signIn')">签到</span>
         </view>
         <view class="flex-row">
           <view class="flex-row left" @tap="goPage('myCoupon')">
@@ -16,7 +16,7 @@
             <span class="info-text">优惠券</span>
             <span class="info-text ft-b">5</span>
           </view>
-          <view class="flex-row">
+          <view class="flex-row" @tap="goPage('integralMall')">
             <image class="image" src="/images/personal/score_record.png"/>
             <span class="info-text">积分商城</span>
             <span class="info-text ft-b">520</span>
@@ -111,6 +111,12 @@
             wx.navigateTo({ url: v })
             break
           case 'myInfo':
+            wx.navigateTo({ url: v })
+            break
+          case 'integralMall':
+            wx.navigateTo({ url: v })
+            break
+          case 'signIn':
             wx.navigateTo({ url: v })
             break
           case 'orderList':
