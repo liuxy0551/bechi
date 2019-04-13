@@ -46,6 +46,7 @@ export default class extends wepy.app {
       'pages/personal/order/comment',       // 发表评价
       'pages/personal/order/backOne',       // 选择服务类型
       'pages/personal/order/backTwo',       // 申请退款
+      'pages/personal/order/backDetail',    // 退款详情
 
       'pages/login/welcome',                // 欢迎页
       'pages/login/login',                  // 登录页

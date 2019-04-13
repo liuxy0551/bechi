@@ -100,7 +100,7 @@
     methods = {
       // 页面跳转
       goPage(v) {
-        switch (v){
+        switch (v) {
           case 'myCollection':
             wx.navigateTo({ url: v })
             break

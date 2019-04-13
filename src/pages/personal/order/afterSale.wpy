@@ -15,8 +15,8 @@
           <view class="btn-box">
             <image class="status-img" src="/images/personal/after_sales_status.png"/>
             <view class="status ft-24">{{item.status}}</view>
-            <view class="btn">查看详情</view>
-            <view class="btn">联系客服</view>
+            <view class="btn" @tap="goPage('backDetail')">查看详情</view>
+            <view class="btn" @tap="goPage('service')">联系客服</view>
           </view>
         </view>
       </block>
@@ -47,10 +47,16 @@
     }
     methods = {
       // 页面跳转
-      goPage(item) {
-        // console.log(item)
-        wx.navigateTo({ url: '/pages/material/topic/detail' })
-        // wx.navigateTo({ url: '/pages/material/article/detail?cid=' + item.cid })
+      goPage (v) {
+        switch (v) {
+          case 'backDetail':
+            wx.navigateTo({ url: v })
+            break
+          case 'service':
+            wx.navigateTo({ url: '../service' })
+            break
+        }
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
       }
     }
   }
