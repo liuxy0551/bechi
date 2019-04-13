@@ -23,7 +23,7 @@
           </view>
         </view>
       </view>
-      <image class="setting-img" src="/images/personal/setting.png"/>
+      <image class="setting-img" src="/images/personal/setting.png" @tap="goPage('myInfo')"/>
     </view>
 
     <!--功能条-->
@@ -108,6 +108,9 @@
             wx.navigateTo({ url: v })
             break
           case 'myCoupon':
+            wx.navigateTo({ url: v })
+            break
+          case 'myInfo':
             wx.navigateTo({ url: v })
             break
           case 'orderList':

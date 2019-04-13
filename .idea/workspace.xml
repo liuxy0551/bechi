@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95b44956-1ab6-40e6-97e9-6403dc94bc86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/personal/order/backDetail.wpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/personal/myInfo.wpy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/personal/order/afterSale.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/personal/order/afterSale.wpy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/personal/personal.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/personal/personal.wpy" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -38,7 +37,7 @@
           <entry key="png" value="14" />
           <entry key="wepycache" value="5" />
           <entry key="wepyignore" value="1" />
-          <entry key="wpy" value="181" />
+          <entry key="wpy" value="186" />
           <entry key="wxml" value="8" />
           <entry key="wxs" value="6" />
           <entry key="wxss" value="1" />
@@ -54,7 +53,7 @@
           <entry key="Less" value="50" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="16" />
-          <entry key="Vue.js" value="181" />
+          <entry key="Vue.js" value="186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -64,7 +63,7 @@
           <entry key="less" value="628" />
           <entry key="txt" value="134" />
           <entry key="wepycache" value="5" />
-          <entry key="wpy" value="24057" />
+          <entry key="wpy" value="24522" />
           <entry key="wxml" value="7" />
           <entry key="wxs" value="4" />
         </counts>
@@ -75,7 +74,7 @@
           <entry key="JavaScript" value="134" />
           <entry key="Less" value="628" />
           <entry key="PLAIN_TEXT" value="145" />
-          <entry key="Vue.js" value="24057" />
+          <entry key="Vue.js" value="24522" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -87,13 +86,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="41" column="51" lean-forward="true" selection-start-line="41" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
+            <state relative-caret-position="406">
+              <caret line="41" column="28" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="28" />
               <folding>
                 <element signature="e#212#235#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/personal/personal.wpy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="25" column="88" selection-start-line="25" selection-start-column="88" selection-end-line="25" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/personal/myInfo.wpy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+              <folding>
+                <element signature="e#77#100#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,32 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/personal/order/backDetail.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-              <folding>
-                <element signature="e#2176#2199#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/personal/order/afterSale.wpy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/personal/order/backTwo.wpy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="86" />
-              <folding>
-                <element signature="n#style#0;n#view#2;n#view#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="319">
+              <caret line="89" column="15" lean-forward="true" selection-start-line="89" selection-start-column="15" selection-end-line="94" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -136,7 +132,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>star</find>
       <find>textarea</find>
       <find>text-input</find>
       <find>border</find>
@@ -159,13 +154,14 @@
       <find>#D35400</find>
       <find>text-media</find>
       <find>product-box</find>
-      <find>image</find>
       <find>#CBAB60</find>
-      <find>input</find>
       <find>153</find>
       <find>input-btn-box</find>
-      <find>div</find>
       <find>swi</find>
+      <find>image</find>
+      <find>input</find>
+      <find>IDcard</find>
+      <find>div</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -220,7 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.wepycache" />
         <option value="$PROJECT_DIR$/src/styles/index.less" />
         <option value="$PROJECT_DIR$/src/styles/color.less" />
@@ -258,7 +253,6 @@
         <option value="$PROJECT_DIR$/src/pages/material/classroom/list.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/myCoupon.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/myCollection.wpy" />
-        <option value="$PROJECT_DIR$/src/pages/personal/personal.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/order/orderList.wpy" />
         <option value="$PROJECT_DIR$/src/styles/universal.less" />
         <option value="$PROJECT_DIR$/src/styles/myCss.less" />
@@ -270,7 +264,9 @@
         <option value="$PROJECT_DIR$/src/pages/personal/service.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/order/backDetail.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/order/afterSale.wpy" />
+        <option value="$PROJECT_DIR$/src/pages/personal/myInfo.wpy" />
         <option value="$PROJECT_DIR$/src/app.wpy" />
+        <option value="$PROJECT_DIR$/src/pages/personal/personal.wpy" />
       </list>
     </option>
   </component>
@@ -357,8 +353,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/pages/personal/order" />
       <recent name="$PROJECT_DIR$/src/pages/personal" />
+      <recent name="$PROJECT_DIR$/src/pages/personal/order" />
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/pages/mall/product" />
@@ -407,7 +403,7 @@
       <workItem from="1554896829834" duration="5471000" />
       <workItem from="1554907542034" duration="210000" />
       <workItem from="1554984743242" duration="11189000" />
-      <workItem from="1555075773142" duration="12271000" />
+      <workItem from="1555075773142" duration="13710000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1550657228367</created>
@@ -721,7 +717,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107498000" />
+    <option name="totallyTimeSpent" value="108937000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -813,13 +809,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="测试扫描二维码" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/bottomLine.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/pages/material/material.wxml" />
     <entry file="file://$PROJECT_DIR$/src/images/video_icon.png">
       <provider selected="true" editor-type-id="images" />
@@ -1027,24 +1016,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/personal/myCoupon.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/navList.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/personal/myCollection.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="56" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -1059,13 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/personal/personal.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="116" column="49" selection-start-line="116" selection-start-column="49" selection-end-line="116" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -1134,16 +1102,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/personal/order/backDetail.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-          <folding>
-            <element signature="e#2176#2199#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/personal/order/afterSale.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="564">
@@ -1151,13 +1109,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/myCoupon.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/myCollection.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="56" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/order/backDetail.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="89" column="15" lean-forward="true" selection-start-line="89" selection-start-column="15" selection-end-line="94" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/myInfo.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+          <folding>
+            <element signature="e#77#100#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="41" column="51" lean-forward="true" selection-start-line="41" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
+        <state relative-caret-position="406">
+          <caret line="41" column="28" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="28" />
           <folding>
             <element signature="e#212#235#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/personal.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="25" column="88" selection-start-line="25" selection-start-column="88" selection-end-line="25" selection-end-column="88" />
         </state>
       </provider>
     </entry>
