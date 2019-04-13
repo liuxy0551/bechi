@@ -56,6 +56,9 @@
       background: #FFFFFF;
       margin-bottom: 20rpx;
       padding: 25rpx 15rpx 25rpx 30rpx;
+      &:first-child {
+        margin-top: 20rpx;
+      }
       .product-left {
         margin-right: 20rpx;
         .product-img {

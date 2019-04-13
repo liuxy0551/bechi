@@ -47,6 +47,12 @@
       &:nth-child(2n) {
         margin: 0 0 20rpx 0;
       }
+      &:nth-child(1) {
+        margin-top: 20rpx;
+      }
+      &:nth-child(2) {
+        margin-top: 20rpx;
+      }
       .product-img {
         width: 340rpx;
         height: 400rpx;
