@@ -7,7 +7,7 @@
         <view class="product-text">
           <view class="product-name ft-24 text-overflow">保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D保健品补充钙质及维生素D</view>
           <view class="price-num">
-            <view class="price ft-30" wx:if="{{item.money}}">￥{{money.getMoney('1234')}}</view>
+            <view class="price ft-30" wx:if="{{price}}">￥{{money.getMoney('1234')}}</view>
             <view class="price ft-30" wx:else>1000积分</view>
             <view class="num ft-20">233人已购买</view>
           </view>
@@ -23,7 +23,7 @@
   export default class products extends wepy.component {
     props = {
       productList: { type: Array, default: [], twoWay: true },
-      money: { type: Boolean, default: true, twoWay: true }
+      price: { type: Boolean, default: true, twoWay: true }
     }
     data = {}
     methods = {

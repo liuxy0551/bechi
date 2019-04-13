@@ -9,7 +9,7 @@
       </view>
     </view>
 
-    <products :productList="productList" money="false"></products>
+    <products :productList="productList" :price="price"></products>
   </view>
 </template>
 
@@ -24,7 +24,8 @@
       navigationBarTitleText: '积分商城'
     }
     data = {
-      productList: [1, 2, 3, 4, 5]
+      productList: [1, 2, 3, 4, 5],
+      price: false
     }
     methods = {
 

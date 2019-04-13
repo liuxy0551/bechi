@@ -1,7 +1,7 @@
 <template>
   <view class="container">
 
-    <products :productList="productList" money="false"></products>
+    <products :productList="productList" :price="price"></products>
   </view>
 </template>
 
@@ -16,7 +16,8 @@
       navigationBarTitleText: '我的积分'
     }
     data = {
-      productList: [1, 2, 3, 4, 5]
+      productList: [1, 2, 3, 4, 5],
+      price: false
     }
     methods = {
 
