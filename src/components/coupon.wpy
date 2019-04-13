@@ -64,6 +64,7 @@
             display: flex;
             align-items: flex-end;
             .price {
+              color: #FFFFFF;
               .num {
 
               }
