@@ -1,13 +1,5 @@
 <template>
   <view class="container">
-    <!--搜索框-->
-    <view class="search-box">
-      <input class="comment-input ft-26" maxlength="50" bindinput="commentInput"/>
-      <view class="search-content">
-        <image class="search-icon" src="/images/search.png"/>
-        <view class="search-text ft-24">搜索商品</view>
-      </view>
-    </view>
 
     <products :productList="productList" money="false"></products>
   </view>
@@ -21,7 +13,7 @@
 
   export default class  extends wepy.page {
     config = {
-      navigationBarTitleText: '积分商城'
+      navigationBarTitleText: '我的积分'
     }
     data = {
       productList: [1, 2, 3, 4, 5]
