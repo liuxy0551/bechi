@@ -1,0 +1,131 @@
+<template>
+  <view class="container">
+    <view class="top-box">
+      <view class="today-text ft-24">今日累计获得积分</view>
+      <view class="today-num ft-52">900</view>
+      <view class="num-row">
+        <view class="num-text">0</view>
+        <view class="num-text">1000</view>
+      </view>
+    </view>
+
+    <view class="task-title ft-24">任 务</view>
+
+    <view class="task-box">
+      <block wx:for="{{taskList}}" wx:key="{{index}}">
+        <view class="task-item">
+          <view class="task-left">
+            <view class="name ft-28">{{item.name}}</view>
+            <view class="rule ft-24">{{item.rule}}</view>
+            <view class="rule ft-24">{{item.rule1}}</view>
+          </view>
+          <view class="task-btn ft-24" @tap="goPage({{item.to}})">{{item.btn}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+  import products from '../../components/products'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '积分任务'
+    }
+    data = {
+      taskList: [
+        { name: '每日签到', rule: '每日签到获50积分，连续7天签到积分加倍', btn: '去签到', to: 'signIn' },
+        { name: '设置资料', rule: '设置资料可获得100积分', btn: '去设置', to: 'myInfo' },
+        { name: '商品评价', rule: '评价商品可以获得50积分', rule1: '优质评价置顶将有机会额外获得50积分', btn: '去评价', to: 'order/orderList' },
+        { name: '分享文章', rule: '分享文章到朋友圈可以获得100积分', rule1: '每日上限500积分', btn: '去分享', to: '/pages/material/classroom/list' },
+        { name: '文章点赞', rule: '为文章点赞可以获得10积分', rule1: '每日上限50积分', btn: '去点赞', to: '/pages/material/classroom/list' },
+        { name: '文章评论', rule: '为文章评论可以获得50积分', rule1: '优质评论置顶将有机会额外获得50积分', btn: '去评论', to: '/pages/material/classroom/list' },
+        { name: '邀请好友', rule: '邀请好友进入商城完善资料可以获得500积分', btn: '去邀请', to: '' }
+      ]
+    }
+    methods = {
+      // 页面跳转
+      goPage (v) {
+        wx.navigateTo({ url: v })
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    .top-box {
+      text-align: center;
+      width: 683rpx;
+      padding: 34rpx 33rpx 10rpx 34rpx;
+      background: linear-gradient(270deg,rgba(238,223,200,1) 0%,rgba(203,171,96,1) 100%);
+      .today-text {
+        color: #5E1A03;
+        font-weight: 400;
+      }
+      .today-num {
+        color: #5E1A03;
+        font-weight: 600;
+        padding: 10rpx 0;
+      }
+      .num-row {
+        display: flex;
+        justify-content: space-between;
+        border-top: 2rpx #FFFFFF dashed;
+        padding: 20rpx;
+        .num-text {
+          color: #FFFFFF;
+          font-size: 24rpx;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .task-title {
+      color: #FFFFFF;
+      width: 750rpx;
+      line-height: 50rpx;
+      text-align: center;
+      background: #5E1A03;
+      margin-bottom: 20rpx;
+    }
+
+    .task-box {
+      .task-item {
+        width: 686rpx;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #FFFFFF;
+        border-radius: 10rpx;
+        padding: 22rpx 20rpx 21rpx 24rpx;
+        margin-bottom: 20rpx;
+        .task-left {
+          .name {
+            color: #333333;
+            font-weight: 400;
+          }
+          .rule {
+            color: #999999;
+          }
+        }
+        .task-btn {
+          width: 129rpx;
+          color: #FFFFFF;
+          font-weight: 400;
+          line-height: 41rpx;
+          text-align: center;
+          border-radius: 30rpx;
+          background: @mainColor;
+        }
+      }
+    }
+  }
+</style>

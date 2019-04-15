@@ -40,8 +40,10 @@ export default class extends wepy.app {
       'pages/personal/myCollection',        // 我的收藏
       'pages/personal/myCoupon',            // 优惠券
       'pages/personal/myInfo',              // 我的信息
-      'pages/personal/integralMall',        // 积分商城
       'pages/personal/myIntegral',          // 我的积分
+      'pages/personal/integralTask',        // 积分任务
+      'pages/personal/integralRecord',      // 积分记录
+      'pages/personal/integralMall',        // 积分商城
       'pages/personal/signIn',              // 签到
       'pages/personal/order/orderList',     // 订单列表
       'pages/personal/order/afterSale',     // 售后中心

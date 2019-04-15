@@ -1,5 +1,39 @@
 <template>
   <view class="container">
+    <view class="top-box">
+      <view class="top-row">
+        <span class="btn" @tap="goPage('integralRecord')">获取记录</span>
+        <span class="btn" @tap="goPage('integralRecord')">使用记录</span>
+      </view>
+
+      <view class="level-row">
+        <view class="text ft-24">我的积分</view>
+        <view class="num ft-52">10000</view>
+        <!--<image class="icon" src="/images/personal/level1.png"/>-->
+        <!--<image class="icon" src="/images/personal/level2.png"/>-->
+        <!--<image class="icon" src="/images/personal/level3.png"/>-->
+        <image class="icon" src="/images/personal/level4.png"/>
+      </view>
+
+      <view class="text-row-box">
+        <view class="title ft-24">做任务赚积分啦</view>
+        <view class="text-row">
+          <view class="text">签到得积分</view>
+          <view class="point"></view>
+          <view class="text">购物送积分</view>
+          <view class="point"></view>
+          <view class="text">分享赚积分</view>
+        </view>
+        <view class="line-row">
+          <view class="line"></view>
+          <view class="text ft-24" @tap="goPage('integralTask')">如何获得更多积分</view>
+          <image class="icon" src="/images/personal/query.png" @tap="goPage('integralTask')"/>
+          <view class="line"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="title-text">积分0元购</view>
 
     <products :productList="productList" :price="price"></products>
   </view>
@@ -20,7 +54,11 @@
       price: false
     }
     methods = {
-
+      // 页面跳转
+      goPage (v) {
+        wx.navigateTo({ url: v })
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
+      }
     }
     components = { products }
   }
@@ -30,6 +68,93 @@
   @import "../../styles/index";
 
   .container {
+    .top-box {
+      width: 683rpx;
+      padding: 18rpx 31rpx 10rpx 36rpx;
+      background: linear-gradient(270deg,rgba(238,223,200,1) 0%,rgba(203,171,96,1) 100%);
+      .top-row {
+        display: flex;
+        justify-content: space-between;
+        .btn {
+          color: #FFFFFF;
+          font-size: 24rpx;
+          font-weight: 400;
+        }
+      }
+      .level-row {
+        display: flex;
+        align-items: flex-end;
+        margin: 10rpx 0 50rpx 0;
+        .text {
+          color: #5E1A03;
+          font-weight: 400;
+          margin-left: 140rpx;
+        }
+        .num {
+          color: #5E1A03;
+          font-weight: 600;
+          margin: 0 230rpx 0 25rpx;
+        }
+        .icon {
+          width: 40rpx;
+          height: 40rpx;
+          margin-bottom: 12rpx;
+        }
+      }
+      .text-row-box {
+        border-top: 2rpx #FFFFFF dashed;
+        padding-top: 19rpx;
+        .title {
+          color: #FFFFFF;
+          text-align: center;
+          font-weight: 400;
+        }
+        .text-row {
+          padding: 16rpx 0 10rpx 0;
+          display: flex;
+          align-items: center;
+          .text {
+            color: #FFFFFF;
+            font-size: 34rpx;
+            font-weight: 600;
+          }
+          .point {
+            width: 10rpx;
+            height: 10rpx;
+            border-radius: 50%;
+            background: #FFFFFF;
+            margin: 0 32rpx;
+          }
+        }
+        .line-row {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20rpx;
+          .line {
+            width: 205rpx;
+            height: 2rpx;
+            background: #FFFFFF;
+          }
+          .text {
+            color: #FFFFFF;
+            margin: 0 10rpx 0 20rpx;
+            font-weight: 400;
+          }
+          .icon {
+            width: 35rpx;
+            height: 35rpx;
+            margin-right: 20rpx;
+          }
+        }
+      }
+    }
 
+    .title-text {
+      width: 750rpx;
+      line-height: 90rpx;
+      color: #FFFFFF;
+      background: #5E1A03;
+      text-align: center;
+    }
   }
 </style>

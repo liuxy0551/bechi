@@ -1,0 +1,191 @@
+<template>
+  <view class="container">
+    <navList :navList="navList" which="color" @navTap="navTap"></navList>
+
+    <view class="date-box">
+      <picker class="year-month ft-28" mode="date" value="{{date}}" start="2018-01" fields="month"
+              bindchange="bindDateChange">{{date}}</picker>
+      <!--<image class="icon" src="/images/personal/choose_time.png"/>-->
+    </view>
+
+    <view class="record-box">
+      <view class="title-row">
+        <view class="label ft-28">本月总计</view>
+        <view class="num ft-28">1200</view>
+      </view>
+      <view class="record-list" wx:if="{{oneSelected}}">
+        <block wx:for="{{recordList}}" wx:key="{{index}}">
+          <view class="record-item">
+            <view class="record-row">
+              <view class="text">{{item.text}}</view>
+              <view class="num">{{item.num}}</view>
+            </view>
+            <view class="time">{{item.time}}</view>
+          </view>
+        </block>
+      </view>
+      <view class="record-list" wx:else>
+        <block wx:for="{{recordUsedList}}" wx:key="{{index}}">
+          <view class="record-item">
+            <view class="record-row">
+              <div class="record-left">
+                <image class="product-img" src="{{item.img}}" lazy-load="true"/>
+              </div>
+              <div class="record-middle">
+                <div class="product-name ft-28 text-overflow">{{item.name}}</div>
+                <div class="product-time ft-28">{{item.time}}</div>
+              </div>
+              <div class="record-right ft-28">{{item.num}}</div>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+  import navList from '../../components/navList'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '积分记录'
+    }
+    data = {
+      navList: [
+        { name: '获取记录', active: true }, { name: '使用记录', active: false }
+      ],
+      oneSelected: true,
+      date: '2018-01',
+      recordList: [
+        { text: '签到', num: '20', time: '2019-03-05 12:21:15' }, { text: '购买商品', num: '20', time: '2019-03-05 12:21:15' },
+        { text: '签到', num: '240', time: '2019-03-05 12:21:15' }, { text: '购买商品', num: '210', time: '2019-03-05 12:21:15' },
+        { text: '签到', num: '20', time: '2019-03-05 12:21:15' }, { text: '购买商品', num: '20', time: '2019-03-05 12:21:15' },
+        { text: '签到', num: '220', time: '2019-03-05 12:21:15' }, { text: '购买商品', num: '120', time: '2019-03-05 12:21:15' },
+        { text: '签到', num: '320', time: '2019-03-05 12:21:15' }, { text: '购买商品', num: '20', time: '2019-03-05 12:21:15' }
+      ],
+      recordUsedList: [
+        { img: 'https://dummyimage.com/97x97', name: '商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称', time: '2019-03-05 12:21:15', num: '100' },
+        { img: 'https://dummyimage.com/97x97', name: '商品名称商品名称商品名称商品名称商品名称', time: '2019-03-05 12:21:15', num: '100' },
+        { img: 'https://dummyimage.com/97x97', name: '商品名称商品名称商品名称商品名称', time: '2019-03-05 12:21:15', num: '100' },
+        { img: 'https://dummyimage.com/97x97', name: '商品名称商品名称商品名称商品名称', time: '2019-03-05 12:21:15', num: '100' },
+        { img: 'https://dummyimage.com/97x97', name: '商品名称商品名称商品名称商品名称', time: '2019-03-05 12:21:15', num: '100' },
+        { img: 'https://dummyimage.com/97x97', name: '商品名称商品名称商品名称商品名称', time: '2019-03-05 12:21:15', num: '100' },
+        { img: 'https://dummyimage.com/97x97', name: '商品名称商品名称商品名称商品名称', time: '2019-03-05 12:21:15', num: '100' }
+      ]
+    }
+    methods = {
+      bindDateChange (e) {
+        this.date = e.detail.value
+      },
+    }
+    events = {
+      navTap (index) {
+        for (let i of this.navList) {
+          i.active = false
+        }
+        this.navList[index].active = true
+        if (index) {
+          this.oneSelected = false
+        } else {
+          this.oneSelected = true
+        }
+      }
+    }
+    components = { navList }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    .date-box {
+      padding: 5rpx 40rpx;
+      border: 1rpx @mainColor solid;
+      border-radius: 50rpx;
+      margin: 19rpx 0 29rpx 0;
+      display: flex;
+      align-items: center;
+      .year-month {
+        color: @666Color;
+      }
+      .icon {
+        width: 30rpx;
+        height: 15rpx;
+        margin-left: 20rpx;
+      }
+    }
+
+    .record-box {
+      width: 665rpx;
+      padding: 0 42rpx 0 43rpx;
+      .title-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 11rpx 14rpx 66rpx;
+        border-bottom: 1rpx #CCCCCC solid;
+        margin-bottom: 40rpx;
+        .label {
+          color: #666666;
+        }
+        .num {
+          color: #C70000;
+          font-weight: 600;
+        }
+      }
+
+      .record-list {
+        .record-item {
+          margin-bottom: 30rpx;
+          padding: 0 28rpx 0 22rpx;
+          .record-row {
+            display: flex;
+            justify-content: space-between;
+            .text {
+              color: @666Color;
+              font-size: 28rpx;
+              font-weight: 400;
+              margin: 0;
+            }
+            .num {
+              color: #C70000;
+              font-size: 28rpx;
+              font-weight: 400;
+            }
+            .record-left {
+              .product-img {
+                width: 97rpx;
+                height: 97rpx;
+                margin-right: 28rpx;
+              }
+            }
+            .record-middle {
+              margin-right: 20rpx;
+              .product-name {
+                color: #666666;
+              }
+              .product-time {
+                color: #999999;
+              }
+            }
+            .record-right {
+              color: #D50000;
+              font-weight: 400;
+            }
+          }
+          .time {
+            color: #999999;
+            font-size: 24rpx;
+            font-weight: 300;
+
+          }
+        }
+      }
+    }
+  }
+</style>
