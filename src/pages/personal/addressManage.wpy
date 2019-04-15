@@ -1,0 +1,104 @@
+<template>
+  <view class="container">
+    <view class="address-box">
+      <block wx:for="{{addressList}}" wx:key="{{index}}">
+        <view class="address-item">
+          <view class="name-phone">
+            <view class="color"></view>
+            <view class="name cf666">{{item.name}}</view>
+            <view class="phone cf666">{{item.phone}}</view>
+          </view>
+          <view class="address-text cf666">{{item.text}}</view>
+          <view class="default-btn">
+            <image class="image" src="/images/personal/radio_active.png" wx:if="{{item.default}}"/>
+            <image class="image" src="/images/personal/radio_unactive.png" wx:else/>
+            <view class="default-text">默认地址</view>
+            <view class="btn" @tap="goPage">编辑</view>
+            <view class="btn">删除</view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <view class="submit ft-28 ft-b" @tap="goPage">新增地址</view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '地址管理'
+    }
+    data = {
+      addressList: [
+        { name: '聚聚女孩', phone: '13355557777', text: '杭州市-西湖区-浙江工业大学（屏峰校区）家和西苑14幢112杭州市-西湖区-浙江工业大学浙江工业大学浙江工业大学（屏峰校区）家和西苑14幢112', default: true },
+        { name: '聚聚女孩', phone: '13355557777', text: '杭州市-西湖区-浙江工业大学（屏峰校区）家和西苑14幢112杭州市-西湖区-浙江工业大学（屏峰校区）家和西苑14幢112', default: false },
+        { name: '聚聚女孩', phone: '13355557777', text: '杭州市-西湖区-浙江工业大学（屏峰校区）家和西苑14幢112', default: false }
+      ]
+    }
+    methods = {
+      // 页面跳转
+      goPage (v) {
+        wx.navigateTo({ url: 'addressManage' })
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    .address-box {
+      .address-item {
+        width: 670rpx;
+        padding: 35rpx 40rpx 29rpx 40rpx;
+        background: #FFFFFF;
+        &:not(:last-child) {
+          border-bottom: 1rpx #CCCCCC solid;
+        }
+        .name-phone {
+          display: flex;
+          align-items: center;
+          .color {
+            width: 5rpx;
+            height: 50rpx;
+            background: @mainColor;
+          }
+          .name {
+            flex: 1;
+            text-align: left;
+            margin-left: 13rpx;
+          }
+          .phone {
+
+          }
+        }
+        .address-text {
+          margin: 21rpx 0 33rpx 0;
+        }
+        .default-btn {
+          display: flex;
+          color: #999999;
+          font-size: 22rpx;
+          .image {
+            width: 30rpx;
+            height: 30rpx;
+            margin-right: 15rpx;
+          }
+          .default-text {
+            flex: 1;
+          }
+          .btn {
+            margin-right: 40rpx;
+          }
+        }
+      }
+    }
+  }
+</style>

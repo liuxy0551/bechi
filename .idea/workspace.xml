@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95b44956-1ab6-40e6-97e9-6403dc94bc86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/personal/integralRecord.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/personal/integralTask.wpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/personal/addressManage.wpy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/personal/myIntegral.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/personal/myIntegral.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/universal.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/universal.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/personal/personal.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/personal/personal.wpy" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,7 +38,7 @@
           <entry key="png" value="14" />
           <entry key="wepycache" value="5" />
           <entry key="wepyignore" value="1" />
-          <entry key="wpy" value="208" />
+          <entry key="wpy" value="212" />
           <entry key="wxml" value="9" />
           <entry key="wxs" value="6" />
           <entry key="wxss" value="2" />
@@ -56,7 +54,7 @@
           <entry key="Less" value="53" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="16" />
-          <entry key="Vue.js" value="208" />
+          <entry key="Vue.js" value="212" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -64,9 +62,9 @@
           <entry key="gitignore" value="6" />
           <entry key="js" value="130" />
           <entry key="less" value="638" />
-          <entry key="txt" value="139" />
+          <entry key="txt" value="150" />
           <entry key="wepycache" value="5" />
-          <entry key="wpy" value="29073" />
+          <entry key="wpy" value="29633" />
           <entry key="wxml" value="7" />
           <entry key="wxs" value="4" />
         </counts>
@@ -76,8 +74,8 @@
           <entry key="HTML" value="7" />
           <entry key="JavaScript" value="134" />
           <entry key="Less" value="638" />
-          <entry key="PLAIN_TEXT" value="150" />
-          <entry key="Vue.js" value="29073" />
+          <entry key="PLAIN_TEXT" value="161" />
+          <entry key="Vue.js" value="29633" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -92,8 +90,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="37" column="49" lean-forward="true" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+            <state relative-caret-position="500">
+              <caret line="45" column="51" lean-forward="true" selection-start-line="45" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
               <folding>
                 <element signature="e#212#235#0" expanded="true" />
               </folding>
@@ -102,12 +100,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/personal/integralRecord.wpy">
+        <entry file="file://$PROJECT_DIR$/src/pages/personal/addressManage.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="72" column="74" selection-start-line="72" selection-start-column="74" selection-end-line="72" selection-end-column="74" />
+            <state relative-caret-position="225">
+              <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
               <folding>
-                <element signature="e#151#174#0" expanded="true" />
+                <element signature="e#77#100#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,7 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>input-btn-box</find>
       <find>swi</find>
       <find>input</find>
       <find>IDcard</find>
@@ -132,7 +129,6 @@
       <find>monthIndex</find>
       <find>yearIndex</find>
       <find>price-num</find>
-      <find>image</find>
       <find>#5E1A03</find>
       <find>text-row</find>
       <find>text-box</find>
@@ -144,9 +140,11 @@
       <find>record-item</find>
       <find>line</find>
       <find>line-row</find>
-      <find>#CBAB60</find>
-      <find>div</find>
       <find>lazy</find>
+      <find>#CBAB60</find>
+      <find>image</find>
+      <find>div</find>
+      <find>编 辑</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/pages/personal</dir>
@@ -187,6 +185,7 @@
     <setting file="file://$PROJECT_DIR$/src/pages/personal/integralTask.wpy" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/pages/material/material.wpy" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/components/products.wpy" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/pages/personal/addressManage.wpy" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/pages/personal/myCollection.wpy" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/pages/material/topic/list.wpy" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/pages/mall/mall.wpy" root0="SKIP_INSPECTION" />
@@ -204,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/pages/material/topic/list.wpy" />
         <option value="$PROJECT_DIR$/src/components/navListScroll.wpy" />
         <option value="$PROJECT_DIR$/src/pages/material/material.wpy" />
         <option value="$PROJECT_DIR$/src/components/navScrollList.wpy" />
@@ -246,7 +244,6 @@
         <option value="$PROJECT_DIR$/src/components/rowProducts.wpy" />
         <option value="$PROJECT_DIR$/src/styles/myCss.less" />
         <option value="$PROJECT_DIR$/src/pages/personal/signIn.wpy" />
-        <option value="$PROJECT_DIR$/src/pages/personal/personal.wpy" />
         <option value="$PROJECT_DIR$/dist/pages/mall/product/list.wxml" />
         <option value="$PROJECT_DIR$/src/components/products.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/integralMall.wpy" />
@@ -254,6 +251,8 @@
         <option value="$PROJECT_DIR$/src/pages/personal/myIntegral.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/integralTask.wpy" />
         <option value="$PROJECT_DIR$/src/pages/personal/integralRecord.wpy" />
+        <option value="$PROJECT_DIR$/src/pages/personal/personal.wpy" />
+        <option value="$PROJECT_DIR$/src/pages/personal/addressManage.wpy" />
         <option value="$PROJECT_DIR$/src/app.wpy" />
       </list>
     </option>
@@ -390,7 +389,7 @@
       <workItem from="1554984743242" duration="11189000" />
       <workItem from="1555075773142" duration="21190000" />
       <workItem from="1555292520809" duration="61000" />
-      <workItem from="1555328663505" duration="8120000" />
+      <workItem from="1555328663505" duration="9880000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1550657228367</created>
@@ -707,11 +706,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555162355479</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="div -&gt; view">
+      <created>1555339580569</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1555339580569</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124598000" />
+    <option name="totallyTimeSpent" value="126358000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -726,7 +732,7 @@
     <frame x="0" y="0" width="1424" height="802" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17106201" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17106201" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -789,7 +795,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="div -&gt; view" />
     <MESSAGE value="优化、静态页面" />
     <MESSAGE value="页面跳转" />
     <MESSAGE value="金额保留两位小数过滤器" />
@@ -801,16 +806,10 @@
     <MESSAGE value="订单详情" />
     <MESSAGE value="测试扫描二维码" />
     <MESSAGE value="样式优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="样式优化" />
+    <MESSAGE value="div -&gt; view" />
+    <option name="LAST_COMMIT_MESSAGE" value="div -&gt; view" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/navScrollList.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/material/material.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2478">
@@ -1087,13 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/personal/personal.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/material/classroom/list.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
@@ -1111,13 +1103,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/personal/myIntegral.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-504">
-          <caret line="29" column="92" selection-start-line="29" selection-start-column="92" selection-end-line="29" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/personal/integralTask.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
@@ -1129,20 +1114,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/myIntegral.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="29" column="92" selection-start-line="29" selection-start-column="92" selection-end-line="29" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/personal/integralRecord.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="72" column="74" selection-start-line="72" selection-start-column="74" selection-end-line="72" selection-end-column="74" />
+        <state relative-caret-position="359">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <caret line="34" column="82" selection-start-line="34" selection-start-column="82" selection-end-line="34" selection-end-column="82" />
+          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+          <caret line="35" column="68" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+          <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/personal.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="124" column="29" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/personal/addressManage.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding>
-            <element signature="e#151#174#0" expanded="true" />
+            <element signature="e#77#100#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="37" column="49" lean-forward="true" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+        <state relative-caret-position="500">
+          <caret line="45" column="51" lean-forward="true" selection-start-line="45" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
           <folding>
             <element signature="e#212#235#0" expanded="true" />
           </folding>

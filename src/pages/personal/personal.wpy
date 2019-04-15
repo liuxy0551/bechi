@@ -67,7 +67,7 @@
       <view class="option-title">我的收藏</view>
       <image class="icon" src="/images/view_more.png"/>
     </view>
-    <view class="flex-row option-row">
+    <view class="flex-row option-row" @tap="goPage('addressManage')">
       <image class="icon" src="/images/personal/address_management.png"/>
       <view class="option-title">地址管理</view>
       <image class="icon" src="/images/view_more.png"/>
@@ -120,6 +120,9 @@
             wx.navigateTo({ url: v })
             break
           case 'myIntegral':
+            wx.navigateTo({ url: v })
+            break
+          case 'addressManage':
             wx.navigateTo({ url: v })
             break
           case 'orderList':
