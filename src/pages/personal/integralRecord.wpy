@@ -28,14 +28,14 @@
         <block wx:for="{{recordUsedList}}" wx:key="{{index}}">
           <view class="record-item">
             <view class="record-row">
-              <div class="record-left">
+              <view class="record-left">
                 <image class="product-img" src="{{item.img}}" lazy-load="true"/>
-              </div>
-              <div class="record-middle">
-                <div class="product-name ft-28 text-overflow">{{item.name}}</div>
-                <div class="product-time ft-28">{{item.time}}</div>
-              </div>
-              <div class="record-right ft-28">{{item.num}}</div>
+              </view>
+              <view class="record-middle">
+                <view class="product-name ft-28 text-overflow">{{item.name}}</view>
+                <view class="product-time ft-28">{{item.time}}</view>
+              </view>
+              <view class="record-right ft-28">{{item.num}}</view>
             </view>
           </view>
         </block>
