@@ -43,7 +43,7 @@
     methods = {
       // 页面跳转
       goPage (v) {
-        wx.navigateTo({ url: 'addressManage' })
+        wx.navigateTo({ url: 'addressEdit' })
         // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
       }
     }

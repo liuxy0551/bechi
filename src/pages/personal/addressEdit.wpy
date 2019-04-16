@@ -1,0 +1,176 @@
+<template>
+  <view class="container">
+    <view class="input-box">
+      <view class="input-row">
+        <view class="color"></view>
+        <view class="star">*</view>
+        <view class="label">收件人</view>
+        <input class="address-input" maxlength="10" bindinput="nameInput"/>
+      </view>
+      <view class="input-row">
+        <view class="color"></view>
+        <view class="star">*</view>
+        <view class="label">手机号</view>
+        <input class="address-input" maxlength="15" bindinput="phoneInput"/>
+      </view>
+      <view class="input-row">
+        <view class="color"></view>
+        <view class="star">*</view>
+        <view class="label">身份证</view>
+        <input class="address-input" type="idcard" maxlength="20" bindinput="IDcardInput"/>
+      </view>
+      <view class="input-row">
+        <view class="color"></view>
+        <view class="star">*</view>
+        <view class="label">省市区</view>
+        <picker class="address-input" mode="region" bindchange="bindRegionChange" value="{{region}}">
+          {{region[0]}} - {{region[1]}} - {{region[2]}}
+        </picker>
+      </view>
+      <view class="input-row">
+        <view class="color"></view>
+        <view class="star">*</view>
+        <view class="label">详细地址</view>
+        <input class="address-input" maxlength="30" bindinput="addressInput"/>
+      </view>
+      <view class="input-row">
+        <view class="color"></view>
+        <view class="star"></view>
+        <view class="label">邮政编码</view>
+        <input class="address-input" maxlength="10" bindinput="codeInput"/>
+      </view>
+      <view class="input-row">
+        <view class="color"></view>
+        <view class="star"></view>
+        <view class="label">设为默认地址</view>
+        <view class="img-box">
+          <image class="default-img" src="/images/personal/default_address.png" @tap="setDefault" wx:if="{{defaultAddress}}"/>
+          <image class="default-img" src="/images/personal/undefault_address.png" @tap="setDefault" wx:else/>
+        </view>
+      </view>
+    </view>
+
+    <view class="text-text-box">
+      <view class="text-text">说明：</view>
+      <view class="text-text">1、由于直邮商品、保税仓商品需要办理入境申报，请配合提交实名信息哦，bechi保证不会泄露您的个人信息；</view>
+      <view class="text-text">2、为了顺利报关，请确保身份信息与收货人一致。</view>
+    </view>
+
+    <view class="submit ft-b" @tap="goPage">保存地址</view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from '../../api/api'
+  import tip from '../../utils/tip'
+
+  export default class  extends wepy.page {
+    config = {
+      navigationBarTitleText: '编辑地址'
+    }
+    data = {
+      region: ['省', '市', '区'],
+      defaultAddress: false
+    }
+    methods = {
+      // 页面跳转
+      goPage (v) {
+        wx.navigateTo({ url: 'addressManage' })
+        // wx.navigateTo({ url: 'pages/dietitian/detail?ctId=' + item.ctId })
+      },
+      // 记录输入框内容
+      nameInput (e) {
+        console.log(e.detail.value)
+        // this.cardNum = e.detail.value
+      },
+      // 记录输入框内容
+      phoneInput (e) {
+        console.log(e.detail.value)
+        // this.cardNum = e.detail.value
+      },
+      // 记录输入框内容
+      IDcardInput (e) {
+        console.log(e.detail.value)
+        // this.cardNum = e.detail.value
+      },
+      bindRegionChange(e) {
+        this.region = e.detail.value
+      },
+      // 记录输入框内容
+      addressInput (e) {
+        console.log(e.detail.value)
+        // this.cardNum = e.detail.value
+      },
+      // 记录输入框内容
+      codeInput (e) {
+        console.log(e.detail.value)
+        // this.cardNum = e.detail.value
+      },
+      setDefault () {
+        this.defaultAddress = !this.defaultAddress
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../../styles/index";
+
+  .container {
+    .input-box {
+      .input-row {
+        width: 670rpx;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 22rpx 30rpx 22rpx 50rpx;
+        border-bottom: 1rpx #CCCCCC solid;
+        background: #FFFFFF;
+        &:last-child {
+          border-bottom: none;
+        }
+        .color {
+          width: 5rpx;
+          height: 50rpx;
+          margin-right: 33rpx;
+          background: @mainColor;
+        }
+        .star {
+          width: 25rpx;
+          color: #FF0000;
+          margin-bottom: -10rpx;
+        }
+        .label {
+          width: 200rpx;
+          color: #333333;
+          font-size: 28rpx;
+        }
+        .address-input {
+          flex: 1;
+          color: #999999;
+          font-size: 28rpx;
+          text-align: right;
+          padding: 0 20rpx;
+        }
+        .img-box {
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+          .default-img {
+            width: 90rpx;
+            height: 45rpx;
+          }
+        }
+      }
+    }
+
+    .text-text-box {
+      margin: 23rpx 40rpx 0 43rpx;
+      .text-text {
+        color: #999999;
+        font-size: 24rpx;
+      }
+    }
+  }
+</style>

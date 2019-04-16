@@ -45,6 +45,7 @@ export default class extends wepy.app {
       'pages/personal/integralRecord',      // 积分记录
       'pages/personal/integralMall',        // 积分商城
       'pages/personal/addressManage',       // 地址管理
+      'pages/personal/addressEdit',         // 编辑地址
       'pages/personal/signIn',              // 签到
       'pages/personal/order/orderList',     // 订单列表
       'pages/personal/order/afterSale',     // 售后中心
