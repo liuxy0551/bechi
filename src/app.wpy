@@ -19,9 +19,9 @@ import tip from './utils/tip'
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/mall/product/detail',          // 商品详情
       'pages/mall/mall',                    // 微商城
       'pages/mall/product/list',            // 商品列表
-      'pages/mall/product/detail',          // 商品详情
       'pages/mall/product/comment',         // 商品详情 - 评论列表
       'pages/mall/activity/list',           // 活动 - 商品列表
       'pages/mall/activity/coupon',         // 活动 - 优惠券列表

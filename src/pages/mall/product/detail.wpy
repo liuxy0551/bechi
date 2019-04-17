@@ -22,6 +22,11 @@
       <view class="num">{{product.prsalesvaluefake}}人购买</view>
       <image class="share" src="/images/share.png"/>
     </view>
+    <view class="sku-box row" @tap="skuClick()">
+      <view class="label ft-24">规格</view>
+      <sku class="sku-text cf666"></sku>
+      <image class="more" src="/images/view_more.png"/>
+    </view>
     <view class="comment-box row" @tap="goPage()">
       <view class="label ft-24">评价</view>
       <view class="star-box">
@@ -43,6 +48,7 @@
   import wepy from 'wepy'
   import api from '../../../api/api'
   import tip from '../../../utils/tip'
+  import sku from '../../../components/sku'
 
   export default class  extends wepy.page {
     config = {
@@ -63,6 +69,11 @@
           current: this.product.images[index].pipic,      // 当前显示图片的http链接
           urls: this.product.imageList        // 需要预览的图片http链接列表
         })
+      },
+      skuClick () {
+        console.log(2)
+        // 调用子组件的方法
+        this.$invoke('sku', 'showModal')
       }
     }
     // 获取商品详情
@@ -72,6 +83,13 @@
       }
       let res = await api.getProduct(params)
       if(res.data.status == 200) {
+        for (let i of res.data.data.skus) { 
+          console.log(i.skustock)
+        }
+        
+        
+        
+        
         this.product = res.data.data
         this.product.imageList = []
         for (let i of this.product.images) { 
@@ -80,7 +98,8 @@
         this.$apply()
       }
     }
-    onLoad(option) {
+    components = { sku }
+    onLoad (option) {
       // this.cid = option.cid
       this.getProduct()
     }
@@ -124,7 +143,6 @@
       }
     }
     .num-share {
-      border-bottom: 1rpx #D5D5D5 solid;
       .freight {
         color: #B1B1B1;
       }
@@ -134,6 +152,22 @@
       .share {
         width: 32rpx;
         height: 32rpx;
+      }
+    }
+    .sku-box {
+      border-top: 1rpx #D5D5D5 solid;
+      border-bottom: 1rpx #D5D5D5 solid;
+      .label {
+        color: #B1B1B1;
+        margin-right: 38rpx;
+      }
+      .sku-text {
+        flex: 1;
+
+      }
+      .more {
+        width: 20rpx;
+        height: 20rpx;
       }
     }
     .comment-box {

@@ -1,0 +1,53 @@
+<template>
+  <wxs module="money" src="../utils/money.wxs"></wxs>
+  <view>
+    选择 颜色，分类
+    <!--已选："红色" "XXL"-->
+
+    <!--自定义弹出框-->
+    <view>
+      <!--弹出框蒙版-->
+      <view class="modal-mask" @tap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+      <!--弹出框内容-->
+      <view class="sku-dialog" wx:if="{{showModal}}" catchtouchmove="preventTouchMove">
+        <view class="sku-content">
+          1234
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class sku extends wepy.component {
+    props = {
+      productList: { type: Array, default: [], twoWay: true },
+      showModal: { type: Boolean, default: true, twoWay: true }
+    }
+    data = {
+      // showModal: false
+    }
+    methods = {
+      // 隐藏弹出框
+      hideModal() {
+        // this.showModal = false
+        this.$emit('hideModal');
+      },
+      // 弹出框蒙层截断touchmove事件，阻断事件向下传递，避免在弹窗后还可以点击或者滑动蒙层下的界面
+      preventTouchMove: function () {
+
+      },
+      // 显示弹出框
+      showModal () {
+        // this.showModal = true
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  @import "../styles/index";
+
+</style>
