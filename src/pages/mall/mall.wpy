@@ -76,6 +76,42 @@
       <image class="fixed-img" src="/images/mall/shopping_cart.png"/>
       <image class="fixed-img" src="/images/mall/service.png"/>
     </view>
+
+
+    <!--自定义弹出框-->
+    <view>
+      <!--弹出框蒙版-->
+      <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+      <!--弹出框内容-->
+      <view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="preventTouchMove">
+        <view class="modal-content">
+          <view class="modal-title ft-32">每日登入奖励</view>
+          <view class="color-box">
+            <image class="level-img" src="/images/mall/login_reward_logo.png"/>
+            <view class="day ft-24">第 2 天</view>
+            <view class="num ft-20">+10 积分</view>
+            <view class="day-box">
+              <view class="round color"></view>
+              <view class="line color"></view>
+              <view class="round color"></view>
+              <view class="line"></view>
+              <view class="round"></view>
+              <view class="line"></view>
+              <view class="round"></view>
+              <view class="line"></view>
+              <view class="round"></view>
+              <view class="line"></view>
+              <view class="round"></view>
+              <view class="line"></view>
+              <view class="round"></view>
+            </view>
+            <view class="sign-in-btn ft-32">签 到</view>
+            <view class="tip-text ft-28">分享小程序给好友也可获得积分哦！</view>
+          </view>
+        </view>
+      </view>
+      <image class="close-img" wx:if="{{showModal}}" catchtouchmove="preventTouchMove" @tap="hideModal" src="/images/mall/login_reward_cancel.png"/>
+    </view>
   </view>
 </template>
 
@@ -109,7 +145,8 @@
         }
       ],
       bannerList: [{ downUrl: 'http://dummyimage.com/700x180' }, { downUrl: 'http://dummyimage.com/700x180' }, { downUrl: 'http://dummyimage.com/700x180' }, { downUrl: 'http://dummyimage.com/700x180' }],
-      productList: [1, 2, 3, 4]
+      productList: [1, 2, 3, 4],
+      showModal: false
     }
     methods = {
       // 页面跳转
@@ -124,11 +161,22 @@
           wx.switchTab({ url: '/pages/dietitian/dietitian' })
         }
       },
+      // 隐藏弹出框
+      hideModal() {
+        this.showModal = false
+      },
+      // 弹出框蒙层截断touchmove事件，阻断事件向下传递，避免在弹窗后还可以点击或者滑动蒙层下的界面
+      preventTouchMove: function () {
+
+      },
       // 记录输入框内容
       commentInput (e) {
         console.log(e.detail.value)
         // this.cardNum = e.detail.value
       }
+    }
+    onLoad () {
+      this.showModal = true
     }
     components = { products }
   }
